@@ -1,7 +1,7 @@
 services:
   sidekick_service:
     # Configuration for the sidekick service
-    image: ${DOCKERHUB_USERNAME}/jenkinsci-tutorials:sidekick_
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/jenkinsci-tutorials:sidekick_${BRANCH_SUFFIX}
     stdin_open: true
     tty: true
     entrypoint: sh -c "/usr/local/bin/keygen.sh /ssh-dir"  # Runs the keygen.sh script and specifies the output directory
@@ -14,7 +14,7 @@ services:
       retries: 5
 
   jenkins_controller:
-    image: ${DOCKERHUB_USERNAME}/jenkinsci-tutorials:simple_controller_
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/jenkinsci-tutorials:simple_controller_${BRANCH_SUFFIX}
     restart: on-failure
     ports:
       - "8080:8080"
@@ -47,7 +47,7 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro  # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
 
   maven:
-    image: ${DOCKERHUB_USERNAME}/jenkinsci-tutorials:maven_agent_
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/jenkinsci-tutorials:maven_agent_${BRANCH_SUFFIX}
     container_name: desktop-jenkins_agent-1
     profiles:
       - maven
@@ -65,7 +65,7 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro  # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
 
   python:
-    image: ${DOCKERHUB_USERNAME}/jenkinsci-tutorials:python_agent_
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/jenkinsci-tutorials:python_agent_${BRANCH_SUFFIX}
     container_name: desktop-jenkins_agent-1
     profiles:
       - python
@@ -83,7 +83,7 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro  # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
 
   node:
-    image: ${DOCKERHUB_USERNAME}/jenkinsci-tutorials:node_agent_
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/jenkinsci-tutorials:node_agent_${BRANCH_SUFFIX}
     environment:
       - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}    
     container_name: desktop-jenkins_agent-1
@@ -106,7 +106,7 @@ services:
 
 
   multi_jenkins_controller:
-    image: ${DOCKERHUB_USERNAME}/jenkinsci-tutorials:multi_controller_
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/jenkinsci-tutorials:multi_controller_${BRANCH_SUFFIX}
     restart: on-failure
     ports:
       - "8080:8080"
@@ -125,7 +125,7 @@ services:
       retries: 5
 
   multi:
-    image: ${DOCKERHUB_USERNAME}/jenkinsci-tutorials:node_agent_
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/jenkinsci-tutorials:node_agent_${BRANCH_SUFFIX}
     environment:
       - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}    
     container_name: desktop-jenkins_agent-1
