@@ -1,0 +1,37 @@
+jenkins:
+  numExecutors: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "admin"
+  authorizationStrategy: loggedInUsersCanDoAnything
+  nodes:  
+  - permanent:
+      labelString: "docker jenkins agent"
+      launcher:
+        ssh:
+          credentialsId: "jenkins-ssh-agent-private-key"
+          host: "desktop-jenkins_agent-1"
+          port: 22
+          sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+      name: "docker-ssh-jenkins-agent"
+      nodeDescription: "ssh jenkins docker agent "
+      remoteFS: "/home/jenkins/agent"
+      retentionStrategy: "always"
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - basicSSHUserPrivateKey:
+          id: "jenkins-ssh-agent-private-key"
+          description: "private ssh key for jenkins agent "
+          privateKeySource:
+            directEntry:
+              privateKey: ${readFile:/ssh-dir/jenkins_agent_ed}
+          scope: SYSTEM
+          username: "jenkins"
+unclassified:
+  location:
+    url: "http://127.0.0.1:8080/"
