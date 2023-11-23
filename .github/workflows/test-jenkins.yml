@@ -57,10 +57,9 @@ jobs:
       - name: Test Jenkins Job
         env:
           BRANCH_SUFFIX: ${{ env.BRANCH }}
-        run: |
           # Full repo URL
-          REPO_URL="https://github.com/${{ steps.set_repo_url.outputs.repo_url }}.git"
-
+          REPO_URL: "https://github.com/${{ steps.set_repo_url.outputs.repo_url }}.git"
+        run: |
           # adding test job to the tutorial with REPO_URL
           # The XML content is a Jenkins job configuration in XML format.
           # It defines a pipeline job that checks out the specified repository and runs the Jenkinsfile in it.
