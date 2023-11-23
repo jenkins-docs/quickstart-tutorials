@@ -7,9 +7,9 @@ FROM jenkins/ssh-agent:5.20.0 as ssh-agent
 # The following commands are executed:
 
 # 1. Update the package list.
-# 2. Install necessary dependencies including Python and several Python-related packages.
+# 2. Install necessary dependencies including Python, python3-venv and several Python-related packages.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    binutils ca-certificates curl git python3 python3-pip python3-setuptools python3-wheel python3-dev wget
+    binutils ca-certificates curl git python3 python3-venv python3-pip python3-setuptools python3-wheel python3-dev wget
 
 # Create an alias for python3 as python.
 RUN ln -s /usr/bin/python3 /usr/bin/python
