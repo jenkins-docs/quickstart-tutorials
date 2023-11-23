@@ -17,6 +17,9 @@ jobs:
     # Set environment variables for the github username for using the forked repo for tutorials (currently using mine)
     env:
       GITHUB_USERNAME: ${{ github.repository_owner }}
+      DOCKERHUB_USERNAME: ${{ github.repository_owner }}
+      IMAGE_PREFIX: ghcr.io
+      BRANCH_SUFFIX: clean-up
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,8 +39,24 @@ jobs:
           fi
         shell: bash
 
+      - name: Extract branch name
+        shell: bash
+        run: |
+          BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
+          if [[ "$BRANCH_NAME" == "main" ]]; then BRANCH_NAME=""; fi
+          echo "BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
+        id: extract_branch
+
+      - name: Extract branch name and set BRANCH environment variable
+        shell: bash
+        run: |
+          BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
+          if [[ "$BRANCH_NAME" == "main" ]]; then BRANCH_NAME=""; fi
+          echo "BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
       # Create a config.xml file in the dockerfiles/jobs directory to add the test job to the instance.
       - name: Test Jenkins Job
+        env:
+          BRANCH_SUFFIX: ${{ env.BRANCH }}
         run: |
           # Full repo URL
           REPO_URL="https://github.com/${{ steps.set_repo_url.outputs.repo_url }}.git"
