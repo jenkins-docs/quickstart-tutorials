@@ -1,5 +1,5 @@
 # Use the base image
-FROM jenkins/ssh-agent:5.16.0 as ssh-agent
+FROM jenkins/ssh-agent:5.20.0 as ssh-agent
 
 # Install necessary Dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
