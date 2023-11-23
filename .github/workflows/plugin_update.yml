@@ -31,7 +31,7 @@ jobs:
           echo "BASE_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
           # Start the docker containers
-          find . -name "docker-compose.yml" -exec ls -artl {} \; -print
+          tree .
           docker compose -f docker-compose.yml up -d --force-recreate
 
       - name: print GITHUB_ENV file
