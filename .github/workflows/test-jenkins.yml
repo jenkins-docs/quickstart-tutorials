@@ -128,7 +128,7 @@ jobs:
 
           set -x
           # Installing dependencies
-          # To check Sthe version of Jenkins, load the top page or any .../api/* page and check for the X-Jenkins response header. This contains the version number of Jenkins, like "1.404" This is also a good way to check if an URL is a Jenkins URL.
+          # To check the version of Jenkins, load the top page or any .../api/* page and check for the X-Jenkins response header. This contains the version number of Jenkins, like "1.404" This is also a good way to check if an URL is a Jenkins URL.
           JENKINS_VERSION=$(curl -s -I -k http://admin:admin@127.0.0.1:8080 | grep -i '^X-Jenkins:' | awk '{print $2}')
           echo "Jenkins version is: $JENKINS_VERSION"
 
