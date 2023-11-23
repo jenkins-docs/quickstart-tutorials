@@ -16,7 +16,7 @@ jobs:
 
     # Set environment variables for the github username for using the forked repo for tutorials (currently using mine)
     env:
-      GITHUB_USERNAME: ash-sxn
+      GITHUB_USERNAME: ${{ github.repository_owner }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
