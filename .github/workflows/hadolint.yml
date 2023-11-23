@@ -1,0 +1,111 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# hadoint is a Dockerfile linter written in Haskell
+# that helps you build best practice Docker images.
+# More details at https://github.com/hadolint/hadolint
+
+name: Hadolint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  schedule:
+    - cron: '45 15 * * 0'
+
+permissions:
+  contents: read
+
+jobs:
+  hadolint:
+    name: Run hadolint scanning
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run hadolint scanning on the old proposal Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./00_old_one_from_proposal/Dockerfile
+          format: sarif
+          category: "old proposal"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the custom Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./02_custom_docker_file_connecting_agent_and_controller/dockerfiles/Dockerfile
+          format: sarif
+          category: "custom dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the Maven agent Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./03_maven_tutorial/dockerfiles/agent/Dockerfile
+          format: sarif
+          category: "maven agent"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the Maven Jenkins controller Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./03_maven_tutorial/dockerfiles/Dockerfile
+          format: sarif
+          category: "maven controller"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the Python agent Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./04_python_tutorial/dockerfiles/agent/Dockerfile
+          format: sarif
+          category: "python agent"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the Python Jenkins controller Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./04_python_tutorial/dockerfiles/Dockerfile
+          format: sarif
+          category: "python controller"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the node agent Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./05_nodejs/dockerfiles/agent/Dockerfile
+          format: sarif
+          category: "node agent"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the node Jenkins controller Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./05_nodejs/dockerfiles/Dockerfile
+          format: sarif
+          category: "node controller"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: hadolint-results.sarif
+          wait-for-processing: true
