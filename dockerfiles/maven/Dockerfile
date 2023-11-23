@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:5.16.0 as ssh-agent
+FROM jenkins/ssh-agent:5.17.0 as ssh-agent
 
 # ca-certificates because curl will need it later on for the maven installation
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && apt-get clean && \
