@@ -1,4 +1,4 @@
-FROM debian:bookworm-20230919 as prepare-stage
+FROM debian:bookworm-20231120 as prepare-stage
 
 COPY *sh /usr/local/bin/
 
