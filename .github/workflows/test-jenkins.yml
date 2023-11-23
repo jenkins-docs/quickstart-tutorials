@@ -8,7 +8,7 @@ on:
 
 jobs:
   # This job builds and tests the docker-compose files for the maven, python, and node directories.
-  build-and-testIE:
+  build-and-test:
     strategy:
       matrix:
         dir: [maven, python, node]  # The directories to be tested.
