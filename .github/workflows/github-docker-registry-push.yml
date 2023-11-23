@@ -74,33 +74,7 @@ jobs:
 
       - name: Set repository name to lowercase
         run: echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-        
-      -
-        name: Build and push a simple bundled instance
-        if: contains(env.files, '00_old_one_from_proposal/Dockerfile')
-        uses: docker/build-push-action@v5
-        with:
-          context: ./00_old_one_from_proposal
-          platforms: linux/amd64, linux/aarch64
-          push: true
-          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:00_old_one_${{ env.BRANCH }}
 
-      - name: Build and push a simple controller
-        if: contains(env.files, '02_custom_docker_file_connecting_agent_and_controller/dockerfiles/Dockerfile')
-        uses: docker/build-push-action@v5
-        with:
-          context: ./02_custom_docker_file_connecting_agent_and_controller/dockerfiles
-          platforms: linux/amd64, linux/aarch64
-          push: true
-          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:02_custom_docker_file_connecting_agent_and_controller_${{ env.BRANCH }}
-      - name: Build and push the jenkins agent for old maven tutorial
-        if: contains(env.files, '03_maven_tutorial/Dockerfile')
-        uses: docker/build-push-action@v5
-        with:
-          context: ./03_maven_tutorial
-          platforms: linux/amd64, linux/aarch64
-          push: true
-          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:maven_agent_${{ env.BRANCH }}
       - name: Build and push a simple jenkins controller
         if: contains(env.files, 'dockerfiles/Dockerfile')
         uses: docker/build-push-action@v5
@@ -145,10 +119,10 @@ jobs:
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:sidekick_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for multi-branch controller
-        if: contains(env.files, '06_multibranch_pipeline/dockerfiles')
+        if: contains(env.files, 'dockerfiles/multi/Dockerfile')
         uses: docker/build-push-action@v5
         with:
-          context: ./06_multibranch_pipeline/dockerfiles/
+          context: ./dockerfiles/multi
           platforms: linux/amd64, linux/aarch64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:multi_controller_${{ env.BRANCH }}

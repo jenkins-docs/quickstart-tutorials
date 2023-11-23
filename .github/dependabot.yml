@@ -14,86 +14,7 @@ updates:
 
   # Enable version updates for Docker
   - package-ecosystem: docker
-    directory: "./00_old_one_from_proposal"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./01_simple_controller_plus_agent"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./02_custom_docker_file_connecting_agent_and_controller/dockerfiles"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./03_maven_tutorial"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "jenkins/jenkins"
-  - package-ecosystem: docker
-    directory: "./03_maven_tutorial/dockerfiles"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "jenkins/jenkins"
-  - package-ecosystem: docker
-    directory: "./03_maven_tutorial/dockerfiles/agent"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./04_python_tutorial"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./04_python_tutorial/dockerfiles"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./04_python_tutorial/dockerfiles/agent"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
     directory: "./dockerfiles"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./05_nodejs"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./05_nodejs/dockerfiles"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./05_nodejs/dockerfiles/agent"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./06_multibranch_pipeline"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./06_multibranch_pipeline/dockerfiles"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-  - package-ecosystem: docker
-    directory: "./06_multibranch_pipeline/dockerfiles/agent"
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
@@ -102,26 +23,23 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "jenkins/jenkins"
+  - package-ecosystem: docker
+    directory: "./dockerfiles/multi"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
   - package-ecosystem: docker
     directory: "./dockerfiles/node"
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "jenkins/jenkins"
   - package-ecosystem: docker
     directory: "./dockerfiles/python"
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "jenkins/jenkins"
   - package-ecosystem: docker
     directory: "./dockerfiles/sidekick"
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "jenkins/jenkins"    

@@ -104,25 +104,8 @@ services:
     volumes:
       - agent-ssh-dir:/home/jenkins/.ssh:ro  # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
 
-  multi_jenkins_controller:
-    build: 06_multibranch_pipeline/dockerfiles/.
-    restart: on-failure
-    ports:
-      - "8080:8080"
-    volumes:
-      - jenkins_home:/var/jenkins_home  # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
-      - agent-ssh-dir:/ssh-dir  # Mounts the agent-ssh-dir volume to the /app path inside the container
-    depends_on:
-      sidekick_service:
-        condition: service_completed_successfully  # Depends on the successful completion of the sidekick_service
-    healthcheck:
-      test: [ "CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1" ]  # Checks if the conductor_ok file exists in the /ssh-dir path
-      interval: 5s
-      timeout: 10s
-      retries: 5
-
   multi:
-    build: 06_multibranch_pipeline/dockerfiles/agent/.
+    build: dockerfiles/multi/.
     environment:
       - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}    
     container_name: desktop-jenkins_agent-1
@@ -131,7 +114,7 @@ services:
     depends_on:
       sidekick_service:
         condition: service_completed_successfully  # Depends on the successful completion of the sidekick_service
-      multi_jenkins_controller:
+      jenkins_controller:
         condition: service_started 
     ports:
       - "3000:3000"
