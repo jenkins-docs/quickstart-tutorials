@@ -4,12 +4,20 @@ JENKINS_HOST=admin:admin@localhost:8080
 curl -O "http://$JENKINS_HOST/jnlpJars/jenkins-cli.jar"
 UPDATE_LIST=$( java -jar jenkins-cli.jar -s http://$JENKINS_HOST/ list-plugins | grep -e ')$' | awk '{ print $1 }' );
 
-if [ ! -z "${UPDATE_LIST}" ]; then
-    echo Updating Jenkins Plugins: ${UPDATE_LIST};
-    # No such command -f -f ./plugins.txt
-    java -jar jenkins-cli.jar -s "http://$JENKINS_HOST/" install-plugin ${UPDATE_LIST};
+# Check if the UPDATE_LIST variable is not empty
+# UPDATE_LIST contains the list of Jenkins plugins to be updated
+if [ -n "${UPDATE_LIST}" ]; then
+    # If UPDATE_LIST is not empty, print a message indicating the plugins that are being updated
+    echo Updating Jenkins Plugins: "${UPDATE_LIST};"
+    # The following command uses the Jenkins CLI to install the plugins listed in UPDATE_LIST
+    # The Jenkins CLI is invoked with the -s option to specify the Jenkins server URL
+    # The install-plugin command is used to install the plugins
+    java -jar jenkins-cli.jar -s "http://$JENKINS_HOST/" install-plugin "${UPDATE_LIST}";
+    # The following lines are commented out, but they show alternative commands that could be used
+    # The -deploy option would deploy the plugins immediately, and the -restart option would restart Jenkins after installing the plugins
+    # The cat command would display the contents of the updated_plugins.txt file
     # java -jar jenkins-cli.jar -s http://$JENKINS_HOST/ install-plugin ${UPDATE_LIST} -deploy -restart;
-    #cat updated_plugins.txt
+    # cat updated_plugins.txt
 fi
 rm jenkins-cli.jar
 
