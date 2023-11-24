@@ -9,7 +9,7 @@ image:
 # The 'init' field under 'tasks' specifies the command to be run before the main command.
 # In this case, it downloads and installs 'yq', a command-line YAML processor, and runs several shell scripts.
 tasks:
-  - init: sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 && sudo chmod a+x /usr/local/bin/yq && ./gitpodURL.sh
+  - init: sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 && sudo chmod a+x /usr/local/bin/yq && ./dockerfiles/gitpodURL.sh
 
 # The 'ports' field specifies a list of ports that should be exposed in the workspace.
 # Each item in the list can have a 'name', 'port', 'protocol', 'onOpen', and 'description'.
