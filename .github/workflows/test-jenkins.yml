@@ -65,7 +65,7 @@ jobs:
         env:
           BRANCH_SUFFIX: ${{ env.BRANCH }}
           # Full repo URL
-          REPO_URL: "https://github.com/${{ env.REPO_URL }}.git"
+          REPO_URL: "https://github.com/${{ env.PARTIAL_REPO_URL }}.git"
         run: |
           # adding test job to the tutorial with REPO_URL
           # The XML content is a Jenkins job configuration in XML format.
