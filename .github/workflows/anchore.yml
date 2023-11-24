@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build the Docker image
-        run: cd ./02_custom_docker_file_connecting_agent_and_controller/dockerfiles/ && docker build . --file Dockerfile --tag localbuild/testimage:latest
+        run: cd ./dockerfiles/ && docker build . --file Dockerfile --tag localbuild/testimage:latest
 
       - name: Run the Anchore Grype scan action
         uses: anchore/scan-action@62370b53ab026f5d09b9fb43a7b5ec4b73c1a8e0
