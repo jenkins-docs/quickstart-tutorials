@@ -1,4 +1,4 @@
-# This Dockerfile is used to create a Jenkins SSH agent with Python and several Python packages installed.
+# This Dockerfile is used to create a Jenkins SSH agent with Python and several Python packages installed in order to run the python sample tutorial.
 
 # We start from the Jenkins SSH agent image version 5.20.0.
 FROM jenkins/ssh-agent:5.20.0 as ssh-agent
