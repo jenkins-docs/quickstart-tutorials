@@ -27,7 +27,7 @@ jobs:
           fetch-depth: 0  # Fetch all history for all branches and tags.
 
       # Set the repository URL based on the directory specified in the matrix.
-      - name: Set Repository URL
+      - name: Set Sample Tutorial Repository URL
         run: |
           if [[ "${{ matrix.dir }}" == "maven" ]]; then
             # The line is storing the URL of the GitHub repository for the simple-java-maven-app in an environment variable named PARTIAL_REPO_URL.
@@ -42,7 +42,7 @@ jobs:
           echo "REPO_URL is $REPO_URL"
         shell: bash
 
-      - name: Extract branch name
+      - name: Extract current branch name
         shell: bash
         run: |
           BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
@@ -50,18 +50,18 @@ jobs:
           echo "BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
         id: extract_branch
 
-      - name: Extract branch name and set BRANCH environment variable
+      - name: Extract current branch name and set BRANCH environment variable
         shell: bash
         run: |
           BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
           if [[ "$BRANCH_NAME" == "main" ]]; then BRANCH_NAME=""; fi
           echo "BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
 
-      - name: Print REPO_URL
+      - name: Print Sample Tutorial REPO_URL
         run: echo "The repository URL is ${{ env.PARTIAL_REPO_URL }}"
 
       # Create a config.xml file in the dockerfiles/jobs directory to add the test job to the instance.
-      - name: Test Jenkins Job
+      - name: Create config.xml for the Sample Tutorial job
         env:
           BRANCH_SUFFIX: ${{ env.BRANCH }}
           # Full repo URL
