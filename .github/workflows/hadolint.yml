@@ -32,75 +32,57 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run hadolint scanning on the old proposal Dockerfile
+      - name: Run hadolint scanning on the controller Dockerfile
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
         with:
-          dockerfile: ./00_old_one_from_proposal/Dockerfile
+          dockerfile: ./dockerfiles/Dockerfile
           format: sarif
-          category: "old proposal"
+          category: "controller dockerfile"
           output-file: hadolint-results.sarif
           no-fail: true
 
-      - name: Run hadolint scanning on the custom Dockerfile
+      - name: Run hadolint scanning on the maven Dockerfile
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
         with:
-          dockerfile: ./02_custom_docker_file_connecting_agent_and_controller/dockerfiles/Dockerfile
+          dockerfile: ./dockerfiles/maven/Dockerfile
           format: sarif
-          category: "custom dockerfile"
+          category: "maven dockerfile"
           output-file: hadolint-results.sarif
           no-fail: true
 
-      - name: Run hadolint scanning on the Maven agent Dockerfile
+      - name: Run hadolint scanning on the multibranch agent Dockerfile
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
         with:
-          dockerfile: ./03_maven_tutorial/dockerfiles/agent/Dockerfile
+          dockerfile: ./dockerfiles/multi/Dockerfile
           format: sarif
-          category: "maven agent"
-          output-file: hadolint-results.sarif
-          no-fail: true
-
-      - name: Run hadolint scanning on the Maven Jenkins controller Dockerfile
-        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
-        with:
-          dockerfile: ./03_maven_tutorial/dockerfiles/Dockerfile
-          format: sarif
-          category: "maven controller"
-          output-file: hadolint-results.sarif
-          no-fail: true
-
-      - name: Run hadolint scanning on the Python agent Dockerfile
-        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
-        with:
-          dockerfile: ./04_python_tutorial/dockerfiles/agent/Dockerfile
-          format: sarif
-          category: "python agent"
-          output-file: hadolint-results.sarif
-          no-fail: true
-
-      - name: Run hadolint scanning on the Python Jenkins controller Dockerfile
-        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
-        with:
-          dockerfile: ./04_python_tutorial/dockerfiles/Dockerfile
-          format: sarif
-          category: "python controller"
+          category: "multibranch agent dockerfile"
           output-file: hadolint-results.sarif
           no-fail: true
 
       - name: Run hadolint scanning on the node agent Dockerfile
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
         with:
-          dockerfile: ./05_nodejs/dockerfiles/agent/Dockerfile
+          dockerfile: ./dockerfiles/node/Dockerfile
           format: sarif
-          category: "node agent"
+          category: "node agent dockerfile"
           output-file: hadolint-results.sarif
           no-fail: true
 
-      - name: Run hadolint scanning on the node Jenkins controller Dockerfile
+      - name: Run hadolint scanning on the Python agent Dockerfile
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
         with:
-          dockerfile: ./05_nodejs/dockerfiles/Dockerfile
+          dockerfile: ./dockerfiles/python/Dockerfile
           format: sarif
-          category: "node controller"
+          category: "python agent dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the sidekick Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./dockerfiles/sidekick/Dockerfile
+          format: sarif
+          category: "sidekick dockerfile"
           output-file: hadolint-results.sarif
           no-fail: true
 
