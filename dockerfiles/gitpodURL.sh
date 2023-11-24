@@ -4,7 +4,7 @@
 config_file="/workspace/quickstart-tutorials/dockerfiles/jenkins.yaml"
 
 # Extract the hostname from the GITPOD_WORKSPACE_URL variable
-service_url=$(echo $GITPOD_WORKSPACE_URL | awk -F/ '{print $3}')
+service_url=$(echo "$GITPOD_WORKSPACE_URL" | awk -F/ '{print $3}')
 
 # Print the hostname for debugging purposes
 echo Jenkins can Be accessed here: "https://8080-$service_url"
