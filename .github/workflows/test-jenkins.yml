@@ -16,7 +16,7 @@ jobs:
 
     # Set environment variables for the github username for using the forked repo for tutorials (currently using mine)
     env:
-      GITHUB_USERNAME: ${{ github.repository_owner }}
+      GITHUB_USERNAME: gounthar # Used to be ${{ github.repository_owner }}, but the jenkins-docs repository does not have a Jenkinsfile.
       DOCKERHUB_USERNAME: ${{ github.repository_owner }}
       IMAGE_PREFIX: ghcr.io
       BRANCH_SUFFIX: clean-up
