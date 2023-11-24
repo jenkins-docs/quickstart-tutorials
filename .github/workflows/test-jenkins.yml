@@ -30,13 +30,13 @@ jobs:
       - name: Set Repository URL
         run: |
           if [[ "${{ matrix.dir }}" == "maven" ]]; then
-            # The line is storing the URL of the GitHub repository for the simple-java-maven-app in an environment variable named REPO_URL.
+            # The line is storing the URL of the GitHub repository for the simple-java-maven-app in an environment variable named PARTIAL_REPO_URL.
             # The ${GITHUB_USERNAME} is a placeholder that will be replaced with the value of the GITHUB_USERNAME environment variable, which is set to the owner of the repository.
-            echo "REPO_URL=${GITHUB_USERNAME}/simple-java-maven-app" >> $GITHUB_ENV
+            echo "PARTIAL_REPO_URL=${GITHUB_USERNAME}/simple-java-maven-app" >> $GITHUB_ENV
           elif [[ "${{ matrix.dir }}" == "python" ]]; then
-            echo "REPO_URL=${GITHUB_USERNAME}/simple-python-pyinstaller-app" >> $GITHUB_ENV
+            echo "PARTIAL_REPO_URL=${GITHUB_USERNAME}/simple-python-pyinstaller-app" >> $GITHUB_ENV
           elif [[ "${{ matrix.dir }}" == "node" ]]; then
-            echo "REPO_URL=${GITHUB_USERNAME}/simple-node-js-react-npm-app" >> $GITHUB_ENV
+            echo "PARTIAL_REPO_URL=${GITHUB_USERNAME}/simple-node-js-react-npm-app" >> $GITHUB_ENV
           fi
           echo "GITHUB_ENV is $GITHUB_ENV"
           echo "REPO_URL is $REPO_URL"
@@ -56,8 +56,10 @@ jobs:
           BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
           if [[ "$BRANCH_NAME" == "main" ]]; then BRANCH_NAME=""; fi
           echo "BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
+
       - name: Print REPO_URL
-        run: echo "The repository URL is ${{ env.REPO_URL }}"
+        run: echo "The repository URL is ${{ env.PARTIAL_REPO_URL }}"
+
       # Create a config.xml file in the dockerfiles/jobs directory to add the test job to the instance.
       - name: Test Jenkins Job
         env:
