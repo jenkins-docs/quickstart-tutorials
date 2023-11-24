@@ -36,6 +36,7 @@ jobs:
           elif [[ "${{ matrix.dir }}" == "node" ]]; then
             echo "REPO_URL=${GITHUB_USERNAME}/simple-node-js-react-npm-app" >> $GITHUB_ENV
           fi
+          echo $GITHUB_ENV
         shell: bash
 
       - name: Extract branch name
