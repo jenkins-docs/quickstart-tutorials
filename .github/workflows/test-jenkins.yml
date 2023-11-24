@@ -114,7 +114,6 @@ jobs:
           echo "pwd is $(pwd)"
           echo "$XML_CONTENT" > ./config.xml
           echo "checking files below"
-          ls
           tree .
 
       # Check if any files in the specified directory have changed and run docker-compose up with the directory as an argument if there are changes.
