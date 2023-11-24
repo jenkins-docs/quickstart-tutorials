@@ -30,8 +30,8 @@ jobs:
       - name: Check for Dockerfile and context changes
         run: |
           for file in ${{ env.files }}; do
-            if [[ $file =~ (^|/)Dockerfile($|/)|(^|/)context/ ]]; then
-              echo "Dockerfile or context directory has changed."
+            if [[ $file =~ (^|/)Dockerfile($|/)|(^|/)dockerfiles/ ]]; then
+              echo "Dockerfile or dockerfiles directory has changed."
               echo "Changed file: $file"
               break
             fi
@@ -76,7 +76,7 @@ jobs:
         run: echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Build and push a simple jenkins controller
-        if: contains(env.files, 'dockerfiles/Dockerfile')
+        if: contains(env.files, 'dockerfiles/Dockerfile') || contains(env.files, 'dockerfiles/')
         uses: docker/build-push-action@v5
         with:
           context: ./dockerfiles

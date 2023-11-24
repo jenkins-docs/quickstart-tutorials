@@ -19,8 +19,8 @@ jobs:
           
           echo ${{ secrets.GH_TOKEN }} | gh auth login --with-token
           gh auth status
-          git config --global user.email "ash.191245141@gmail.com"
-          git config --global user.name "ash-sxn"
+          git config --global user.email "gounthar@gmail.com"
+          git config --global user.name "gounthar"
 
       - name: Set branch Names and start the containers
         run: |
@@ -31,7 +31,8 @@ jobs:
           echo "BASE_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
           # Start the docker containers
-          docker compose up -d
+          tree .
+          docker compose -f ./docker-compose.yaml up -d --force-recreate
 
       - name: print GITHUB_ENV file
         run: cat $GITHUB_ENV
