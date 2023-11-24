@@ -164,14 +164,17 @@ jobs:
           TOKEN=$(curl -s -k 'http://admin:admin@127.0.0.1:8080/user/admin/descriptorByName/jenkins.security.ApiTokenProperty/generateNewToken' --data 'newTokenName=kb-token' -b cookies.txt -H $CRUMB | jq -r '.data.tokenValue')
           echo "TOKEN was found."
 
+          # Creating the Job from the config.xml file 
+          curl -X POST -H "Content-Type: text/xml" --user admin:$TOKEN --data-binary @config.xml http://127.0.0.1:8080/createItem?name=${{ matrix.dir }}
+          
           # Let's set the JOB_NAME it's same as the running tutorial (i.e. maven, python, node)
-          echo "Launching a job"
           JOB_NAME="${{ matrix.dir }}"
-
+          echo "Launching a job whose name is $JOB_NAME (unencoded)"
+          
           # Encode the JOB_NAME to replace spaces, open parentheses, and closing parentheses with their corresponding URL-encoded values.
           # This is necessary when using the JOB_NAME in a URL or any other context where special characters need to be encoded.
           # Spaces are replaced with "%20", open parentheses with "%28", and closing parentheses with "%29".
-          # The encoded result is stored in the JOB_NAME_ENCODED variable. This step was usefull with using (simple demo job)
+          # The encoded result is stored in the JOB_NAME_ENCODED variable. This step was useful with using (simple demo job)
           JOB_NAME_ENCODED=$(echo "$JOB_NAME" | awk '{ gsub(/ /, "%20"); gsub(/\(/, "%28"); gsub(/\)/, "%29"); print }')
           echo "JOB_NAME_ENCODED is $JOB_NAME_ENCODED"
 
@@ -179,7 +182,7 @@ jobs:
           JOB_PRESENT=$(curl -u admin:$TOKEN http://127.0.0.1:8080/api/json?tree=jobs%5Bname%5D)
           echo "JOB_PRESENT is $JOB_PRESENT"
 
-          #Staring the job, TOKEN has been set in previous step
+          # Starting the job, TOKEN has been set in previous step
           curl -X POST -u admin:$TOKEN 127.0.0.1:8080/job/$JOB_NAME_ENCODED/build
 
           # Wait for the job to start running
