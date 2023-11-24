@@ -28,14 +28,13 @@ jobs:
 
       # Set the repository URL based on the directory specified in the matrix.
       - name: Set Repository URL
-        id: set_repo_url
         run: |
           if [[ "${{ matrix.dir }}" == "maven" ]]; then
-            echo "::set-output name=repo_url::${GITHUB_USERNAME}/simple-java-maven-app"
+            echo "REPO_URL=${GITHUB_USERNAME}/simple-java-maven-app" >> $GITHUB_ENV
           elif [[ "${{ matrix.dir }}" == "python" ]]; then
-            echo "::set-output name=repo_url::${GITHUB_USERNAME}/simple-python-pyinstaller-app"
+            echo "REPO_URL=${GITHUB_USERNAME}/simple-python-pyinstaller-app" >> $GITHUB_ENV
           elif [[ "${{ matrix.dir }}" == "node" ]]; then
-            echo "::set-output name=repo_url::${GITHUB_USERNAME}/simple-node-js-react-npm-app"
+            echo "REPO_URL=${GITHUB_USERNAME}/simple-node-js-react-npm-app" >> $GITHUB_ENV
           fi
         shell: bash
 
@@ -58,7 +57,7 @@ jobs:
         env:
           BRANCH_SUFFIX: ${{ env.BRANCH }}
           # Full repo URL
-          REPO_URL: "https://github.com/${{ steps.set_repo_url.outputs.repo_url }}.git"
+          REPO_URL: "https://github.com/${{ env.REPO_URL }}.git"
         run: |
           # adding test job to the tutorial with REPO_URL
           # The XML content is a Jenkins job configuration in XML format.
