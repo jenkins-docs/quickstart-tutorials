@@ -1,0 +1,128 @@
+name: docker image building and pushing to GitHub Packages
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches: [ '*' ]
+  schedule:
+    - cron:  '30 4,16 * * *'
+
+env:
+  GHCR_USERNAME: ${{ github.repository_owner }}
+  GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Retrieve modified files
+        id: changes
+        run: echo "files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | tr '\n' ' ')" >> $GITHUB_ENV
+
+      - name: Check for Dockerfile and context changes
+        run: |
+          for file in ${{ env.files }}; do
+            if [[ $file =~ (^|/)Dockerfile($|/)|(^|/)dockerfiles/ ]]; then
+              echo "Dockerfile or dockerfiles directory has changed."
+              echo "Changed file: $file"
+              break
+            fi
+          done
+          
+          if (( $? == 0 )); then
+            echo "No Dockerfile or context directory changes. Skipping Docker image build and push steps."
+            echo "Changed files: ${{ env.files }}"
+          fi
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      -
+        name: Login to GitHub Container Registry
+        if: contains(env.files, 'Dockerfile')
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ env.GHCR_USERNAME }}
+          password: ${{ env.GHCR_TOKEN }}
+
+      - name: Extract branch name
+        shell: bash
+        run: |
+          BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
+          if [[ "$BRANCH_NAME" == "main" ]]; then BRANCH_NAME=""; fi
+          echo "BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
+        id: extract_branch
+
+      - name: Extract branch name and set BRANCH environment variable
+        shell: bash
+        run: |
+          BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
+          if [[ "$BRANCH_NAME" == "main" ]]; then BRANCH_NAME=""; fi
+          echo "BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Set repository name to lowercase
+        run: echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+      - name: Build and push a simple jenkins controller
+        if: contains(env.files, 'dockerfiles/Dockerfile') || contains(env.files, 'dockerfiles/')
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfiles
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:simple_controller_${{ env.BRANCH }}
+      - name: Build and push the jenkins agent for maven tutorial
+        if: contains(env.files, 'dockerfiles/maven/Dockerfile')
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfiles/maven
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:maven_agent_${{ env.BRANCH }}
+
+      - name: Build and push the jenkins agent for python tutorial
+        if: contains(env.files, 'dockerfiles/python/Dockerfile')
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfiles/python
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:python_agent_${{ env.BRANCH }}
+      - name: Build and push the jenkins agent for node tutorial
+        if: contains(env.files, 'dockerfiles/node/Dockerfile')
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfiles/node
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:node_agent_${{ env.BRANCH }}
+
+      - name: Build and push the jenkins agent for sidekick tutorial
+        if: contains(env.files, 'dockerfiles/sidekick/Dockerfile')
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfiles/sidekick
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:sidekick_${{ env.BRANCH }}
+
+      - name: Build and push the jenkins agent for multi-branch controller
+        if: contains(env.files, 'dockerfiles/multi/Dockerfile')
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfiles/multi
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:multi_controller_${{ env.BRANCH }}

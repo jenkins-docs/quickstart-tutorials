@@ -1,0 +1,73 @@
+name: Plugins Update file test
+
+on:
+  workflow_dispatch:
+    
+  schedule:
+    - cron: '0 0 * * *' # run daily at midnight
+
+    
+jobs:
+  check-plugins:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Configure git & gh
+        run: |
+          
+          echo ${{ secrets.GH_TOKEN }} | gh auth login --with-token
+          gh auth status
+          git config --global user.email "gounthar@gmail.com"
+          git config --global user.name "gounthar"
+
+      - name: Set branch Names and start the containers
+        run: |
+          #  Set the name of the branch to create the pull request from
+          echo "BRANCH_NAME=update-plugins-$(date +'%Y/%m/%d/%H/%M/%S')" >> $GITHUB_ENV
+
+          # Set the name of the branch to create the pull request to
+          echo "BASE_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+          # Start the docker containers
+          tree .
+          docker compose -f ./docker-compose.yaml up -d --force-recreate
+
+      - name: print GITHUB_ENV file
+        run: cat $GITHUB_ENV
+        
+      - name: Waiting for service to be ready
+        run: |
+          # Check If Jenkins is running or not
+          # If the message is found, awk exits with a non-zero status (1), and the loop continues.
+          # If the message is not found, the loop exits, and the "Jenkins is running" message is displayed.
+          timeout 60 bash -c 'until curl -s -f http://127.0.0.1:8080/login > /dev/null; do sleep 5; done' && echo "Jenkins is running" || echo "Jenkins is not running" 
+          echo "Jenkins is ready"
+          JENKINS_VERSION=$(curl -s -I -k http://admin:admin@127.0.0.1:8080 | grep -i '^X-Jenkins:' | awk '{print $2}')
+          echo "Jenkins version is: $JENKINS_VERSION"
+
+
+          # Uses jenkins-plugin-cli to update the plugin.txt and update it 
+          docker ps | grep controller | awk '{print $1}' | xargs -I {} docker exec {} jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt --no-download --available-updates --output txt > dockerfiles/plugins.txt
+          # Check if the plugins.txt file has been modified
+          if git diff --quiet -- dockerfiles/plugins.txt; then
+              # No changes
+              echo "No plugins need to be updated"
+          else
+              # Changes detected
+              echo "Plugins have been updated, creating a pull request"
+
+              # Create and checkout new branch
+              git checkout -b "$BRANCH_NAME" 
+
+              # Add and commit changes
+              git add dockerfiles/plugins.txt
+              git commit -m "chore(jenkins): Update Jenkins plugins"
+
+              # Push changes to GitHub
+              git push -u origin "$BRANCH_NAME"
+
+              # Create pull request using gh command
+              gh pr create --title "chore(jenkins): Updates Jenkins plugins" --body "This pull request updates the Jenkins plugins listed in \`plugins.txt\`." --base "$BASE_BRANCH" --head "$BRANCH_NAME"
+          fi

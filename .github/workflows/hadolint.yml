@@ -1,0 +1,93 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# hadoint is a Dockerfile linter written in Haskell
+# that helps you build best practice Docker images.
+# More details at https://github.com/hadolint/hadolint
+
+name: Hadolint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  schedule:
+    - cron: '45 15 * * 0'
+
+permissions:
+  contents: read
+
+jobs:
+  hadolint:
+    name: Run hadolint scanning
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run hadolint scanning on the controller Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./dockerfiles/Dockerfile
+          format: sarif
+          category: "controller dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the maven Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./dockerfiles/maven/Dockerfile
+          format: sarif
+          category: "maven dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the multibranch agent Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./dockerfiles/multi/Dockerfile
+          format: sarif
+          category: "multibranch agent dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the node agent Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./dockerfiles/node/Dockerfile
+          format: sarif
+          category: "node agent dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the Python agent Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./dockerfiles/python/Dockerfile
+          format: sarif
+          category: "python agent dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Run hadolint scanning on the sidekick Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./dockerfiles/sidekick/Dockerfile
+          format: sarif
+          category: "sidekick dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: hadolint-results.sarif
+          wait-for-processing: true

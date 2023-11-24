@@ -1,0 +1,6 @@
+# Ignore secrets folder
+secrets/*
+02_custom_docker_file_connecting_agent_and_controller/secrets/*
+03_maven_tutorial/secrets/*
+.tutorial_running.txt
+
