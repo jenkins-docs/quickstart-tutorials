@@ -12,7 +12,7 @@ if [ -n "${UPDATE_LIST}" ]; then
     # The following command uses the Jenkins CLI to install the plugins listed in UPDATE_LIST
     # The Jenkins CLI is invoked with the -s option to specify the Jenkins server URL
     # The install-plugin command is used to install the plugins
-    java -jar jenkins-cli.jar -s "http://$JENKINS_HOST/" install-plugin ${UPDATE_LIST};
+    java -jar jenkins-cli.jar -s "http://$JENKINS_HOST/" install-plugin ""${UPDATE_LIST}"";
     # The following lines are commented out, but they show alternative commands that could be used
     # The -deploy option would deploy the plugins immediately, and the -restart option would restart Jenkins after installing the plugins
     # The cat command would display the contents of the updated_plugins.txt file
