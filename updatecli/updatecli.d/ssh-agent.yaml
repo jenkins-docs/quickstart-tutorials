@@ -1,0 +1,68 @@
+---
+name: Bump Docker image tag for "jenkins/ssh-agent"
+sources:
+  jenkins/ssh-agent:
+    name: '[jenkins/ssh-agent] Get latest Docker image tag'
+    kind: dockerimage
+    spec:
+      image: jenkins/ssh-agent
+      tagfilter: ^\d*(\.\d*){2}$
+      versionfilter:
+        kind: semver
+        pattern: '>=5.20.0'
+targets:
+  jenkins/python-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/python/Dockerfile"'
+    kind: dockerfile
+    spec:
+      file: dockerfiles/python/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: jenkins/ssh-agent
+    sourceid: jenkins/ssh-agent
+  jenkins/node-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/node/Dockerfile"'
+    kind: dockerfile
+    spec:
+      file: dockerfiles/node/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: jenkins/ssh-agent
+    sourceid: jenkins/ssh-agent
+  jenkins/multibranch-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/multi/Dockerfile"'
+    kind: dockerfile
+    spec:
+      file: dockerfiles/multi/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: jenkins/ssh-agent
+    sourceid: jenkins/ssh-agent
+  jenkins/maven-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/maven/Dockerfile"'
+    kind: dockerfile
+    spec:
+      file: dockerfiles/maven/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: jenkins/ssh-agent
+    sourceid: jenkins/ssh-agent
+  default-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "docker-compose.yaml"'
+    kind: yaml
+    transformers:
+      - addprefix: 'jenkins/ssh-agent:'
+    spec:
+      file: docker-compose.yaml
+      key: $.services.default_agent.image
+    sourceid: jenkins/ssh-agent
+  default-build-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "build-docker-compose.yaml"'
+    kind: yaml
+    transformers:
+      - addprefix: 'jenkins/ssh-agent:'
+    spec:
+      file: build-docker-compose.yaml
+      key: $.services.default_agent.image
+    sourceid: jenkins/ssh-agent
+
