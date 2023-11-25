@@ -1,0 +1,68 @@
+---
+name: Bumps the node docker images versions
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  nodeLatestLTSVersionFromJson:
+    name: Get value from json
+    kind: json
+    spec:
+      file: https://nodejs.org/dist/index.json
+      key: .(lts!=false).version
+    transformers:
+      - trimprefix: "v"
+
+  # Using the githubrelease allows us to retrieve the changelog information
+  # It will fail if the version mentioned by appVersion does not have an equivalent published
+  # GitHub release
+  nodeLatestVersion:
+    kind: githubrelease
+    name: Get latest nodejs version
+    dependson:
+      - nodeLatestLTSVersionFromJson
+    spec:
+      owner: "nodejs"
+      repository: "node"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      versionfilter:
+        kind: semver
+        pattern: '{{ source "nodeLatestLTSVersionFromJson" }}'
+    transformers:
+      - trimprefix: "v"
+      - findsubmatch:
+          pattern: '^(\d*)(\.\d*){2}$'
+          captureindex: 1
+
+conditions:
+
+targets:
+  node-agent:
+    name: "[node-agent] Bump node version in dockerfiles/maven/Dockerfile"
+    kind: dockerfile
+    spec:
+      file: dockerfiles/node/Dockerfile
+      instruction:
+        keyword: "ARG"
+        matcher: "NODE_MAJOR"
+    sourceid: nodeLatestVersion
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: '[Node Agent] Bump node major version to {{ source "nodeLatestVersion" }}'
+    spec:
+      labels:
+        - dependencies
