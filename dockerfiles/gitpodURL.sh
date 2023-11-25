@@ -7,7 +7,7 @@ config_file="/workspace/quickstart-tutorials/dockerfiles/jenkins.yaml"
 service_url=$(echo "$GITPOD_WORKSPACE_URL" | awk -F/ '{print $3}')
 
 # Print the hostname for debugging purposes
-echo "Once you enter `docker compose up <target>, Jenkins will be accessible here: https://8080-$service_url"
+echo "Once you enter `docker compose up <target>`, Jenkins will be accessible here: https://8080-$service_url"
 
 # Use yq to update the value of the .unclassified.location.url field in the configuration file
 yq eval ".unclassified.location.url = \"https://8080-$service_url/\"" "$config_file" > "$config_file.tmp" && mv "$config_file.tmp" "$config_file"

@@ -31,7 +31,7 @@ services:
       retries: 5
 
   default_agent:
-    image: jenkins/ssh-agent:5.5.0-jdk17
+    image: jenkins/ssh-agent:5.5.0
     container_name: desktop-jenkins_agent-1
     depends_on:
       sidekick_service:
@@ -147,7 +147,6 @@ services:
     volumes:
       - agent-ssh-dir:/home/jenkins/.ssh:ro  # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
     
-
 volumes:
   jenkins_home:
   agent-ssh-dir:
