@@ -1,0 +1,50 @@
+---
+name: Bump the Maven docker images versions for various tutorials
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  mavenLatestVersion:
+    kind: githubrelease
+    spec:
+      owner: "apache"
+      repository: "maven"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      versioning:
+        kind: semver
+        pattern: "~3"
+    transformers:
+      - trimprefix: "maven-"
+
+conditions:
+  
+targets:
+  maven-agent:
+    name: "[maven-agent] Bump maven version in dockerfiles/maven/Dockerfile"
+    kind: dockerfile
+    spec:
+      file: dockerfiles/maven/Dockerfile
+      instruction:
+        keyword: "ARG"
+        matcher: "MAVEN_VERSION"
+    sourceid: mavenLatestVersion
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: '[Tutorials] Bump maven version to {{ source "mavenLatestVersion" }}'
+    spec:
+      labels:
+        - dependencies
