@@ -1,71 +1,50 @@
-# Jenkins tutorial files
+# Jenkins Tutorial Files
 
-Including the files for the transition from `docker` to `docker compose` for Jenkins tutorials and Jenkins installation.
-
-### How to set up the repo in Gitpod?
-
-* For starting your gitpod workspace you can use `gitpod.io/#` as a prefix on any GitHub, gitlab, or bitbucket repo URL
-* For our repo you can get the Gitpod workspace from [here](https://gitpod.io/#https://github.com/jenkins-docs/quickstart-tutorials)
-* But If you do plan to use Gitpod in the future,
-  it's recommended
-  to install the Gitpod extension which will create a launch with the Gitpod button on every GitHub repo you visit.
-  It can be found [here](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki) for Chromium and [here](https://addons.mozilla.org/firefox/addon/gitpod/) for Firefox.
-
-## Gitpod
-
-- Gitpod is a cloud development environment designed for teams to efficiently and securely develop software.
-- Gitpod supports various IDEs, including VScode, IntelliJ, and many more.
+This repository includes the files necessary for transitioning from `docker` to `docker compose` in our Jenkins tutorials and installation guides.
 
 ### How to Set Up the Repository in Gitpod?
 
-- To initialize your Gitpod workspace, use `gitpod.io/#` as a prefix on any GitHub, GitLab, or Bitbucket repo URL.
-- For our repository, you can access the Gitpod workspace [here](https://gitpod.io/#https://github.com/jenkins-docs/quickstart-tutorials).
-- If you plan to use Gitpod in the future, it's recommended to install the Gitpod extension.
-This extension will create a launch with the Gitpod button on every GitHub repo you visit.
-You can find it [here](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki) for Chromium and [here](https://addons.mozilla.org/firefox/addon/gitpod/) for Firefox.
+- To initialize your Gitpod workspace, prepend `gitpod.io/#` to any GitHub, GitLab, or Bitbucket repository URL.
+- Access our Gitpod workspace [here](https://gitpod.io/#https://github.com/jenkins-docs/quickstart-tutorials).
+- If you plan to use Gitpod regularly, we recommend installing the Gitpod extension. This extension adds a Gitpod button to every GitHub repository you visit, making it easy to launch a workspace. You can find the extension [here](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki) for Chromium and [here](https://addons.mozilla.org/firefox/addon/gitpod/) for Firefox.
+
+## Gitpod
+
+Gitpod is a cloud-based development environment designed for teams. It supports various IDEs, including VScode, IntelliJ, and many more, enabling efficient and secure software development.
 
 ### Steps to Run Examples from the Repository
 
-- Use `docker compose up` to run examples from the project.
-    - There are currently six working examples in the project:
-        - 00_old_one_from_proposal
-        - 01_simple_controller_plus_agent
-        - 02_custom_docker_file_connecting_agent_and_controller
-        - 03_maven_tutorial
-        - 04_python_tutorial
-        - 05_nodejs
-        - 06_multibranch_pipeline
-- Each example has a `README` file providing manual instructions for running them.
+- Use `docker compose up` to run examples from this project. Currently, we have four working examples:
+    - maven
+    - node
+    - python
+    - multibranch pipeline
 
-- To run different examples with `docker compose up -d`, add these arguments to the command:
-    - `maven` - 03_maven_tutorial => `docker compose up -d maven`
-    - `python` - 04_python-tutorial => `docker compose up -d python`
-    - `node` - 05_nodejs => `docker compose up -d node`
-    - `multi` - 06_multibranch_pipeline => `docker compose up -d multi`
+- To run different examples with `docker compose up -d`, append the example name to the command, like so:
+    - `maven` => `docker compose up -d maven`
+    - `python` => `docker compose up -d python`
+    - `node` => `docker compose up -d node`
+    - `multi` => `docker compose up -d multi`
 
-- If no argument is used (i.e., `docker compose up -d`), it runs the latest default example.
+- If no argument is used (i.e., `docker compose up -d`), the command runs the latest default example.
 
-- If you want to build images yourself, add `-f build-docker-compose.yaml` after `docker compose`.
-The command should resemble something like this: `docker compose -f build-docker-compose.yaml up -d node` to build the Node Tutorial.
+- If you prefer to build images yourself, append `-f build-docker-compose.yaml` after `docker compose`. For example, to build the `node` tutorial Jenkins instance, use: `docker compose -f build-docker-compose.yaml up -d node`.
 
 ### How to Verify Jenkins Installation
 
-- Check the status of the container with the `docker ps` command or the `docker compose ps` command.
-- Access your running Jenkins at [http://127.0.0.1:8080](http://127.0.0.1:8080).
-- On Gitpod, if containers are running successfully, you should see a pop-up titled `A service is available on port 8080`.
-If it doesn't appear, you can view the running service in the `PORTS` section on the right part of the terminal.
+- Check the status of the container with the `docker ps` or `docker compose ps` commands.
+- Access your running Jenkins instance at [http://127.0.0.1:8080](http://127.0.0.1:8080).
+- On Gitpod, if containers are running successfully after entering `docker compose up <tutorial-name>`, a pop-up titled `A service is available on port 8080` should appear. If it doesn't, you can view the running service in the `PORTS` section on the right side of the terminal.
 
 ### Clean Up Instructions
 
-- To stop and remove the running containers, use `docker compose down`.
-- If you get a `Resource is still in use` warning, the `--remove-orphans` option can be used to resolve this.
-- You can also add the `-v` option to remove the created volumes.
+- To stop and remove running containers, use `docker compose down`.
+- If you encounter a `Resource is still in use` warning, use the `--remove-orphans` option.
+- To remove the created volumes, add the `-v` option.
 
 ### Suppressing Jenkins Warning using JCASC
 
-To enhance the Gitpod experience with Jenkins, we decided to suppress a reverse proxy setup warning in Jenkins that was causing issues in the Gitpod environment.
-
-To achieve this, we used Jenkins Configuration as Code ([JCASC](https://www.jenkins.io/projects/jcasc/)) and added the following property to the JCASC YAML file:
+To improve the Gitpod experience with Jenkins, we've suppressed a reverse proxy setup warning in Jenkins that was causing issues in the Gitpod environment. We achieved this using Jenkins Configuration as Code ([JCASC](https://www.jenkins.io/projects/jcasc/)) and added the following property to the JCASC YAML file:
 
 ```yaml
 jenkins:
