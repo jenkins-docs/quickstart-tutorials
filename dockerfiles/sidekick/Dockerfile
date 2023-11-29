@@ -24,7 +24,7 @@ RUN apt update && apt install -y --no-install-recommends \
     procps \
     unzip \
     wget \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* && rm -fr /tmp/*
 
 # Run the keygen.sh script with /ssh-dir as an argument.
 # This script is expected to generate SSH keys and store them in /ssh-dir.
