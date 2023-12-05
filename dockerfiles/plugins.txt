@@ -17,7 +17,7 @@ display-url-api:2.200.vb_9327d658781
 durable-task:523.va_a_22cf15d5e0
 echarts-api:5.4.3-1
 font-awesome-api:6.4.2-1
-git-client:4.5.0
+git-client:4.6.0
 git:5.2.1
 github-api:1.318-461.v7a_c09c9fa_d63
 github-branch-source:1752.vc201a_0235d80
