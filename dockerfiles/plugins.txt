@@ -1,7 +1,7 @@
 ant:497.v94e7d9fffa_b_9
 antisamy-markup-formatter:162.v0e6ec0fcfcf6
 apache-httpcomponents-client-4-api:4.5.14-208.v438351942757
-bootstrap5-api:5.3.2-2
+bootstrap5-api:5.3.2-3
 bouncycastle-api:2.29
 branch-api:2.1135.v8de8e7899051
 build-timeout:1.31
@@ -9,13 +9,13 @@ caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.0.2
 cloudbees-folder:6.858.v898218f3609d
 commons-lang3-api:3.13.0-62.v7d18e55f51e2
-commons-text-api:1.11.0-94.v3e1f4a_926e49
+commons-text-api:1.11.0-95.v22a_d30ee5d36
 configuration-as-code:1752.v0ccc3b_6064b_0
 credentials-binding:642.v737c34dea_6c2
 credentials:1309.v8835d63eb_d8a_
 display-url-api:2.200.vb_9327d658781
 durable-task:523.va_a_22cf15d5e0
-echarts-api:5.4.3-1
+echarts-api:5.4.3-2
 font-awesome-api:6.5.1-1
 git-client:4.6.0
 git:5.2.1
