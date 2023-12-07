@@ -1,6 +1,6 @@
 # Add 'repo' label to any root file changes
 repo:
-  - ./*
+  - ./**
 
 # Add 'controller' label to any change within the dockerfiles folder
 controller:
@@ -20,16 +20,16 @@ nodejs:
 
 # Add 'test' label to any change to test* files within the github dir
 test:
-- .github/workflows/test-**.yml
+  - .github/workflows/test-**.yml
 
 # Add 'docker' label to any change to Dockerfile* files within the root dir
 docker:
-- any: ['/**/Dockerfile']
+  - any: ['/**/Dockerfile']
 
 # Add 'docker_compose' label to any change to docker-compose* files within the root dir
 docker_compose:
-- any: ['/**/*docker-compose*.yml']
+  - any: ['/**/*docker-compose*.yml']
 
 # Add 'github_actions' label to any change to .github/workflows/* files within the root dir
 github_actions:
-- any: ['/.github/workflows/*']
+  - any: ['/.github/workflows/*']
