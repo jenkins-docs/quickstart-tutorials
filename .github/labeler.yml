@@ -1,6 +1,6 @@
 # Add 'repo' label to any root file changes
 repo:
-- '*'
+  - '*'
 
 # Add 'controller' label to any change within the dockerfiles folder
 controller:
