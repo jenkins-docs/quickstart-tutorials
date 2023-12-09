@@ -86,6 +86,15 @@ jobs:
           output-file: hadolint-results.sarif
           no-fail: true
 
+      - name: Run hadolint scanning on the Android Dockerfile
+        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        with:
+          dockerfile: ./dockerfiles/android/Dockerfile
+          format: sarif
+          category: "android dockerfile"
+          output-file: hadolint-results.sarif
+          no-fail: true
+
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v2
         with:
