@@ -30,6 +30,10 @@ docker:
 docker_compose:
   - any: ['/**/*docker-compose*.yml']
 
+# Add 'android' label to any change to Dockerfile* files within the root dir
+android:
+  - dockerfiles/android/**
+
 # Add 'github_actions' label to any change to .github/workflows/* files within the root dir
 github_actions:
   - any: ['/.github/workflows/*']
