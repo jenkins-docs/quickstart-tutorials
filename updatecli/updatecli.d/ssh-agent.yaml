@@ -47,6 +47,15 @@ targets:
         keyword: FROM
         matcher: jenkins/ssh-agent
     sourceid: jenkins/ssh-agent
+  jenkins/android-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/android/Dockerfile"'
+    kind: dockerfile
+    spec:
+      file: dockerfiles/android/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: jenkins/ssh-agent
+    sourceid: jenkins/ssh-agent
   default-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "docker-compose.yaml"'
     kind: yaml
