@@ -1,39 +1,49 @@
 # Add 'repo' label to any root file changes
 repo:
-  - ./**
+  - changed-files:
+    - any-glob-to-any-file: '**'
 
 # Add 'controller' label to any change within the dockerfiles folder
 controller:
-  - dockerfiles/Dockerfile/**
+  - changed-files:
+      - any-glob-to-any-file: 'dockerfiles/Dockerfile/**'
 
 # Add 'maven_tutorial' label to any change within the 03_maven_tutorial folder
 maven_tutorial:
-  - dockerfiles/maven/**
+  - changed-files:
+      - any-glob-to-any-file: 'dockerfiles/maven/**'
 
 # Add 'python_tutorial' label to any change within the 04_python_tutorial folder
 python_tutorial:
-  - dockerfiles/python/**
+  - changed-files:
+      - any-glob-to-any-file: 'dockerfiles/python/**'
 
 # Add 'nodejs' label to any change within the 05_nodejs folder
 nodejs:
-  - dockerfiles/node/**
+  - changed-files:
+      - any-glob-to-any-file: 'dockerfiles/node/**'
 
 # Add 'test' label to any change to test* files within the github dir
 test:
-  - .github/workflows/test-**.yml
+  - changed-files:
+      - any-glob-to-any-file: '.github/workflows/test-**.yml'
 
 # Add 'docker' label to any change to Dockerfile* files within the root dir
 docker:
-  - any: ['/**/Dockerfile']
+  - changed-files:
+      - any-glob-to-any-file: '/**/Dockerfile'
 
 # Add 'docker_compose' label to any change to docker-compose* files within the root dir
 docker_compose:
-  - any: ['/**/*docker-compose*.yml']
+  - changed-files:
+      - any-glob-to-any-file: '/**/*docker-compose*.yml'
 
 # Add 'android' label to any change to Dockerfile* files within the root dir
 android:
-  - dockerfiles/android/**
+  - changed-files:
+      - any-glob-to-any-file: 'dockerfiles/android/**'
 
 # Add 'github_actions' label to any change to .github/workflows/* files within the root dir
 github_actions:
-  - any: ['/.github/workflows/*']
+  - changed-files:
+      - any-glob-to-any-file: '/.github/workflows/*'
