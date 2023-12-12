@@ -2,18 +2,18 @@ name: Plugins Update file test
 
 on:
   workflow_dispatch:
-
+    
   schedule:
     - cron: '0 0 * * *' # run daily at midnight
 
-
+    
 jobs:
   check-plugins:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      
       - name: Configure git & gh
         run: |
           
@@ -36,7 +36,7 @@ jobs:
 
       - name: print GITHUB_ENV file
         run: cat $GITHUB_ENV
-
+        
       - name: Waiting for service to be ready
         run: |
           # Check If Jenkins is running or not
@@ -56,30 +56,18 @@ jobs:
               echo "No plugins need to be updated"
           else
               # Changes detected
-              echo "Plugins have been updated, creating a pull request or modifying an existing one if it exists"
+              echo "Plugins have been updated, creating a pull request"
 
-              PR_TITLE="chore(jenkins): Updates Jenkins plugins"
-              EXISTING_PR_BRANCH=$(gh pr list --search "$PR_TITLE" --json number,headRefName -q '.data.repository.pullRequests.nodes[0].headRefName')
+              # Create and checkout new branch
+              git checkout -b "$BRANCH_NAME" 
 
-              if [ -z "$EXISTING_PR_BRANCH" ]; then
-                # No existing PR, create a new one
-    
-                # Create and checkout new branch
-                git checkout -b "$BRANCH_NAME"
-              else
-                # Existing PR, checkout the existing branch
-                git checkout "$EXISTING_PR_BRANCH"
-              fi
-        
               # Add and commit changes
               git add dockerfiles/plugins.txt
-              git commit --amend --no-edit
-    
-              # Push changes to GitHub
-              git push -u origin HEAD
+              git commit -m "chore(jenkins): Update Jenkins plugins"
 
-              if [ -z "$EXISTING_PR_BRANCH" ]; then
-                # No existing PR, create a new one
-                gh pr create --title "$PR_TITLE" --body "This pull request updates the Jenkins plugins listed in \`plugins.txt\`." --base "$BASE_BRANCH" --head "$BRANCH_NAME"
-              fi
+              # Push changes to GitHub
+              git push -u origin "$BRANCH_NAME"
+
+              # Create pull request using gh command
+              gh pr create --title "chore(jenkins): Updates Jenkins plugins" --body "This pull request updates the Jenkins plugins listed in \`plugins.txt\`." --base "$BASE_BRANCH" --head "$BRANCH_NAME"
           fi
