@@ -43,6 +43,11 @@ android:
   - changed-files:
       - any-glob-to-any-file: 'dockerfiles/android/**'
 
+# Add 'multi' label to any change to Dockerfile* files within the root dir
+multi:
+  - changed-files:
+      - any-glob-to-any-file: 'dockerfiles/multi/**'
+
 # Add 'github_actions' label to any change to .github/workflows/* files within the root dir
 github_actions:
   - changed-files:
