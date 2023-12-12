@@ -20,7 +20,7 @@ font-awesome-api:6.5.1-1
 git-client:4.6.0
 git:5.2.1
 github-api:1.318-461.v7a_c09c9fa_d63
-github-branch-source:1752.vc201a_0235d80
+github-branch-source:1755.vcdb_d136f3b_25
 github:1.37.3.1
 gradle:2.9
 instance-identity:185.v303dc7c645f9
@@ -65,7 +65,7 @@ ssh-slaves:2.916.vd17b_43357ce4
 sshd:3.312.v1c601b_c83b_0e
 structs:325.vcb_307d2a_2782
 timestamper:1.26
-token-macro:384.vf35b_f26814ec
+token-macro:400.v35420b_922dcb_
 trilead-api:2.84.v72119de229b_7
 variant:60.v7290fc0eb_b_cd
 workflow-aggregator:596.v8c21c963d92d
