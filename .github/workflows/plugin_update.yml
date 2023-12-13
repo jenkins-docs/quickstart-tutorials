@@ -57,29 +57,6 @@ jobs:
           else
               # Changes detected
               echo "Plugins have been updated, creating a pull request or modifying an existing one if it exists"
-
-              PR_TITLE="chore(jenkins): Updates Jenkins plugins"
-              EXISTING_PR_BRANCH=$(gh pr list --search "$PR_TITLE" --json number,headRefName -q '.data.repository.pullRequests.nodes[0].headRefName')
-
-              if [ -z "$EXISTING_PR_BRANCH" ]; then
-                # No existing PR, create a new one
-    
-                # Create and checkout new branch
-                git checkout -b "$BRANCH_NAME"
-              else
-                # Existing PR, checkout the existing branch
-                git checkout "$EXISTING_PR_BRANCH"
-              fi
-        
-              # Add and commit changes
-              git add dockerfiles/plugins.txt
-              git commit --amend --no-edit
-    
-              # Push changes to GitHub
-              git push -u origin HEAD
-
-              if [ -z "$EXISTING_PR_BRANCH" ]; then
-                # No existing PR, create a new one
-                gh pr create --title "$PR_TITLE" --body "This pull request updates the Jenkins plugins listed in \`plugins.txt\`." --base "$BASE_BRANCH" --head "$BRANCH_NAME"
-              fi
+              chmod +x ./.github/workflows/plugins-update-pr.sh
+              ./.github/workflows/plugins-update-pr.sh
           fi
