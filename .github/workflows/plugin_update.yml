@@ -2,18 +2,18 @@ name: Plugins Update file test
 
 on:
   workflow_dispatch:
-
+    
   schedule:
     - cron: '0 0 * * *' # run daily at midnight
 
-
+    
 jobs:
   check-plugins:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      
       - name: Configure git & gh
         run: |
           
@@ -36,7 +36,7 @@ jobs:
 
       - name: print GITHUB_ENV file
         run: cat $GITHUB_ENV
-
+        
       - name: Waiting for service to be ready
         run: |
           # Check If Jenkins is running or not
