@@ -20,7 +20,7 @@ PR_TITLE="chore(jenkins): Updates Jenkins plugins"
 # If there isn't, set EXISTING_PR_BRANCH to an empty string.
 # shellcheck disable=SC1073
 EXISTING_PR=$(gh pr list --search "$PR_TITLE" --json number,headRefName)
-EXISTING_PR_BRANCH=$(echo $EXISTING_PR | jq -r 'if (type=="array" and length > 0) then .[0].data.repository.pullRequests.nodes[0].headRefName else "" end')
+EXISTING_PR_BRANCH=$(echo "$EXISTING_PR" | jq -r 'if (type=="array" and length > 0) then .[0].data.repository.pullRequests.nodes[0].headRefName else "" end')
 
 # If there is no existing pull request, create and checkout a new branch.
 if [ -z "$EXISTING_PR_BRANCH" ]; then
