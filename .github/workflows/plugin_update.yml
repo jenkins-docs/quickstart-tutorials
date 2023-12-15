@@ -56,7 +56,18 @@ jobs:
               echo "No plugins need to be updated"
           else
               # Changes detected
-              echo "Plugins have been updated, creating a pull request or modifying an existing one if it exists"
-              chmod +x ./.github/workflows/plugins-update-pr.sh
-              ./.github/workflows/plugins-update-pr.sh
+              echo "Plugins have been updated, creating a pull request"
+
+              # Create and checkout new branch
+              git checkout -b "$BRANCH_NAME" 
+
+              # Add and commit changes
+              git add dockerfiles/plugins.txt
+              git commit -m "chore(jenkins): Update Jenkins plugins"
+
+              # Push changes to GitHub
+              git push -u origin "$BRANCH_NAME"
+
+              # Create pull request using gh command
+              gh pr create --title "chore(jenkins): Updates Jenkins plugins" --body "This pull request updates the Jenkins plugins listed in \`plugins.txt\`." --base "$BASE_BRANCH" --head "$BRANCH_NAME"
           fi
