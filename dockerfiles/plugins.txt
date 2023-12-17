@@ -61,7 +61,7 @@ scm-api:683.vb_16722fb_b_80b_
 script-security:1294.v99333c047434
 snakeyaml-api:2.2-111.vc6598e30cc65
 ssh-credentials:308.ve4497b_ccd8f4
-ssh-slaves:2.916.vd17b_43357ce4
+ssh-slaves:2.945.v90744dcb_47cd
 sshd:3.312.v1c601b_c83b_0e
 structs:325.vcb_307d2a_2782
 timestamper:1.26
