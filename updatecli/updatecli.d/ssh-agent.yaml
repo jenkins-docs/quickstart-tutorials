@@ -1,5 +1,18 @@
 ---
 name: Bump Docker image tag for "jenkins/ssh-agent"
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
 sources:
   jenkins/ssh-agent:
     name: '[jenkins/ssh-agent] Get latest Docker image tag'
@@ -20,6 +33,7 @@ targets:
         keyword: FROM
         matcher: jenkins/ssh-agent
     sourceid: jenkins/ssh-agent
+    scmid: default
   jenkins/node-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/node/Dockerfile"'
     kind: dockerfile
@@ -29,6 +43,7 @@ targets:
         keyword: FROM
         matcher: jenkins/ssh-agent
     sourceid: jenkins/ssh-agent
+    scmid: default
   jenkins/multibranch-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/multi/Dockerfile"'
     kind: dockerfile
@@ -38,6 +53,7 @@ targets:
         keyword: FROM
         matcher: jenkins/ssh-agent
     sourceid: jenkins/ssh-agent
+    scmid: default
   jenkins/maven-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/maven/Dockerfile"'
     kind: dockerfile
@@ -47,6 +63,7 @@ targets:
         keyword: FROM
         matcher: jenkins/ssh-agent
     sourceid: jenkins/ssh-agent
+    scmid: default
   jenkins/android-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/android/Dockerfile"'
     kind: dockerfile
@@ -56,6 +73,7 @@ targets:
         keyword: FROM
         matcher: jenkins/ssh-agent
     sourceid: jenkins/ssh-agent
+    scmid: default
   default-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "docker-compose.yaml"'
     kind: yaml
@@ -65,6 +83,7 @@ targets:
       file: docker-compose.yaml
       key: $.services.default_agent.image
     sourceid: jenkins/ssh-agent
+    scmid: default
   default-build-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "build-docker-compose.yaml"'
     kind: yaml
@@ -74,4 +93,4 @@ targets:
       file: build-docker-compose.yaml
       key: $.services.default_agent.image
     sourceid: jenkins/ssh-agent
-
+    scmid: default
