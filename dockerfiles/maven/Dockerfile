@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
   rm -rf /var/lib/apt/lists/*
 
 # Now time to install maven
-ARG MAVEN_VERSION=3.9.5
+ARG MAVEN_VERSION=3.9.6
 
 # Set SHELL flags for RUN commands to allow -e and pipefail
 # Rationale:https://github.com/hadolint/hadolint/wiki/DL4006
