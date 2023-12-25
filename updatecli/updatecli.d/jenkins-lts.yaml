@@ -34,7 +34,9 @@ targets:
       instruction:
         keyword: "ARG"
         matcher: "JENKINS_VERSION"
+    name: "[jenkins-controller] Bump Jenkins LTS version in dockerfiles/Dockerfile"
     sourceid: JenkinsLatestLTS
+    scmid: default
 
 actions:
   default:

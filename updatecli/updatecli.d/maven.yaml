@@ -39,6 +39,7 @@ targets:
         keyword: "ARG"
         matcher: "MAVEN_VERSION"
     sourceid: mavenLatestVersion
+    scmid: default
 
 actions:
   default:

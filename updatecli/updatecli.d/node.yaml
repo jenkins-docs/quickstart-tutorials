@@ -57,6 +57,7 @@ targets:
         keyword: "ARG"
         matcher: "NODE_MAJOR"
     sourceid: nodeLatestVersion
+    scmid: default
 
 actions:
   default:
