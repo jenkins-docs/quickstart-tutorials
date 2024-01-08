@@ -3,7 +3,7 @@ antisamy-markup-formatter:162.v0e6ec0fcfcf6
 apache-httpcomponents-client-4-api:4.5.14-208.v438351942757
 bootstrap5-api:5.3.2-3
 bouncycastle-api:2.30.1.77-225.v26ea_c9455fd9
-branch-api:2.1135.v8de8e7899051
+branch-api:2.1144.v1425d1c3d5a_7
 build-timeout:1.32
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.0.2
@@ -14,7 +14,7 @@ configuration-as-code:1763.vb_fe9c1b_83f7b
 credentials-binding:642.v737c34dea_6c2
 credentials:1311.vcf0a_900b_37c2
 display-url-api:2.200.vb_9327d658781
-durable-task:523.va_a_22cf15d5e0
+durable-task:543.v262f6a_803410
 echarts-api:5.4.3-2
 font-awesome-api:6.5.1-1
 git-client:4.6.0
@@ -74,7 +74,7 @@ workflow-basic-steps:1042.ve7b_140c4a_e0c
 workflow-cps:3832.vc43e04d6d68c
 workflow-durable-task-step:1313.vcb_970b_d2a_fb_3
 workflow-job:1385.vb_58b_86ea_fff1
-workflow-multibranch:756.v891d88f2cd46
+workflow-multibranch:770.v1a_d0708dd1f6
 workflow-scm-step:415.v434365564324
 workflow-step-api:639.v6eca_cd8c04a_a_
 workflow-support:865.v43e78cc44e0d
