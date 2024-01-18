@@ -20,7 +20,7 @@ font-awesome-api:6.5.1-1
 git-client:4.6.0
 git:5.2.1
 github-api:1.318-461.v7a_c09c9fa_d63
-github-branch-source:1767.va_7d01ea_c7256
+github-branch-source:1771.v59b_6a_fa_1b_89e
 github:1.37.3.1
 gradle:2.9
 instance-identity:185.v303dc7c645f9
@@ -33,7 +33,7 @@ javax-mail-api:1.6.2-9
 jaxb:2.3.9-1
 jjwt-api:0.11.5-77.v646c772fddb_0
 jquery3-api:3.7.1-1
-junit:1252.vfc2e5efa_294f
+junit:1256.v002534a_5f33e
 mailer:463.vedf8358e006b_
 matrix-auth:3.2.1
 matrix-project:822.v01b_8c85d16d2
@@ -61,7 +61,7 @@ scm-api:683.vb_16722fb_b_80b_
 script-security:1313.v7a_6067dc7087
 snakeyaml-api:2.2-111.vc6598e30cc65
 ssh-credentials:308.ve4497b_ccd8f4
-ssh-slaves:2.947.v64ee6b_f87b_c1
+ssh-slaves:2.948.vb_8050d697fec
 sshd:3.312.v1c601b_c83b_0e
 structs:325.vcb_307d2a_2782
 timestamper:1.26
