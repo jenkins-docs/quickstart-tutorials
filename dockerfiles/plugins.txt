@@ -11,7 +11,7 @@ cloudbees-folder:6.858.v898218f3609d
 commons-lang3-api:3.13.0-62.v7d18e55f51e2
 commons-text-api:1.11.0-95.v22a_d30ee5d36
 configuration-as-code:1775.v810dc950b_514
-credentials-binding:642.v737c34dea_6c2
+credentials-binding:657.v2b_19db_7d6e6d
 credentials:1311.vcf0a_900b_37c2
 display-url-api:2.200.vb_9327d658781
 durable-task:543.v262f6a_803410
@@ -38,8 +38,8 @@ mailer:463.vedf8358e006b_
 matrix-auth:3.2.1
 matrix-project:822.v01b_8c85d16d2
 metrics:4.2.18-442.v02e107157925
-mina-sshd-api-common:2.11.0-86.v836f585d47fa_
-mina-sshd-api-core:2.11.0-86.v836f585d47fa_
+mina-sshd-api-common:2.12.0-90.v9f7fb_9fa_3d3b_
+mina-sshd-api-core:2.12.0-90.v9f7fb_9fa_3d3b_
 okhttp-api:4.11.0-157.v6852a_a_fa_ec11
 pipeline-build-step:540.vb_e8849e1a_b_d8
 pipeline-graph-analysis:202.va_d268e64deb_3
