@@ -12,7 +12,7 @@ commons-lang3-api:3.13.0-62.v7d18e55f51e2
 commons-text-api:1.11.0-95.v22a_d30ee5d36
 configuration-as-code:1775.v810dc950b_514
 credentials-binding:657.v2b_19db_7d6e6d
-credentials:1317.v0ce519a_92b_3e
+credentials:1319.v7eb_51b_3a_c97b_
 display-url-api:2.200.vb_9327d658781
 durable-task:543.v262f6a_803410
 echarts-api:5.4.3-2
@@ -37,7 +37,7 @@ junit:1256.v002534a_5f33e
 mailer:463.vedf8358e006b_
 matrix-auth:3.2.1
 matrix-project:822.824.v14451b_c0fd42
-metrics:4.2.18-442.v02e107157925
+metrics:4.2.21-449.v6960d7c54c69
 mina-sshd-api-common:2.12.0-90.v9f7fb_9fa_3d3b_
 mina-sshd-api-core:2.12.0-90.v9f7fb_9fa_3d3b_
 okhttp-api:4.11.0-157.v6852a_a_fa_ec11
