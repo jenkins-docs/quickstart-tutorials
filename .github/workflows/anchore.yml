@@ -38,7 +38,7 @@ jobs:
         run: cd ./dockerfiles/ && docker build . --file Dockerfile --tag localbuild/testimage:latest
 
       - name: Run the Anchore Grype scan action
-        uses: anchore/scan-action@c35e932c2a7c572bfdb1c3dbcdadb2d4fc62418d
+        uses: anchore/scan-action@a9603d052605bc41f74b0f27ffd0b6d20a8c8efe
         id: scan
         with:
           path: "."
