@@ -14,7 +14,7 @@ configuration-as-code:1775.v810dc950b_514
 credentials-binding:657.v2b_19db_7d6e6d
 credentials:1319.v7eb_51b_3a_c97b_
 display-url-api:2.200.vb_9327d658781
-durable-task:547.vd1ea_007d100c
+durable-task:550.v0930093c4b_a_6
 echarts-api:5.4.3-2
 font-awesome-api:6.5.1-2
 git-client:4.6.0
