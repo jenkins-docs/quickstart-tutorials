@@ -3,7 +3,7 @@ antisamy-markup-formatter:162.v0e6ec0fcfcf6
 apache-httpcomponents-client-4-api:4.5.14-208.v438351942757
 bootstrap5-api:5.3.2-3
 bouncycastle-api:2.30.1.77-225.v26ea_c9455fd9
-branch-api:2.1144.v1425d1c3d5a_7
+branch-api:2.1148.vce12cfcdf090
 build-timeout:1.32
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.0.2
@@ -22,7 +22,7 @@ git:5.2.1
 github-api:1.318-461.v7a_c09c9fa_d63
 github-branch-source:1772.va_69eda_d018d4
 github:1.38.0
-gradle:2.9
+gradle:2.10
 instance-identity:185.v303dc7c645f9
 ionicons-api:56.v1b_1c8c49374e
 jackson2-api:2.16.1-373.ve709c6871598
