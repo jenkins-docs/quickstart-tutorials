@@ -128,7 +128,7 @@ services:
 
 
   multi_jenkins_controller:
-    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:multi_controller_${BRANCH_SUFFIX}
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:simple_controller_${BRANCH_SUFFIX}
     restart: on-failure
     ports:
       - "8080:8080"
