@@ -70,7 +70,7 @@ trilead-api:2.133.vfb_8a_7b_9c5dd1
 variant:60.v7290fc0eb_b_cd
 workflow-aggregator:596.v8c21c963d92d
 workflow-api:1291.v51fd2a_625da_7
-workflow-basic-steps:1047.v2e7111a_e4194
+workflow-basic-steps:1049.v257a_e6b_30fb_d
 workflow-cps:3880.vb_ef4b_5cfd270
 workflow-durable-task-step:1331.vc8c2fed35334
 workflow-job:1400.v7fd111b_ec82f
