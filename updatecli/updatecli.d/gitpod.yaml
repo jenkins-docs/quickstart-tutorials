@@ -1,0 +1,44 @@
+---
+name: 'deps(dockerfile): bump image "gitpod/workspace-full" digest'
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  gitpod/workspace-full:
+    name: get latest image "gitpod/workspace-full"
+    kind: dockerimage
+    spec:
+      image: gitpod/workspace-full
+      tagfilter: '\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}'
+
+targets:
+  gitpod/workspace-full:
+    name: 'deps(dockerfile): bump image "gitpod/workspace-full"'
+    scmid: default
+    kind: dockerfile
+    spec:
+      file: .gitpod/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: gitpod/workspace-full
+    sourceid: gitpod/workspace-full
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Bump Gitpod version to {{ source "gitpod/workspace-full" }}
+    spec:
+      labels:
+        - dependencies
+        - debian-bookworm

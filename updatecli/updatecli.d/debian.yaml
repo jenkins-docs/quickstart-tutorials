@@ -1,0 +1,47 @@
+name: 'deps(dockerfile): bump image "debian" digest'
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  bookwormLatestVersion:
+    kind: dockerimage
+    name: "Get the latest Debian Bookworm Linux version"
+    spec:
+      image: "debian"
+      tagfilter: "bookworm-*"
+      versionfilter:
+        kind: regex
+        pattern: >-
+          bookworm-\d+$
+
+targets:
+  debian:
+    name: 'deps(dockerfile): bump image "debian"'
+    scmid: default
+    kind: dockerfile
+    spec:
+      file: dockerfiles/sidekick/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: debian
+    sourceid: bookwormLatestVersion
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Bump Debian Bookworm Linux version to {{ source "bookwormLatestVersion" }}
+    spec:
+      labels:
+        - dependencies
+        - debian-bookworm

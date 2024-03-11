@@ -23,6 +23,7 @@ sources:
       versionfilter:
         kind: semver
         pattern: '>=5.20.0'
+
 targets:
   jenkins/python-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/python/Dockerfile"'
@@ -74,6 +75,16 @@ targets:
         matcher: jenkins/ssh-agent
     sourceid: jenkins/ssh-agent
     scmid: default
+  jenkins/golang-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/golang/Dockerfile"'
+    kind: dockerfile
+    spec:
+      file: dockerfiles/golang/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: jenkins/ssh-agent
+    sourceid: jenkins/ssh-agent
+    scmid: default
   default-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "docker-compose.yaml"'
     kind: yaml
@@ -94,3 +105,13 @@ targets:
       key: $.services.default_agent.image
     sourceid: jenkins/ssh-agent
     scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Bump ssh-agent version to {{ source "jenkins/ssh-agent" }}
+    spec:
+      labels:
+        - dependencies
+        - debian-bookworm
