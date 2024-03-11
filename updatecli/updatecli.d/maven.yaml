@@ -32,6 +32,7 @@ conditions:
 targets:
   maven-agent:
     name: "[maven-agent] Bump maven version in dockerfiles/maven/Dockerfile"
+    scmid: default
     kind: dockerfile
     spec:
       file: dockerfiles/maven/Dockerfile
