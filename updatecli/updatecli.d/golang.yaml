@@ -1,0 +1,41 @@
+---
+name: "deps: update Golang Version"
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  golang:
+    name: Get latest Golang version
+    kind: golang
+
+targets:
+  golang:
+    name: 'deps(dockerfile): bump golang version'
+    scmid: default
+    kind: dockerfile
+    spec:
+      file: dockerfiles/golang/Dockerfile
+      instruction:
+        keyword: ARG
+        matcher: GOLANG_VERSION
+    sourceid: golang
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Bump golang version to {{ source "golang" }}
+    spec:
+      labels:
+        - dependencies
+        - chore

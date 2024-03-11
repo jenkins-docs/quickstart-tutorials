@@ -24,6 +24,7 @@ sources:
 targets:
   gitpod/workspace-full:
     name: 'deps(dockerfile): bump image "gitpod/workspace-full"'
+    scmid: default
     kind: dockerfile
     spec:
       file: .gitpod/Dockerfile
