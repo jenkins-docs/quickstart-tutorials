@@ -27,6 +27,7 @@ sources:
 targets:
   debian:
     name: 'deps(dockerfile): bump image "debian"'
+    scmid: default
     kind: dockerfile
     spec:
       file: dockerfiles/sidekick/Dockerfile

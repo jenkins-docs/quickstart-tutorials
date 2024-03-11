@@ -21,6 +21,7 @@ sources:
 targets:
   golang:
     name: 'deps(dockerfile): bump golang version'
+    scmid: default
     kind: dockerfile
     spec:
       file: dockerfiles/golang/Dockerfile
