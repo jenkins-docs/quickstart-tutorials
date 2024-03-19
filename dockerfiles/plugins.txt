@@ -25,7 +25,7 @@ github:1.38.0
 gradle:2.10
 instance-identity:185.v303dc7c645f9
 ionicons-api:56.v1b_1c8c49374e
-jackson2-api:2.16.2-378.v7e79818f53ce
+jackson2-api:2.17.0-379.v02de8ec9f64c
 jakarta-activation-api:2.1.3-1
 jakarta-mail-api:2.1.3-1
 javax-activation-api:1.2.0-6
@@ -77,5 +77,5 @@ workflow-job:1400.v7fd111b_ec82f
 workflow-multibranch:773.vc4fe1378f1d5
 workflow-scm-step:427.v4ca_6512e7df1
 workflow-step-api:657.v03b_e8115821b_
-workflow-support:865.v43e78cc44e0d
+workflow-support:881.v7663695646cf
 ws-cleanup:0.45
