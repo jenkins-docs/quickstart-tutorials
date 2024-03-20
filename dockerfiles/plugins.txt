@@ -60,7 +60,7 @@ resource-disposer:0.23
 scm-api:689.v237b_6d3a_ef7f
 script-security:1326.vdb_c154de8669
 snakeyaml-api:2.2-111.vc6598e30cc65
-ssh-credentials:322.v124df57ed808
+ssh-credentials:326.v7fcb_a_ef6194b_
 ssh-slaves:2.948.vb_8050d697fec
 sshd:3.322.v159e91f6a_550
 structs:337.v1b_04ea_4df7c8
