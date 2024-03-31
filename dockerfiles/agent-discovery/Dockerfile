@@ -20,6 +20,10 @@ RUN apt update && apt install -y --no-install-recommends \
     nmap \
     && rm -rf /var/lib/apt/lists/* && rm -fr /tmp/*
 
+
+# Install the correct version of yq
+RUN curl -L https://github.com/mikefarah/yq/releases/download/v4.13.5/yq_linux_amd64 -o /usr/bin/yq && chmod +x /usr/bin/yq
+
 # The CMD command specifies the default command to execute when the container starts.
 # In this case, it prints a message and lists the contents of /ssh-dir.
 CMD ["sh", "-c", "echo 'Export stage is ready'; ls -l /ssh-dir/"]

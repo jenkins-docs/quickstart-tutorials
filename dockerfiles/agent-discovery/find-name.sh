@@ -33,6 +33,16 @@ while true; do
       # Split the machine name by "." and print the first field
       MACHINE_NAME=$(echo $MACHINE_NAME | cut -d '.' -f 1)
       echo "Machine name: $MACHINE_NAME"
+
+      # Export the MACHINE_NAME variable to the environment
+      export MACHINE_NAME
+
+      # Use yq to update the jenkins.yaml file
+      cat /var/jenkins_home/jenkins.yaml
+      #yq eval -i 'select(.jenkins.nodes[] | .nodeDescription == "ssh jenkins docker agent ") | .permanent.launcher.ssh.host = env(MACHINE_NAME)' /var/jenkins_home/jenkins.yaml
+
+      cat /var/jenkins_home/jenkins.yaml
+
       break 2  # Exit the loop.
     fi
   done
