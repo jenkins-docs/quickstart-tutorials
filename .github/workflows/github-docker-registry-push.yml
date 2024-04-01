@@ -109,7 +109,7 @@ jobs:
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:node_agent_${{ env.BRANCH }}
 
-      - name: Build and push the jenkins agent for sidekick tutorial
+      - name: Build and push the jenkins agent for the sidekick container
         if: contains(env.files, 'dockerfiles/sidekick/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -117,6 +117,15 @@ jobs:
           platforms: linux/amd64, linux/aarch64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:sidekick_${{ env.BRANCH }}
+
+      - name: Build and push the jenkins agent for the agent-finding container
+        if: contains(env.files, 'dockerfiles/agent-discovery/Dockerfile')
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfiles/agent-discovery/
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:agent_discovery_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for multi-branch controller
         if: contains(env.files, 'dockerfiles/multi/Dockerfile')
