@@ -21,7 +21,7 @@ while true; do
   echo "nmap output: $NMAP_OUTPUT"
 
   # Split the nmap output into lines
-  IFS=$'\n' NMAP_LINES=("$NMAP_OUTPUT")
+  IFS=$'\n' NMAP_LINES=($NMAP_OUTPUT)
   # Search for the line containing "agent"
   for LINE in "${NMAP_LINES[@]}"; do
     if [[ $LINE == *"agent"* ]]; then
