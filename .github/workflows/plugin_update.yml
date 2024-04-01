@@ -32,7 +32,7 @@ jobs:
 
           # Start the docker containers
           tree .
-          docker compose -f ./docker-compose.yaml up -d --force-recreate
+          docker compose -f ./docker-compose.yaml --profile default up -d --force-recreate
 
       - name: print GITHUB_ENV file
         run: cat $GITHUB_ENV
