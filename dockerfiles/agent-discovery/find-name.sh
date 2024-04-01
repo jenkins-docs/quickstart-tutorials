@@ -39,7 +39,8 @@ while true; do
 
       # Use yq to update the jenkins.yaml file
       cat /var/jenkins_home/jenkins.yaml
-      #yq eval -i 'select(.jenkins.nodes[] | .nodeDescription == "ssh jenkins docker agent ") | .permanent.launcher.ssh.host = env(MACHINE_NAME)' /var/jenkins_home/jenkins.yaml
+
+      yq eval -i '(.jenkins.nodes[] | select(.permanent.nodeDescription == "ssh jenkins docker agent ")).permanent.launcher.ssh.host = env(MACHINE_NAME)' /var/jenkins_home/jenkins.yaml
 
       cat /var/jenkins_home/jenkins.yaml
 
