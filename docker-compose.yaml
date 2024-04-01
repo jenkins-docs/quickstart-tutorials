@@ -50,8 +50,9 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   discovery_and_jcasc_modifier:
     # image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:maven_agent_${BRANCH_SUFFIX}
-    build:
-        context: ./dockerfiles/agent-discovery
+    # build:
+    #    context: ./dockerfiles/agent-discovery
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:agent_discovery_${BRANCH_SUFFIX}
     stdin_open: true
     tty: true
     entrypoint: sh -c "/usr/local/bin/find-name.sh"
