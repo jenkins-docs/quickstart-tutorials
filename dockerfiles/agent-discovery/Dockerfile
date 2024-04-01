@@ -17,6 +17,7 @@ RUN chmod +x /usr/local/bin/*.sh
 RUN apt update && apt install -y --no-install-recommends \
     ca-certificates \
     curl \
+    jq \
     nmap \
     && rm -rf /var/lib/apt/lists/* && rm -fr /tmp/*
 

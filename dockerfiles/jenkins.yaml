@@ -7,6 +7,9 @@ jenkins:
         - id: "admin"
           password: "admin"
   authorizationStrategy: loggedInUsersCanDoAnything
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
   nodes:  
   - permanent:
       labelString: "docker jenkins agent"

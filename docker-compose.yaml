@@ -1,7 +1,9 @@
 services:
   sidekick_service:
     # Configuration for the sidekick service
-    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:sidekick_${BRANCH_SUFFIX}
+    # image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:sidekick_${BRANCH_SUFFIX}
+    build:
+        context: ./dockerfiles/sidekick
     stdin_open: true
     tty: true
     entrypoint: sh -c "/usr/local/bin/keygen.sh /ssh-dir" # Runs the keygen.sh script and specifies the output directory
@@ -14,8 +16,12 @@ services:
       timeout: 10s
       retries: 5
   jenkins_controller:
-    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:simple_controller_${BRANCH_SUFFIX}
+    #image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:simple_controller_${BRANCH_SUFFIX}
+    build:
+        context: ./dockerfiles
     restart: on-failure
+    environment:
+      - CASC_RELOAD_TOKEN=thisisnotsecure
     ports:
       - "8080:8080"
     volumes:
@@ -50,9 +56,9 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   discovery_and_jcasc_modifier:
     # image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:maven_agent_${BRANCH_SUFFIX}
-    # build:
-    #    context: ./dockerfiles/agent-discovery
-    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:agent_discovery_${BRANCH_SUFFIX}
+    build:
+        context: ./dockerfiles/agent-discovery
+    #image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:agent_discovery_${BRANCH_SUFFIX}
     stdin_open: true
     tty: true
     entrypoint: sh -c "/usr/local/bin/find-name.sh"

@@ -50,3 +50,17 @@ while true; do
   echo "No matching hosts found, retrying in 2 seconds..."
   sleep 2  # Wait for 5 seconds before the next iteration of the loop.
 done
+
+
+# Check If Jenkins is running or not
+# If the message is found, awk exits with a non-zero status (1), and the loop continues.
+# If the message is not found, the loop exits, and the "Jenkins is running" message is displayed.
+timeout 60 bash -c 'until curl -s -f http://jenkins_controller:8080/login > /dev/null; do sleep 5; done' && echo "Jenkins is running" || echo "Jenkins is not running"
+echo "Jenkins is ready"
+JENKINS_VERSION=$(curl -s -I -k http://admin:admin@jenkins_controller:8080 | grep -i '^X-Jenkins:' | awk '{print $2}')
+echo "Jenkins version is: $JENKINS_VERSION"
+# We will need to create in the sidekick container a random key for the reload, and then use it in the curl command.
+# This key could be sourced from a file written in the sidekick container.
+# https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configurationReload.md
+# Reload the configuration
+curl -X POST "http://admin:admin@jenkins_controller:8080/reload-configuration-as-code/?casc-reload-token=thisisnotsecure"
