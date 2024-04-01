@@ -48,6 +48,6 @@ while true; do
     fi
   done
 
-  echo "No matching hosts found, retrying in 5 seconds..."
-  sleep 5  # Wait for 5 seconds before the next iteration of the loop.
+  echo "No matching hosts found, retrying in 2 seconds..."
+  sleep 2  # Wait for 5 seconds before the next iteration of the loop.
 done

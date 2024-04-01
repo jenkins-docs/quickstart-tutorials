@@ -20,9 +20,12 @@ RUN apt update && apt install -y --no-install-recommends \
     nmap \
     && rm -rf /var/lib/apt/lists/* && rm -fr /tmp/*
 
-
-# Install the correct version of yq
-RUN curl -L https://github.com/mikefarah/yq/releases/download/v4.13.5/yq_linux_amd64 -o /usr/bin/yq && chmod +x /usr/bin/yq
+# Install the correct version of yq based on the architecture
+RUN if [ "$(uname -m)" = "aarch64" ]; then \
+        curl -L https://github.com/mikefarah/yq/releases/download/v4.13.5/yq_linux_arm64 -o /usr/bin/yq; \
+    else \
+        curl -L https://github.com/mikefarah/yq/releases/download/v4.13.5/yq_linux_amd64 -o /usr/bin/yq; \
+    fi && chmod +x /usr/bin/yq
 
 # The CMD command specifies the default command to execute when the container starts.
 # In this case, it prints a message and lists the contents of /ssh-dir.
