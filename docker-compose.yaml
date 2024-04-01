@@ -62,6 +62,7 @@ services:
       - android
       - multi
       - golang
+      - default
     healthcheck:
       test: ["CMD-SHELL", "/usr/local/bin/find-name.sh || exit 0"] # Checks if the conductor_ok file exists in the /ssh-dir path
       interval: 5s
