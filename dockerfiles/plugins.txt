@@ -24,7 +24,7 @@ github-branch-source:1785.v99802b_69816c
 github:1.38.0
 gradle:2.10
 instance-identity:185.v303dc7c645f9
-ionicons-api:56.v1b_1c8c49374e
+ionicons-api:70.v2959a_b_74e3cf
 jackson2-api:2.17.0-379.v02de8ec9f64c
 jakarta-activation-api:2.1.3-1
 jakarta-mail-api:2.1.3-1
@@ -72,7 +72,7 @@ workflow-aggregator:596.v8c21c963d92d
 workflow-api:1291.v51fd2a_625da_7
 workflow-basic-steps:1049.v257a_e6b_30fb_d
 workflow-cps:3889.v937e0b_3412d3
-workflow-durable-task-step:1331.vc8c2fed35334
+workflow-durable-task-step:1336.v768003e07199
 workflow-job:1400.v7fd111b_ec82f
 workflow-multibranch:773.vc4fe1378f1d5
 workflow-scm-step:427.v4ca_6512e7df1
