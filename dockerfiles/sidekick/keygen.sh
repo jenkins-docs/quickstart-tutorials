@@ -35,7 +35,7 @@ echo "$pubkey" > "$LOC/authorized_keys" && chown 1000:1000 "$LOC/authorized_keys
 openssl rand -hex 24 > "$LOC/secrets/jcasc_token"
 cat "$LOC/secrets/jcasc_token"
 
-# This file will be used by other containers to know we went up to the end of the key generation
+# This file will be used by other containers to know we went up to the end of the key/token generation
 echo "OK" > "$LOC/conductor_ok"
 
 # Display success message
