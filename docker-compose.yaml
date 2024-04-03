@@ -15,6 +15,34 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
+  discovery_and_jcasc_modifier:
+    # image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:maven_agent_${BRANCH_SUFFIX}
+    build:
+      context: ./dockerfiles/agent-discovery
+    #image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:agent_discovery_${BRANCH_SUFFIX}
+    stdin_open: true
+    tty: true
+    entrypoint: sh -c "/usr/local/bin/find-name.sh"
+    profiles:
+      - maven
+      - python
+      - node
+      - android
+      - multi
+      - golang
+      - default
+    depends_on:
+      sidekick_service:
+        condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
+    healthcheck: # Change it and the script too so that it checks for the presence of the conductor_ok file
+      test: ["CMD-SHELL", "/usr/local/bin/find-name.sh || exit 0"] # Checks if the conductor_ok file exists in the /ssh-dir path
+      interval: 5s
+      timeout: 10s
+      retries: 50
+    volumes:
+      - jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
+      - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /ssh-dir path inside the container
+      - ./secrets/:/secrets/ # Mounts the secrets directory to the /secrets path inside the container
   jenkins_controller:
     #image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:simple_controller_${BRANCH_SUFFIX}
     build:
@@ -27,6 +55,9 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /app path inside the container
+      # I need a way to pass the content of jcasc_token (located in /ssh-dir) to the container as an environment variable
+      # Mounting the token as "container secret" makes it available in JCasc as the variable ${CAS_RELOAD_TOKEN}
+      - ./secrets/jcasc_token:/run/secrets/CASC_RELOAD_TOKEN:ro # It is there, but it does not seem to be working. I can't see it in the environment variables within the Jenkins UI. Is it because the value changes after the container is started?
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -54,29 +85,6 @@ services:
       retries: 5
     volumes:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
-  discovery_and_jcasc_modifier:
-    # image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:maven_agent_${BRANCH_SUFFIX}
-    build:
-        context: ./dockerfiles/agent-discovery
-    #image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:agent_discovery_${BRANCH_SUFFIX}
-    stdin_open: true
-    tty: true
-    entrypoint: sh -c "/usr/local/bin/find-name.sh"
-    profiles:
-      - maven
-      - python
-      - node
-      - android
-      - multi
-      - golang
-      - default
-    healthcheck:
-      test: ["CMD-SHELL", "/usr/local/bin/find-name.sh || exit 0"] # Checks if the conductor_ok file exists in the /ssh-dir path
-      interval: 5s
-      timeout: 10s
-      retries: 50
-    volumes:
-      - jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
   maven:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:maven_agent_${BRANCH_SUFFIX}
     container_name: desktop-jenkins_agent-1-maven
