@@ -1,25 +1,30 @@
+# This is a Docker Compose file that defines multiple services for a Jenkins CI/CD pipeline.
+# This is to be used with the Jenkins tutorials located at https://www.jenkins.io/doc/tutorials/#tools.
+# You're supposed to use a command such as docker compose up --profile <tutorial-name> -d to start the services related to the tutorial.
+# In the end, you have a Jenkins LTS controller and an ssh agent tailored to the tutorial you're following.
 services:
+  # The sidekick service is responsible for generating SSH keys that will link the controller and the agent, but also a JCasc token for future use.
   sidekick_service:
     # Configuration for the sidekick service
-    # image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:sidekick_${BRANCH_SUFFIX}
-    build:
-        context: ./dockerfiles/sidekick
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:sidekick_${BRANCH_SUFFIX}
     stdin_open: true
     tty: true
+    # The entrypoint script generates the SSH keys and outputs them to the /ssh-dir directory.
     entrypoint: sh -c "/usr/local/bin/keygen.sh /ssh-dir" # Runs the keygen.sh script and specifies the output directory
     volumes:
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /ssh-dir path inside the container
+    # The healthcheck command checks if the conductor_ok file exists in the /ssh-dir directory.
     healthcheck:
       test: ["CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1"]
       # Checks if the conductor_ok file exists in the /ssh-dir path
       interval: 5s
       timeout: 10s
       retries: 5
+  # The discovery_and_jcasc_modifier service is responsible for discovering running agents and modifying the Jenkins Configuration as Code (JCasc) accordingly.
+  # It will look in the network for running agents and modify the JCasc configuration to include them.
+  # It will then ask the Jenkins controller to reload the JCasc configuration, so that the new agents are taken into account.
   discovery_and_jcasc_modifier:
-    # image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:maven_agent_${BRANCH_SUFFIX}
-    build:
-      context: ./dockerfiles/agent-discovery
-    #image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:agent_discovery_${BRANCH_SUFFIX}
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:agent_discovery_${BRANCH_SUFFIX}
     stdin_open: true
     tty: true
     entrypoint: sh -c "/usr/local/bin/find-name.sh"
@@ -31,11 +36,13 @@ services:
       - multi
       - golang
       - default
+    # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
-    healthcheck: # Change it and the script too so that it checks for the presence of the conductor_ok file
-      test: ["CMD-SHELL", "/usr/local/bin/find-name.sh || exit 0"] # Checks if the conductor_ok file exists in the /ssh-dir path
+    # The healthcheck command checks if the find-name.sh script can be executed successfully.
+    healthcheck:
+      test: ["CMD-SHELL", "/usr/local/bin/find-name.sh || exit 0"]
       interval: 5s
       timeout: 10s
       retries: 50
@@ -43,21 +50,22 @@ services:
       - jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /ssh-dir path inside the container
       - ./secrets/:/secrets/ # Mounts the secrets directory to the /secrets path inside the container
+  # The jenkins_controller service is the main Jenkins server.
   jenkins_controller:
-    #image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:simple_controller_${BRANCH_SUFFIX}
-    build:
-        context: ./dockerfiles
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:simple_controller_${BRANCH_SUFFIX}
     restart: on-failure
+    # The CASC_RELOAD_TOKEN environment variable is used by the Jenkins controller to restart the Configuration as Code (JCasc) plugin configuration.
     environment:
       - CASC_RELOAD_TOKEN=thisisnotsecure
+    # The Jenkins web interface is exposed on port 8080.
     ports:
       - "8080:8080"
     volumes:
       - jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /app path inside the container
-      # I need a way to pass the content of jcasc_token (located in /ssh-dir) to the container as an environment variable
-      # Mounting the token as "container secret" makes it available in JCasc as the variable ${CAS_RELOAD_TOKEN}
-      - ./secrets/jcasc_token:/run/secrets/CASC_RELOAD_TOKEN:ro # It is there, but it does not seem to be working. I can't see it in the environment variables within the Jenkins UI. Is it because the value changes after the container is started?
+      # Mounting the token as "container secret" makes it available in JCasc as the variable ${CASC_RELOAD_TOKEN}
+      - ./secrets/jcasc_token:/run/secrets/CASC_RELOAD_TOKEN:ro
+    # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -67,6 +75,12 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
+
+  # The rest of the services are Jenkins agents, each with a different profile (e.g., default, maven, python, node, android, multi, golang).
+  # Each agent service depends on both the sidekick_service and the jenkins_controller service.
+  # The healthcheck command for each agent checks if the authorized_keys file exists in the /home/jenkins/.ssh directory.
+  # The /home/jenkins/.ssh directory in each agent container is mapped to the agent-ssh-dir volume on the host.
+
   default_agent:
     image: jenkins/ssh-agent:5.31.0
     container_name: desktop-jenkins_agent-1
