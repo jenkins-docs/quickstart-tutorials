@@ -41,7 +41,7 @@ jobs:
           git config --global user.email 'action@github.com'
           git add docker-versions.txt
           git commit -m "Update Docker versions"
-          git push origin main
+          git push origin ${GITHUB_REF#refs/heads/}
 
       - name: Check for Dockerfile and context changes
         run: |
