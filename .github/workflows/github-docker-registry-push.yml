@@ -32,8 +32,8 @@ jobs:
 
       - name: Write Docker versions to file
         run: |
-          echo "- Docker version: $(docker --version)" > docker-versions.txt
-          echo "- Docker Compose version: $(docker compose version)" >> docker-versions.txt
+          echo "- $(docker --version)" > docker-versions.txt
+          echo "- $(docker compose version)" >> docker-versions.txt
 
       - name: Commit and push Docker versions
         run: |
