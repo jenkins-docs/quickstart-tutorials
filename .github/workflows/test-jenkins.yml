@@ -121,7 +121,7 @@ jobs:
         run: |
           if [ $(git diff --name-only HEAD^ HEAD | uniq | grep -c "${{ matrix.dir }}") -ne 0 ]; then
             echo "Changed directories are $(git diff --name-only HEAD^ HEAD | uniq)"
-            docker compose -f build-docker-compose.yaml up -d --build ${{ matrix.dir }} # Run docker-compose up with the directory as an argument.
+            docker compose -f build-docker-compose.yaml --profile ${{ matrix.dir }} up -d --build  # Run docker-compose up with the directory as an argument.
           else
             echo "No Internal examples were modified"
             echo 'NO_CHANGES=true' >> $GITHUB_ENV
@@ -272,7 +272,7 @@ jobs:
 
       - name: Set up and start Docker Compose
         run: |
-          docker compose up -d 
+          docker compose --profile default up -d 
           echo "Docker Compose started"
 
       - name: Waiting for services to be ready
