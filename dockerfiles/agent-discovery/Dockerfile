@@ -30,4 +30,4 @@ RUN if [ "$(uname -m)" = "aarch64" ]; then \
 
 # The CMD command specifies the default command to execute when the container starts.
 # In this case, it prints a message and lists the contents of /ssh-dir.
-CMD ["sh", "-c", "echo 'Export stage is ready'; ls -l /ssh-dir/"]
+CMD ["sh", "-c", "echo 'Export stage is ready'; ls -l /var/jenkins_home/"]
