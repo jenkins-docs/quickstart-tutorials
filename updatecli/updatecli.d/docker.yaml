@@ -1,0 +1,62 @@
+---
+name: Bump docker and docker compose version in the README.md
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  DockerTestedVersion:
+    name: Get the tested docker version
+    kind: shell
+    spec:
+      command: bash ./updatecli/scripts/docker-version.sh
+  DockerComposeTestedVersion:
+    name: Get the tested docker compose version
+    kind: shell
+    spec:
+      command: bash ./updatecli/scripts/docker-compose-version.sh
+    transformers:
+      - trimprefix: "v"
+
+targets:
+  setDockerTestedVersion:
+    kind: file
+    spec:
+      file: README.md
+      matchpattern: >-
+        (.*Docker version `)(.*?)(`.*)
+      replacepattern: >-
+        ${1}{{ source "DockerTestedVersion" }}${3}
+    name: "[README.md] Bump docker tested version"
+    sourceid: DockerTestedVersion
+    scmid: default
+  setDockerComposeTestedVersion:
+    kind: file
+    spec:
+      file: README.md
+      matchpattern: >-
+        (.*Docker Compose version `)(.*?)(`.*)
+      replacepattern: >-
+        ${1}{{ source "DockerComposeTestedVersion" }}${3}
+    name: "[README.md] Bump docker tested version"
+    sourceid: DockerTestedVersion
+    scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Update docker and/or docker compose versions to {{ source "DockerTestedVersion" }}/{{ source "DockerComposeTestedVersion" }} in the README.md
+    spec:
+      labels:
+        - dependencies
+        - chore

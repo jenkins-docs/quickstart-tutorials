@@ -30,6 +30,19 @@ jobs:
         id: changes
         run: echo "files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | tr '\n' ' ')" >> $GITHUB_ENV
 
+      - name: Write Docker versions to file
+        run: |
+          echo "- $(docker --version)" > docker-versions.txt
+          echo "- $(docker compose version)" >> docker-versions.txt
+
+      - name: Commit and push Docker versions
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add docker-versions.txt
+          git commit -m "Update Docker versions"
+          git push origin ${GITHUB_REF#refs/heads/}
+
       - name: Check for Dockerfile and context changes
         run: |
           for file in ${{ env.files }}; do
