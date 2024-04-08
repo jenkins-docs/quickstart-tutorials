@@ -67,5 +67,5 @@ Please let us know the following details when you open an issue:
 - The version of docker compose you're using via the `docker compose version` command.
 
 The tutorials have been tested with:
-- Docker version `25.0.3`
+- Docker version `24.0.9`"
 - Docker Compose version `2.23.3`"
