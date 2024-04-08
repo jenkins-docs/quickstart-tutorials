@@ -35,7 +35,7 @@ targets:
       matchpattern: >-
         (.*Docker version `)(.*?)(`.*)
       replacepattern: >-
-        ${1}{{ source "DockerTestedVersion" }}${3}"
+        ${1}{{ source "DockerTestedVersion" }}${3}
     name: "[README.md] Bump docker tested version"
     sourceid: DockerTestedVersion
     scmid: default
@@ -46,7 +46,7 @@ targets:
       matchpattern: >-
         (.*Docker Compose version `)(.*?)(`.*)
       replacepattern: >-
-        ${1}{{ source "DockerComposeTestedVersion" }}${3}"
+        ${1}{{ source "DockerComposeTestedVersion" }}${3}
     name: "[README.md] Bump docker tested version"
     sourceid: DockerTestedVersion
     scmid: default
