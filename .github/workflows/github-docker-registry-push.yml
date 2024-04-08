@@ -13,12 +13,15 @@ env:
   GHCR_USERNAME: ${{ github.repository_owner }}
   GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
 
+
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Check if PR is from a fork
+        run: echo "IS_FORK=$(if [ '${{ github.event.pull_request.head.repo.full_name }}' != '${{ github.repository }}' ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_ENV
+
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -26,6 +29,23 @@ jobs:
       - name: Retrieve modified files
         id: changes
         run: echo "files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | tr '\n' ' ')" >> $GITHUB_ENV
+
+      - name: Write Docker versions to file
+        run: |
+          echo "- $(docker --version)" > docker-versions.txt
+          echo "- $(docker compose version)" >> docker-versions.txt
+
+      - name: Commit and push Docker versions
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add docker-versions.txt
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update Docker versions"
+            git push origin ${GITHUB_REF#refs/heads/}
+          fi
 
       - name: Check for Dockerfile and context changes
         run: |
@@ -109,7 +129,7 @@ jobs:
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:node_agent_${{ env.BRANCH }}
 
-      - name: Build and push the jenkins agent for sidekick tutorial
+      - name: Build and push the jenkins agent for the sidekick container
         if: contains(env.files, 'dockerfiles/sidekick/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -117,6 +137,15 @@ jobs:
           platforms: linux/amd64, linux/aarch64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:sidekick_${{ env.BRANCH }}
+
+      - name: Build and push the jenkins agent for the agent-finding container
+        if: contains(env.files, 'dockerfiles/agent-discovery/Dockerfile')
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dockerfiles/agent-discovery/
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:agent_discovery_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for multi-branch controller
         if: contains(env.files, 'dockerfiles/multi/Dockerfile')
