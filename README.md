@@ -54,3 +54,18 @@ jenkins:
 ```
 
 For more detailed information about this configuration and the context behind it, please refer to the [corresponding issue](https://github.com/ash-sxn/GSoC-2023-docker-based-quickstart/issues/61).
+
+### Encountering Issues?
+
+If you encounter any issues while running the examples, please open an issue [in this repository](https://github.com/jenkins-docs/quickstart-tutorials/issues/new/choose).
+We will be happy to help you resolve the issue.
+Please let us know the following details when you open an issue:
+- The command you used to run the example.
+- The error message you received.
+- The steps you took before encountering the issue.
+- The version of docker you're using via the `docker version` command.
+- The version of docker compose you're using via the `docker compose version` command.
+
+The tutorials have been tested with:
+- Docker version `25.0.3`
+- Docker Compose version `2.24.6`
