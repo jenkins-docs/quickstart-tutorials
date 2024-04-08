@@ -272,7 +272,7 @@ jobs:
 
       - name: Set up and start Docker Compose
         run: |
-          docker compose up -d 
+          docker compose --profile default up -d 
           echo "Docker Compose started"
 
       - name: Waiting for services to be ready
