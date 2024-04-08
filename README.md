@@ -21,12 +21,13 @@ Gitpod is a cloud-based development environment designed for teams. It supports 
     - multibranch pipeline
 
 - To run different examples with `docker compose up -d`, append the example name to the command, like so:
-    - `maven` => `docker compose up -d maven`
-    - `python` => `docker compose up -d python`
-    - `node` => `docker compose up -d node`
-    - `multi` => `docker compose up -d multi`
+    - `maven` => `docker compose --profile maven up -d`
+    - `python` => `docker compose --profile python up -d`
+    - `node` => `docker compose --profile node up -d`
+    - `multi` => `docker compose --profile  multi up -d`
 
-- If no argument is used (i.e., `docker compose up -d`), the command runs the latest default example.
+- If no tutorial-related argument is used (i.e., `docker compose --profile default up -d`), the command runs the latest default example.
+- If no argument regarding profiles is used at all (i.e., `docker compose up -d`), then you will have a Jenkins controller desperately waiting for a non existent agent to connect.
 
 - If you prefer to build images yourself, append `-f build-docker-compose.yaml` after `docker compose`. For example, to build the `node` tutorial Jenkins instance, use: `docker compose -f build-docker-compose.yaml up -d node`.
 
@@ -53,3 +54,18 @@ jenkins:
 ```
 
 For more detailed information about this configuration and the context behind it, please refer to the [corresponding issue](https://github.com/ash-sxn/GSoC-2023-docker-based-quickstart/issues/61).
+
+### Encountering Issues?
+
+If you encounter any issues while running the examples, please open an issue [in this repository](https://github.com/jenkins-docs/quickstart-tutorials/issues/new/choose).
+We will be happy to help you resolve the issue.
+Please let us know the following details when you open an issue:
+- The command you used to run the example.
+- The error message you received.
+- The steps you took before encountering the issue.
+- The version of docker you're using via the `docker version` command.
+- The version of docker compose you're using via the `docker compose version` command.
+
+The tutorials have been tested with:
+- Docker version `25.0.3`
+- Docker Compose version `2.24.6`
