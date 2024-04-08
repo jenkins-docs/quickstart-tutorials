@@ -68,4 +68,4 @@ Please let us know the following details when you open an issue:
 
 The tutorials have been tested with:
 - Docker version `25.0.3`
-- Docker Compose version `2.24.6`
+- Docker Compose version `2.23.3`"
