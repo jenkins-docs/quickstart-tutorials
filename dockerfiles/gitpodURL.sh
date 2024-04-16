@@ -7,10 +7,10 @@ config_file="/workspace/quickstart-tutorials/dockerfiles/jenkins.yaml"
 service_url=$(echo "$GITPOD_WORKSPACE_URL" | awk -F/ '{print $3}')
 
 # Define an array of targets
-targets=("maven" "node" "python" "multi")
+targets=("maven" "node" "python" "multi" "default")
 
 # Initialize an empty string for the message
-message="As a gentle reminder, the current targets are: "
+message="As a gentle reminder, the current profiles are: "
 
 # Loop over the targets array
 for target in "${targets[@]}"; do
@@ -22,12 +22,12 @@ done
 message=${message%??}
 
 # Print the hostname for debugging purposes
-echo -e "Once you enter \033[42;30mdocker compose up _target_\033[0m, Jenkins will be accessible here: \033[36mhttps://8080-$service_url\033[0m"
+echo -e "Once you enter \033[42;30mdocker compose --profile _profile_ up\033[0m, Jenkins will be accessible here: \033[36mhttps://8080-$service_url\033[0m"
 # Print the message
 echo -e "$message"
 # Loop over the targets array
 for target in "${targets[@]}"; do
-  echo -e "To start the $target service, enter: \033[42;30mdocker compose up $target\033[0m"
+  echo -e "To start the $target service, enter: \033[42;30mdocker compose --profile $target up\033[0m"
 done
 
 # Use yq to update the value of the .unclassified.location.url field in the configuration file
