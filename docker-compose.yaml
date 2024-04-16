@@ -75,14 +75,12 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
-
   # The rest of the services are Jenkins agents, each with a different profile (e.g., default, maven, python, node, android, multi, golang).
   # Each agent service depends on both the sidekick_service and the jenkins_controller service.
   # The healthcheck command for each agent checks if the authorized_keys file exists in the /home/jenkins/.ssh directory.
   # The /home/jenkins/.ssh directory in each agent container is mapped to the agent-ssh-dir volume on the host.
-
   default_agent:
-    image: jenkins/ssh-agent:5.31.0
+    image: jenkins/ssh-agent:5.32.0
     container_name: desktop-jenkins_agent-1
     profiles:
       - default
