@@ -9,7 +9,7 @@ caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.0
 cloudbees-folder:6.901.vb_4c7a_da_75da_3
 commons-lang3-api:3.13.0-62.v7d18e55f51e2
-commons-text-api:1.11.0-95.v22a_d30ee5d36
+commons-text-api:1.11.0-109.vfe16c66636eb_
 configuration-as-code:1775.v810dc950b_514
 credentials-binding:657.v2b_19db_7d6e6d
 credentials:1337.v60b_d7b_c7b_c9f
