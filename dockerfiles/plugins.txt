@@ -13,7 +13,7 @@ commons-text-api:1.11.0-109.vfe16c66636eb_
 configuration-as-code:1775.v810dc950b_514
 credentials-binding:677.vdc9d38cb_254d
 credentials:1337.v60b_d7b_c7b_c9f
-display-url-api:2.203.v2c64fdb_33d9e
+display-url-api:2.204.vf6fddd8a_8b_e9
 durable-task:555.v6802fe0f0b_82
 echarts-api:5.5.0-1
 font-awesome-api:6.5.2-1
