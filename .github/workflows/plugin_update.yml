@@ -1,6 +1,9 @@
 name: Plugins Update file test
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     
   schedule:
