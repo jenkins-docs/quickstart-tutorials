@@ -1,7 +1,7 @@
 # This Dockerfile is used to create a Gitpod workspace with GitHub CLI installed.
 
 # We start from the Gitpod full workspace image which includes a broad range of development tools.
-FROM gitpod/workspace-full:2024-04-29-23-03-42
+FROM gitpod/workspace-full:2024-05-01-08-36-51
 
 # The RUN command executes a series of commands in the new layer of the image and commits the results.
 # The following commands are executed:
