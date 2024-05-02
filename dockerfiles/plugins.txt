@@ -3,7 +3,7 @@ antisamy-markup-formatter:162.v0e6ec0fcfcf6
 apache-httpcomponents-client-4-api:4.5.14-208.v438351942757
 bootstrap5-api:5.3.3-1
 bouncycastle-api:2.30.1.77-225.v26ea_c9455fd9
-branch-api:2.1163.va_f1064e4a_a_f3
+branch-api:2.1169.va_f810c56e895
 build-timeout:1.32
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.0
@@ -24,7 +24,7 @@ github-branch-source:1787.v8b_8cd49a_f8f1
 github:1.38.0
 gradle:2.11
 instance-identity:185.v303dc7c645f9
-ionicons-api:70.v2959a_b_74e3cf
+ionicons-api:73.vb_f522f227457
 jackson2-api:2.17.0-379.v02de8ec9f64c
 jakarta-activation-api:2.1.3-1
 jakarta-mail-api:2.1.3-1
@@ -77,5 +77,5 @@ workflow-job:1400.v7fd111b_ec82f
 workflow-multibranch:773.vc4fe1378f1d5
 workflow-scm-step:427.v4ca_6512e7df1
 workflow-step-api:657.v03b_e8115821b_
-workflow-support:896.v175a_a_9c5b_78f
+workflow-support:907.v6713a_ed8a_573
 ws-cleanup:0.45
