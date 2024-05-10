@@ -54,6 +54,14 @@ services:
   jenkins_controller:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:simple_controller_${BRANCH_SUFFIX}
     restart: on-failure
+    profiles:
+      - maven
+      - python
+      - node
+      - android
+      - multi
+      - golang
+      - default
     # The CASC_RELOAD_TOKEN environment variable is used by the Jenkins controller to restart the Configuration as Code (JCasc) plugin configuration.
     environment:
       - CASC_RELOAD_TOKEN=thisisnotsecure
@@ -65,6 +73,26 @@ services:
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /app path inside the container
       # Mounting the token as "container secret" makes it available in JCasc as the variable ${CASC_RELOAD_TOKEN}
       - ./secrets/jcasc_token:/run/secrets/CASC_RELOAD_TOKEN:ro
+    # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
+    depends_on:
+      sidekick_service:
+        condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1"]
+      # Checks if the conductor_ok file exists in the /ssh-dir path
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  wizard_controller:
+    image: jenkins/jenkins:2.440.3
+    restart: on-failure
+    # The Jenkins web interface is exposed on port 8080.
+    ports:
+      - "8080:8080"
+    volumes:
+      - empty_jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
+      - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /app path inside the container
     # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
     depends_on:
       sidekick_service:
@@ -95,6 +123,18 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
+    volumes:
+      - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
+  wizard_agent:
+    image: jenkins/ssh-agent:5.34.0
+    container_name: desktop-jenkins_agent-1
+    profiles:
+      - wizard
+    depends_on:
+      sidekick_service:
+        condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
+      wizard_controller:
+        condition: service_started
     volumes:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   maven:
@@ -243,5 +283,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
 volumes:
   jenkins_home: null
+  empty_jenkins_home: null
   agent-ssh-dir:
     name: agent-ssh-dir # Creates a named volume called agent-ssh-dir
