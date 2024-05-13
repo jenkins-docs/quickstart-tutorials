@@ -24,7 +24,7 @@ github-branch-source:1789.v5b_0c0cea_18c3
 github:1.38.0
 gradle:2.11
 instance-identity:185.v303dc7c645f9
-ionicons-api:73.vb_f522f227457
+ionicons-api:74.v93d5eb_813d5f
 jackson2-api:2.17.0-379.v02de8ec9f64c
 jakarta-activation-api:2.1.3-1
 jakarta-mail-api:2.1.3-1
