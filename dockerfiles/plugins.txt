@@ -22,7 +22,7 @@ git:5.2.2
 github-api:1.318-461.v7a_c09c9fa_d63
 github-branch-source:1789.v5b_0c0cea_18c3
 github:1.38.0
-gradle:2.11
+gradle:2.12
 instance-identity:185.v303dc7c645f9
 ionicons-api:74.v93d5eb_813d5f
 jackson2-api:2.17.0-379.v02de8ec9f64c
@@ -54,7 +54,7 @@ pipeline-rest-api:2.34
 pipeline-stage-step:312.v8cd10304c27a_
 pipeline-stage-tags-metadata:2.2198.v41dd8ef6dd56
 pipeline-stage-view:2.34
-plain-credentials:179.vc5cb_98f6db_38
+plain-credentials:182.v468b_97b_9dcb_8
 plugin-util-api:4.1.0
 resource-disposer:0.23
 scm-api:690.vfc8b_54395023
