@@ -87,6 +87,8 @@ services:
   wizard_controller:
     image: jenkins/jenkins:2.452.1
     restart: on-failure
+    profiles:
+      - wizard
     # The Jenkins web interface is exposed on port 8080.
     ports:
       - "8080:8080"
