@@ -10,7 +10,7 @@ checks-api:2.2.0
 cloudbees-folder:6.928.v7c780211d66e
 commons-lang3-api:3.13.0-62.v7d18e55f51e2
 commons-text-api:1.11.0-109.vfe16c66636eb_
-configuration-as-code:1775.v810dc950b_514
+configuration-as-code:1805.v1455f39c04cf
 credentials-binding:677.vdc9d38cb_254d
 credentials:1337.v60b_d7b_c7b_c9f
 display-url-api:2.204.vf6fddd8a_8b_e9
@@ -72,7 +72,7 @@ workflow-aggregator:596.v8c21c963d92d
 workflow-api:1291.v51fd2a_625da_7
 workflow-basic-steps:1058.vcb_fc1e3a_21a_9
 workflow-cps:3894.3896.vca_2c931e7935
-workflow-durable-task-step:1336.v768003e07199
+workflow-durable-task-step:1353.v1891a_b_01da_18
 workflow-job:1400.v7fd111b_ec82f
 workflow-multibranch:783.va_6eb_ef636fb_d
 workflow-scm-step:427.v4ca_6512e7df1
