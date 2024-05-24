@@ -28,15 +28,15 @@ ionicons-api:74.v93d5eb_813d5f
 jackson2-api:2.17.0-379.v02de8ec9f64c
 jakarta-activation-api:2.1.3-1
 jakarta-mail-api:2.1.3-1
-javax-activation-api:1.2.0-6
-javax-mail-api:1.6.2-9
+javax-activation-api:1.2.0-7
+javax-mail-api:1.6.2-10
 jaxb:2.3.9-1
 jjwt-api:0.11.5-112.ve82dfb_224b_a_d
 jquery3-api:3.7.1-2
 junit:1265.v65b_14fa_f12f0
 mailer:472.vf7c289a_4b_420
 matrix-auth:3.2.2
-matrix-project:822.824.v14451b_c0fd42
+matrix-project:830.v7ea_da_561b_a_34
 metrics:4.2.21-451.vd51df8df52ec
 mina-sshd-api-common:2.12.1-101.v85b_e08b_780dd
 mina-sshd-api-core:2.12.1-101.v85b_e08b_780dd
@@ -69,7 +69,7 @@ token-macro:400.v35420b_922dcb_
 trilead-api:2.142.v748523a_76693
 variant:60.v7290fc0eb_b_cd
 workflow-aggregator:596.v8c21c963d92d
-workflow-api:1311.v4250456a_e552
+workflow-api:1312.ve804c2f2d51e
 workflow-basic-steps:1058.vcb_fc1e3a_21a_9
 workflow-cps:3894.3896.vca_2c931e7935
 workflow-durable-task-step:1353.v1891a_b_01da_18
@@ -78,4 +78,4 @@ workflow-multibranch:783.va_6eb_ef636fb_d
 workflow-scm-step:427.v4ca_6512e7df1
 workflow-step-api:657.v03b_e8115821b_
 workflow-support:907.v6713a_ed8a_573
-ws-cleanup:0.45
+ws-cleanup:0.46
