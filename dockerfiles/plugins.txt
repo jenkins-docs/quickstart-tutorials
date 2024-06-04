@@ -36,7 +36,7 @@ jquery3-api:3.7.1-2
 junit:1265.v65b_14fa_f12f0
 mailer:472.vf7c289a_4b_420
 matrix-auth:3.2.2
-matrix-project:831.v084e85a_b_4ea_d
+matrix-project:832.va_66e270d2946
 metrics:4.2.21-451.vd51df8df52ec
 mina-sshd-api-common:2.12.1-101.v85b_e08b_780dd
 mina-sshd-api-core:2.12.1-101.v85b_e08b_780dd
