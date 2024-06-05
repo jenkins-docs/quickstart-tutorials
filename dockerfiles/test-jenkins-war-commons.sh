@@ -8,6 +8,7 @@ fi
 # Check if JENKINS_USERNAME and JENKINS_API_TOKEN are set
 if [[ -z "${JENKINS_USERNAME}" ]] || [[ -z "${JENKINS_API_TOKEN}" ]]; then
     echo "Error: JENKINS_USERNAME and JENKINS_API_TOKEN must be set in the environment."
+    env
     exit 1
 fi
 
