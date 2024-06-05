@@ -1,0 +1,56 @@
+---
+name: Bump Jenkins' LTS version in the controller Dockerfile
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  JenkinsLatestTestVersion:
+    name: Get the latest Jenkins test version
+    kind: shell
+    spec:
+      command: bash ./dockerfiles/get-test-jenkins-war-version.sh
+  JenkinsLatestTestVersionURL:
+    name: Get the latest Jenkins test version URL
+    kind: shell
+    spec:
+      command: bash ./dockerfiles/get-test-jenkins-war-URL.sh
+
+conditions:
+  # Test that the latest LTS Jenkins version exists
+  JenkinsLatestTestVersionExists:
+    kind: shell
+    sourceid: JenkinsLatestTestVersionURL
+    spec:
+      command: bash ./updatecli/scripts/jenkins-test-version-exists.sh {{ source "JenkinsLatestTestVersionURL" }}
+
+targets:
+  setJenkinsLatestTestVersion:
+    kind: dockerfile
+    spec:
+      file: dockerfiles/Dockerfile
+      instruction:
+        keyword: "ARG"
+        matcher: "JENKINS_TEST_VERSION"
+    name: "[jenkins-controller] Bump Jenkins test version in dockerfiles/Dockerfile"
+    sourceid: JenkinsLatestTestVersion
+    scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Update Jenkins test versions to {{ source "JenkinsLatestTestVersion" }} in the controller Dockerfile
+    spec:
+      labels:
+        - dependencies
+        - chore
