@@ -1,5 +1,5 @@
 ---
-name: Bump Jenkins' LTS version in the controller Dockerfile
+name: Bump Jenkins' latest test version in the controller Dockerfile
 
 scms:
   default:
@@ -26,7 +26,7 @@ sources:
       command: bash ./dockerfiles/get-test-jenkins-war-URL.sh
 
 conditions:
-  # Test that the latest LTS Jenkins version exists
+  # Test that the latest test Jenkins version exists
   JenkinsLatestTestVersionExists:
     kind: shell
     sourceid: JenkinsLatestTestVersionURL
