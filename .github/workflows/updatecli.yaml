@@ -25,6 +25,16 @@ jobs:
       - name: Install Updatecli in the runner
         uses: updatecli/updatecli-action@v2.59.0
 
+      - name: Check environment variables
+        run: |
+          if [[ -z "${JENKINS_USERNAME}" ]] || [[ -z "${JENKINS_API_TOKEN}" ]]; then
+            echo "Error: JENKINS_USERNAME and JENKINS_API_TOKEN must be set in the environment."
+            exit 1
+          fi
+        env:
+          JENKINS_USERNAME: ${{ secrets.JENKINS_USERNAME }}
+          JENKINS_API_TOKEN: ${{ secrets.JENKINS_API_TOKEN }}
+
       # This step runs Updatecli in Dry Run mode
       # It uses the "diff" command of updatecli with the specified config and values files
       # The GitHub token is passed as an environment variable
