@@ -27,6 +27,7 @@ jobs:
 
       - name: Check environment variables
         run: |
+          env
           if [[ -z "${JENKINS_USERNAME}" ]] || [[ -z "${JENKINS_API_TOKEN}" ]]; then
             echo "Error: JENKINS_USERNAME and JENKINS_API_TOKEN must be set in the environment."
             exit 1
