@@ -34,7 +34,7 @@ USER jenkins
 
 # We write the Jenkins version to the UpgradeWizard state file.
 # This prevents the Upgrade Wizard from showing up when Jenkins starts.
-RUN echo "${JENKINS_VERSION}" > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
+RUN echo "${JENKINS_TEST_VERSION}" > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 
 # We copy a list of plugins to install to the Jenkins ref directory in the image.
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
