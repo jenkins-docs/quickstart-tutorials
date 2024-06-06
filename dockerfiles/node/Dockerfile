@@ -14,3 +14,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 
 RUN echo "PATH=${PATH}" >> /etc/environment && chown -R jenkins:jenkins "${JENKINS_AGENT_HOME}"
+# For the sake of force-rebuilding the image, we add a comment to the Dockerfile.
