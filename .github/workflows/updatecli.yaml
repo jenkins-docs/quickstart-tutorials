@@ -40,7 +40,9 @@ jobs:
       # It uses the "diff" command of updatecli with the specified config and values files
       # The GitHub token is passed as an environment variable
       - name: Run Updatecli in Dry Run mode
-        run: updatecli diff --config ./updatecli/updatecli.d/jenkins-testing.yaml --values ./updatecli/values.github-action.yaml
+        run: |
+          env
+          updatecli diff --config ./updatecli/updatecli.d/jenkins-testing.yaml --values ./updatecli/values.github-action.yaml
         env:
           UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JENKINS_USERNAME: ${{ secrets.JENKINS_USERNAME }}
@@ -50,8 +52,10 @@ jobs:
       # It uses the "apply" command of updatecli with the specified config and values files
       # The GitHub token is passed as an environment variable
       - name: Run Updatecli in Apply mode
-        if: github.ref == 'refs/heads/main'
-        run: updatecli apply --config ./updatecli/updatecli.d/jenkins-testing.yaml --values ./updatecli/values.github-action.yaml
+        if: github.ref == 'refs/heads/spring-security'
+        run: |
+          env
+          updatecli apply --config ./updatecli/updatecli.d/jenkins-testing.yaml --values ./updatecli/values.github-action.yaml
         env:
           UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JENKINS_USERNAME: ${{ secrets.JENKINS_USERNAME }}
