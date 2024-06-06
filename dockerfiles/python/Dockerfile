@@ -31,3 +31,4 @@ RUN echo "PATH=${PATH}" >> /etc/environment
 # Set the ownership of the Jenkins agent home directory to the Jenkins user.
 # This ensures that the Jenkins user has the necessary permissions to access its home directory.
 RUN chown -R jenkins:jenkins "${JENKINS_AGENT_HOME}"
+# For the sake of force-rebuilding the image, we add a comment to the Dockerfile.

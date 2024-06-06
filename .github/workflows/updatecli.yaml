@@ -6,7 +6,7 @@ on:
   # This workflow is scheduled to run once per week (to avoid alert fatigue)
   # Specifically, it runs every Monday at 8am UTC
   schedule:
-    - cron: '0 8 * * 1'
+    - cron: '0 */6 * * *'
   # This workflow is also triggered on every push event
   push:
   # This workflow is also triggered on every pull request event

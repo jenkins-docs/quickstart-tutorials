@@ -92,3 +92,4 @@ RUN echo "PATH=${PATH}" >> /etc/environment
 
 # COPY entrypoint.sh /entrypoint.sh
 # ENTRYPOINT [ "bash", "-c"]
+# For the sake of force-rebuilding the image, we add a comment to the Dockerfile.

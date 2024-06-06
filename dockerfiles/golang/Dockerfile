@@ -4,7 +4,7 @@ FROM jenkins/ssh-agent:5.38.0 as ssh-agent
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-# Now time to install maven
+# Now time to install golang
 ARG GOLANG_VERSION=1.22.4
 ARG TARGETARCH
 ENV ARCHITECTURE=$TARGETARCH
@@ -21,3 +21,4 @@ ENV PATH=$PATH:/usr/local/go/bin
 
 RUN echo "PATH=${PATH}" >> /etc/environment && chown -R jenkins:jenkins "${JENKINS_AGENT_HOME}" && \
     go version
+# For the sake of force-rebuilding the image, we add a comment to the Dockerfile.
