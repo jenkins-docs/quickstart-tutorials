@@ -1,0 +1,79 @@
+---
+# This is the configuration file for the updatecli tool.
+# It defines a pipeline for updating the Jenkins test version in the controller Dockerfile.
+
+name: Bump Jenkins' latest test version in the controller Dockerfile
+
+# The 'scms' section defines the source control management system to be used.
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"  # The GitHub username
+      email: "{{ .github.email }}"  # The GitHub user's email
+      owner: "{{ .github.owner }}"  # The owner of the GitHub repository
+      repository: "{{ .github.repository }}"  # The GitHub repository
+      token: "{{ requiredEnv .github.token }}"  # The GitHub token for authentication
+      username: "{{ .github.username }}"  # The GitHub username for authentication
+      branch: "{{ .github.branch }}"  # The branch to be updated
+
+# The 'sources' section defines the sources of data to be used in the pipeline.
+sources:
+  JenkinsLatestTestVersion:
+    name: Get the latest Jenkins test version
+    kind: shell
+    spec:
+      command: bash ./dockerfiles/get-test-jenkins-war-version.sh  # The command to get the latest Jenkins test version
+      environments:
+        - name: JENKINS_USERNAME
+        - name: JENKINS_API_TOKEN
+  JenkinsLatestTestVersionURL:
+    name: Get the latest Jenkins test version URL
+    kind: shell
+    spec:
+      command: bash ./dockerfiles/get-test-jenkins-war-URL.sh  # The command to get the URL of the latest Jenkins test version
+      environments:
+        - name: JENKINS_USERNAME
+        - name: JENKINS_API_TOKEN
+
+# The 'conditions' section defines the conditions that must be met for the pipeline to proceed.
+conditions:
+  JenkinsLatestTestVersionExists:
+    kind: shell
+    sourceid: JenkinsLatestTestVersionURL
+    spec:
+      command: bash ./updatecli/scripts/jenkins-test-version-exists.sh {{ source "JenkinsLatestTestVersionURL" }}  # The command to check if the latest Jenkins test version exists
+
+# The 'targets' section defines the targets to be updated.
+targets:
+  setJenkinsLatestTestVersion:
+    kind: dockerfile
+    spec:
+      file: dockerfiles/Dockerfile  # The Dockerfile to be updated
+      instruction:
+        keyword: "ARG"
+        matcher: "JENKINS_TEST_VERSION"  # The Dockerfile instruction to be updated
+    name: "[jenkins-controller] Bump Jenkins test version in dockerfiles/Dockerfile"
+    sourceid: JenkinsLatestTestVersion  # The source of the new Jenkins test version
+    scmid: default  # The SCM to be used
+  setJenkinsLatestTestURL:
+    kind: dockerfile
+    spec:
+      file: dockerfiles/Dockerfile
+      instruction:
+        keyword: "ARG"
+        matcher: "JENKINS_TEST_WAR_URL"
+    name: "[jenkins-controller] Bump Jenkins test URL  in dockerfiles/Dockerfile"
+    sourceid: JenkinsLatestTestVersionURL
+    scmid: default
+
+# The 'actions' section defines the actions to be taken after the targets are updated.
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Update Jenkins test versions to {{ source "JenkinsLatestTestVersion" }} in the controller Dockerfile  # The title of the GitHub pull request
+    spec:
+      labels:
+        - dependencies
+        - chore  # The labels to be added to the GitHub pull request

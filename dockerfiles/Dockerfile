@@ -1,13 +1,22 @@
-# This Dockerfile is used to create a Jenkins server with a specific version and pre-configured settings.
-
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
 ARG JENKINS_VERSION=2.452.1
+# We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
+ARG JENKINS_TEST_VERSION=2.461-rc35016.8a_17fc9cfb_b_2
+ARG JENKINS_TEST_WAR_URL=https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/lastSuccessfulBuild/artifact/org/jenkins-ci/main/jenkins-war/2.461-rc35016.8a_17fc9cfb_b_2/jenkins-war-2.461-rc35016.8a_17fc9cfb_b_2.war
 
 # We then use the official Jenkins image with the specified version as our base image.
 FROM jenkins/jenkins:"${JENKINS_VERSION}"
 
+COPY *test*sh /usr/local/bin/
+
 # We switch to the root user to have the necessary permissions for the upcoming operations.
 USER root
+
+RUN apt-get update && apt-get install -y jq
+
+# Download the desired Jenkins war file and replace the existing one
+RUN chmod +x /usr/local/bin/*.sh && \
+        curl -L "$JENKINS_TEST_WAR_URL" -o /usr/share/jenkins/jenkins.war
 
 # We copy the jobs directory from our current directory to the Jenkins home directory in the image.
 # This allows us to pre-configure Jenkins with some jobs.
