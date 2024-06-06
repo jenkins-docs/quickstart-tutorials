@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
   rm -rf /var/lib/apt/lists/*
 
 # Now time to install maven
-ARG GOLANG_VERSION=1.22.3
+ARG GOLANG_VERSION=1.22.4
 ARG TARGETARCH
 ENV ARCHITECTURE=$TARGETARCH
 
