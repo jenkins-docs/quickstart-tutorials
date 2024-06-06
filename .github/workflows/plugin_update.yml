@@ -3,7 +3,7 @@ name: Plugins Update file test
 on:
   push:
     branches:
-      - main
+      - spring-security
   workflow_dispatch:
     
   schedule:
