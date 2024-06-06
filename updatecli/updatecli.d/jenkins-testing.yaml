@@ -24,11 +24,17 @@ sources:
     kind: shell
     spec:
       command: bash ./dockerfiles/get-test-jenkins-war-version.sh  # The command to get the latest Jenkins test version
+      environments:
+        - name: JENKINS_USERNAME
+        - name: JENKINS_API_TOKEN
   JenkinsLatestTestVersionURL:
     name: Get the latest Jenkins test version URL
     kind: shell
     spec:
       command: bash ./dockerfiles/get-test-jenkins-war-URL.sh  # The command to get the URL of the latest Jenkins test version
+      environments:
+        - name: JENKINS_USERNAME
+        - name: JENKINS_API_TOKEN
 
 # The 'conditions' section defines the conditions that must be met for the pipeline to proceed.
 conditions:
