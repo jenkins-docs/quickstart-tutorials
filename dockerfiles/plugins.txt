@@ -8,7 +8,7 @@ build-timeout:1.32
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.0
 cloudbees-folder:6.928.v7c780211d66e
-commons-lang3-api:3.13.0-62.v7d18e55f51e2
+commons-lang3-api:3.14.0-76.vda_5591261cfe
 commons-text-api:1.11.0-109.vfe16c66636eb_
 configuration-as-code:1810.v9b_c30a_249a_4c
 credentials-binding:677.vdc9d38cb_254d
