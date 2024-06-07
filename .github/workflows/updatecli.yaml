@@ -7,6 +7,8 @@ on:
   # Specifically, it runs every Monday at 8am UTC
   schedule:
     - cron: '0 */6 * * *'
+      branches:
+        - spring-security
   # This workflow is also triggered on every push event
   push:
   # This workflow is also triggered on every pull request event
