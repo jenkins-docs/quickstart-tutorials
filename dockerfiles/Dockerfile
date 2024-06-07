@@ -1,12 +1,12 @@
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
 ARG JENKINS_VERSION=2.452.1
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
-ARG JENKINS_TEST_VERSION=2.462-rc35022.a_57893df1008
+ARG JENKINS_TEST_VERSION=2.462-rc35026.112215163e41
 
 # We then use the official Jenkins image with the specified version as our base image.
 FROM jenkins/jenkins:"${JENKINS_VERSION}"
 
-ARG JENKINS_TEST_WAR_URL=https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/lastSuccessfulBuild/artifact/org/jenkins-ci/main/jenkins-war/2.462-rc35022.a_57893df1008/jenkins-war-2.462-rc35022.a_57893df1008.war
+ARG JENKINS_TEST_WAR_URL=https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/lastSuccessfulBuild/artifact/org/jenkins-ci/main/jenkins-war/2.462-rc35026.112215163e41/jenkins-war-2.462-rc35026.112215163e41.war
 # Define JENKINS_TEST_WAR_URL as an ENV
 ENV JENKINS_TEST_WAR_URL=${JENKINS_TEST_WAR_URL}
 
@@ -34,7 +34,7 @@ USER jenkins
 
 # We write the Jenkins version to the UpgradeWizard state file.
 # This prevents the Upgrade Wizard from showing up when Jenkins starts.
-RUN echo "${JENKINS_VERSION}" > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
+RUN echo "${JENKINS_TEST_VERSION}" > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 
 # We copy a list of plugins to install to the Jenkins ref directory in the image.
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
