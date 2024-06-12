@@ -41,23 +41,12 @@ jobs:
           echo "- $(docker --version)" > docker-versions.txt
           echo "- $(docker compose version)" >> docker-versions.txt
 
-      - name: Install GitHub CLI
-        # This step installs the GitHub CLI
-        run: |
-          (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
-          && sudo mkdir -p -m 755 /etc/apt/keyrings \
-          && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-          && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-          && sudo apt update \
-          && sudo apt install gh -y
-
       - name: Authenticate GH CLI
         # This step authenticates the GitHub CLI
         run: gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Commit and create PR for Docker versions
-        # This step commits the Docker versions and creates a pull request
+        if: github.event_name != 'pull_request'
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
@@ -69,19 +58,6 @@ jobs:
             git commit -m "Update Docker versions"
             git push origin docker-versions-update
             echo 'y' | gh pr create --fill
-          fi
-
-      - name: Commit and push Docker versions
-        # This step commits and pushes the Docker versions
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add docker-versions.txt
-          if git diff-index --quiet HEAD --; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update Docker versions"
-            git push origin ${GITHUB_REF#refs/heads/}
           fi
 
       - name: Check for Dockerfile and context changes
