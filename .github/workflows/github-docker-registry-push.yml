@@ -1,53 +1,67 @@
+# This workflow is used for building and pushing Docker images to GitHub Packages.
+# It is triggered on push, pull request events and also runs on a schedule (at 4:30 and 16:30).
+# It uses the GitHub Container Registry (GHCR) for storing the Docker images.
 name: docker image building and pushing to GitHub Packages
 
 on:
   push:
     branches:
-      - '*'
+      - '*' # Triggered on push to any branch
   pull_request:
-    branches: [ '*' ]
+    branches: [ '*' ] # Triggered on pull request to any branch
   schedule:
-    - cron:  '30 4,16 * * *'
+    - cron:  '30 4,16 * * *' # Runs on a schedule at 4:30 and 16:30
 
 env:
-  GHCR_USERNAME: ${{ github.repository_owner }}
-  GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
-
+  GHCR_USERNAME: ${{ github.repository_owner }} # The owner of the repository
+  GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }} # The token for GHCR
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # The type of machine to run the job on
     steps:
       - name: Check if PR is from a fork
+        # This step checks if the pull request is from a fork
         run: echo "IS_FORK=$(if [ '${{ github.event.pull_request.head.repo.full_name }}' != '${{ github.repository }}' ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_ENV
 
       - name: Checkout
+        # This step checks out the repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Retrieve modified files
+        # This step retrieves the files that were modified in the commit
         id: changes
         run: echo "files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | tr '\n' ' ')" >> $GITHUB_ENV
 
       - name: Write Docker versions to file
+        # This step writes the Docker and Docker Compose versions to a file
         run: |
           echo "- $(docker --version)" > docker-versions.txt
           echo "- $(docker compose version)" >> docker-versions.txt
 
-      - name: Commit and push Docker versions
+      - name: Authenticate GH CLI
+        # This step authenticates the GitHub CLI
+        run: gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Commit and create PR for Docker versions
+        if: github.event_name != 'pull_request'
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
+          git checkout -b docker-versions-update
           git add docker-versions.txt
           if git diff-index --quiet HEAD --; then
             echo "No changes to commit"
           else
             git commit -m "Update Docker versions"
-            git push origin ${GITHUB_REF#refs/heads/}
+            git push origin docker-versions-update
+            echo 'y' | gh pr create --fill
           fi
 
       - name: Check for Dockerfile and context changes
+        # This step checks for changes in Dockerfile and context
         run: |
           for file in ${{ env.files }}; do
             if [[ $file =~ (^|/)Dockerfile($|/)|(^|/)dockerfiles/ ]]; then
@@ -63,13 +77,16 @@ jobs:
           fi
 
       - name: Set up QEMU
+        # This step sets up QEMU
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
+        # This step sets up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       -
         name: Login to GitHub Container Registry
+        # This step logs in to GHCR
         if: contains(env.files, 'Dockerfile')
         uses: docker/login-action@v3
         with:
@@ -78,6 +95,7 @@ jobs:
           password: ${{ env.GHCR_TOKEN }}
 
       - name: Extract branch name
+        # This step extracts the branch name
         shell: bash
         run: |
           BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
@@ -86,6 +104,7 @@ jobs:
         id: extract_branch
 
       - name: Extract branch name and set BRANCH environment variable
+        # This step extracts the branch name and sets the BRANCH environment variable
         shell: bash
         run: |
           BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed -e 's#/#-#g')
@@ -93,9 +112,11 @@ jobs:
           echo "BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
 
       - name: Set repository name to lowercase
+        # This step sets the repository name to lowercase
         run: echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Build and push a simple jenkins controller
+        # This step builds and pushes a simple Jenkins controller
         if: contains(env.files, 'dockerfiles/Dockerfile') || contains(env.files, 'dockerfiles/')
         uses: docker/build-push-action@v5
         with:
@@ -103,7 +124,9 @@ jobs:
           platforms: linux/amd64, linux/aarch64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:simple_controller_${{ env.BRANCH }}
+
       - name: Build and push the jenkins agent for maven tutorial
+        # This step builds and pushes the Jenkins agent for the Maven tutorial
         if: contains(env.files, 'dockerfiles/maven/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -113,6 +136,7 @@ jobs:
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:maven_agent_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for python tutorial
+        # This step builds and pushes the Jenkins agent for the Python tutorial
         if: contains(env.files, 'dockerfiles/python/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -120,7 +144,9 @@ jobs:
           platforms: linux/amd64, linux/aarch64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:python_agent_${{ env.BRANCH }}
+
       - name: Build and push the jenkins agent for node tutorial
+        # This step builds and pushes the Jenkins agent for the Node.js tutorial
         if: contains(env.files, 'dockerfiles/node/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -130,6 +156,7 @@ jobs:
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:node_agent_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for the sidekick container
+        # This step builds and pushes the Jenkins agent for the sidekick container
         if: contains(env.files, 'dockerfiles/sidekick/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -139,6 +166,7 @@ jobs:
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:sidekick_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for the agent-finding container
+        # This step builds and pushes the Jenkins agent for the agent-finding container
         if: contains(env.files, 'dockerfiles/agent-discovery/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -148,6 +176,7 @@ jobs:
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:agent_discovery_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for multi-branch controller
+        # This step builds and pushes the Jenkins agent for the multi-branch controller
         if: contains(env.files, 'dockerfiles/multi/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -157,6 +186,7 @@ jobs:
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:multi_controller_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for Android
+        # This step builds and pushes the Jenkins agent for Android
         if: contains(env.files, 'dockerfiles/android/Dockerfile')
         uses: docker/build-push-action@v5
         with:
@@ -166,6 +196,7 @@ jobs:
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:android_${{ env.BRANCH }}
 
       - name: Build and push the jenkins agent for golang tutorial
+        # This step builds and pushes the Jenkins agent for the Golang tutorial
         if: contains(env.files, 'dockerfiles/golang/Dockerfile')
         uses: docker/build-push-action@v5
         with:
