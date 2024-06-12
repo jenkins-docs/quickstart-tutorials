@@ -13,14 +13,45 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
+  discovery_and_jcasc_modifier:
+    build: dockerfiles/agent-discovery/.
+    stdin_open: true
+    tty: true
+    entrypoint: sh -c "/usr/local/bin/find-name.sh"
+    profiles:
+      - maven
+      - python
+      - node
+      - android
+      - multi
+      - golang
+      - default
+    # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
+    depends_on:
+      sidekick_service:
+        condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
+    # The healthcheck command checks if the find-name.sh script can be executed successfully.
+    healthcheck:
+      test: ["CMD-SHELL", "/usr/local/bin/find-name.sh || exit 0"]
+      interval: 5s
+      timeout: 10s
+      retries: 50
+    volumes:
+      - jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
+      - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /ssh-dir path inside the container
+      - ./secrets/:/secrets/ # Mounts the secrets directory to the /secrets path inside the container
   jenkins_controller:
     build: dockerfiles/.
     restart: on-failure
+    # The CASC_RELOAD_TOKEN environment variable is used by the Jenkins controller to restart the Configuration as Code (JCasc) plugin configuration.
+    environment:
+      - CASC_RELOAD_TOKEN=thisisnotsecure
     ports:
       - "8080:8080"
     volumes:
       - jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /app path inside the container
+      - ./secrets/jcasc_token:/run/secrets/CASC_RELOAD_TOKEN:ro
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -31,8 +62,10 @@ services:
       timeout: 10s
       retries: 5
   default_agent:
-    image: jenkins/ssh-agent:5.31.0
+    image: jenkins/ssh-agent:5.38.0
     container_name: desktop-jenkins_agent-1
+    profiles:
+      - default
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -48,7 +81,7 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   maven:
     build: dockerfiles/maven/.
-    container_name: desktop-jenkins_agent-1
+    container_name: desktop-jenkins_agent-1-maven
     profiles:
       - maven
     depends_on:
@@ -66,7 +99,7 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   python:
     build: dockerfiles/python/.
-    container_name: desktop-jenkins_agent-1
+    container_name: desktop-jenkins_agent-1-python
     profiles:
       - python
     depends_on:
@@ -86,7 +119,7 @@ services:
     build: dockerfiles/node/.
     environment:
       - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
-    container_name: desktop-jenkins_agent-1
+    container_name: desktop-jenkins_agent-1-node
     profiles:
       - node
     depends_on:
@@ -108,7 +141,7 @@ services:
     build: dockerfiles/multi/.
     environment:
       - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
-    container_name: desktop-jenkins_agent-1
+    container_name: desktop-jenkins_agent-1-multi
     profiles:
       - multi
     depends_on:
@@ -131,7 +164,7 @@ services:
     build: dockerfiles/android/.
     environment:
       - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
-    container_name: desktop-jenkins_agent-1
+    container_name: desktop-jenkins_agent-1-android
     profiles:
       - android
     depends_on:
@@ -142,6 +175,28 @@ services:
     ports:
       - "3000:3000"
       - "5000:5000"
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
+  golang:
+    build: dockerfiles/golang/.
+    environment:
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
+    container_name: desktop-jenkins_agent-1-golang
+    profiles:
+      - golang
+    depends_on:
+      sidekick_service:
+        condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
+      jenkins_controller:
+        condition: service_started
+    ports:
+      - "3000:3000"
     healthcheck:
       test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
       # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
