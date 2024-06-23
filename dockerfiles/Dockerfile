@@ -1,12 +1,12 @@
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
 ARG JENKINS_VERSION=2.452.2
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
-ARG JENKINS_TEST_VERSION=2.464-rc35069.6cb_f1f4b_885c
+ARG JENKINS_TEST_VERSION=2.464-rc35074.7869ff599b_86
 
 # We then use the official Jenkins image with the specified version as our base image.
 FROM jenkins/jenkins:"${JENKINS_VERSION}"
 
-ARG JENKINS_TEST_WAR_URL=https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/lastSuccessfulBuild/artifact/org/jenkins-ci/main/jenkins-war/2.464-rc35069.6cb_f1f4b_885c/jenkins-war-2.464-rc35069.6cb_f1f4b_885c.war
+ARG JENKINS_TEST_WAR_URL=https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/lastSuccessfulBuild/artifact/org/jenkins-ci/main/jenkins-war/2.464-rc35074.7869ff599b_86/jenkins-war-2.464-rc35074.7869ff599b_86.war
 # Define JENKINS_TEST_WAR_URL as an ENV
 ENV JENKINS_TEST_WAR_URL=${JENKINS_TEST_WAR_URL}
 
