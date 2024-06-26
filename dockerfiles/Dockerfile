@@ -6,7 +6,7 @@ ARG JENKINS_TEST_VERSION=2.464-rc35074.7869ff599b_86
 # We then use the official Jenkins image with the specified version as our base image.
 FROM jenkins/jenkins:"${JENKINS_VERSION}"
 
-ARG JENKINS_TEST_WAR_URL=https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/lastSuccessfulBuild/artifact/org/jenkins-ci/main/jenkins-war/2.464-rc35074.7869ff599b_86/jenkins-war-2.464-rc35074.7869ff599b_86.war
+ARG JENKINS_TEST_WAR_URL=https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/lastSuccessfulBuild/artifact/org/jenkins-ci/main/jenkins-war/2.465-rc35085.d8404165142f/jenkins-war-2.465-rc35085.d8404165142f.war
 # Define JENKINS_TEST_WAR_URL as an ENV
 ENV JENKINS_TEST_WAR_URL=${JENKINS_TEST_WAR_URL}
 
