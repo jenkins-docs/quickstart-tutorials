@@ -12,7 +12,7 @@ commons-lang3-api:3.14.0-76.vda_5591261cfe
 commons-text-api:1.12.0-119.v73ef73f2345d
 configuration-as-code:1810.v9b_c30a_249a_4c
 credentials-binding:679.v6288482e873c
-credentials:1350.v1b_df4d227d1b_
+credentials:1355.v46f52a_b_98d64
 display-url-api:2.204.vf6fddd8a_8b_e9
 durable-task:555.v6802fe0f0b_82
 echarts-api:5.5.0-1
@@ -34,7 +34,6 @@ jaxb:2.3.9-1
 jjwt-api:0.11.5-112.ve82dfb_224b_a_d
 jquery3-api:3.7.1-2
 junit:1265.v65b_14fa_f12f0
-locale:511.v212370760160
 mailer:472.vf7c289a_4b_420
 matrix-auth:3.2.2
 matrix-project:832.va_66e270d2946
