@@ -1,7 +1,7 @@
-FROM jenkins/ssh-agent:5.38.0 as ssh-agent
+FROM jenkins/ssh-agent:5.42.0 as ssh-agent
 ARG NODE_MAJOR=20
 
-# ca-certificates because curl will need it later on for the node installation
+# ca-certificates because curl uses certificates from ca-certificates
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl gnupg && \
     # Installing nodejs
     mkdir -p /etc/apt/keyrings && \
