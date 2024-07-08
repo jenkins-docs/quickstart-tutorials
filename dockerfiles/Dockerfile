@@ -1,5 +1,5 @@
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
-ARG JENKINS_VERSION=2.466
+ARG JENKINS_VERSION=2.466-jdk17
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
 ARG JENKINS_TEST_VERSION=2.467-rc35102.e0469e57fcdb_
 
