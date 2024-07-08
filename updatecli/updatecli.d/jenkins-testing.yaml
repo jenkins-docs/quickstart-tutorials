@@ -56,16 +56,6 @@ targets:
     name: "[jenkins-controller] Bump Jenkins test version in dockerfiles/Dockerfile"
     sourceid: JenkinsLatestTestVersion  # The source of the new Jenkins test version
     scmid: default  # The SCM to be used
-  setJenkinsLatestTestURL:
-    kind: dockerfile
-    spec:
-      file: dockerfiles/Dockerfile
-      instruction:
-        keyword: "ARG"
-        matcher: "JENKINS_TEST_WAR_URL"
-    name: "[jenkins-controller] Bump Jenkins test URL  in dockerfiles/Dockerfile"
-    sourceid: JenkinsLatestTestVersionURL
-    scmid: default
 
 # The 'actions' section defines the actions to be taken after the targets are updated.
 actions:
