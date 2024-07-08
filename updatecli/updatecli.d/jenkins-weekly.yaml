@@ -1,0 +1,57 @@
+---
+name: Bump Jenkins' Weekly version in the controller Dockerfile
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  JenkinsLatestWeekly:
+    name: Get the latest Jenkins Weekly version
+    kind: jenkins
+    spec:
+        release: weekly
+
+conditions:
+  # Test that the latest Weekly Jenkins version exists
+  jenkinsWeekly:
+    kind: jenkins
+    spec:
+      release: weekly
+  # Test that the docker image exists
+  dockerImage:
+    kind: dockerimage
+    disablesourceinput: true
+    spec:
+      image: "jenkins/jenkins"
+      tag: '{{ source "JenkinsLatestWeekly" }}-jdk17'
+
+targets:
+  setJenkinsLatestWeekly:
+    kind: dockerfile
+    spec:
+      file: dockerfiles/Dockerfile
+      instruction:
+        keyword: "ARG"
+        matcher: "JENKINS_VERSION"
+    name: "[jenkins-controller] Bump Jenkins Weekly version in dockerfiles/Dockerfile"
+    sourceid: JenkinsLatestWeekly
+    scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Update Jenkins Weekly versions to {{ source "JenkinsLatestWeekly" }} in the controller Dockerfile
+    spec:
+      labels:
+        - dependencies
+        - chore
