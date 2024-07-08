@@ -69,7 +69,7 @@ actions:
   default:
     kind: github/pullrequest
     scmid: default # Links this action to the default SCM configuration
-    title: Update Jenkins Weekly versions to {{ source "JenkinsLatestWeekly" }} in the controller Dockerfile
+    title: Update Jenkins Weekly versions to {{ source "JenkinsLatestWeekly" }}-jdk17 in the controller Dockerfile
     spec:
       labels:
         - dependencies # Label for the pull request
