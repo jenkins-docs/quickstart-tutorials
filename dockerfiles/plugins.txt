@@ -77,6 +77,6 @@ workflow-durable-task-step:1360.v82d13453da_a_f
 workflow-job:1400.v7fd111b_ec82f
 workflow-multibranch:783.787.v50539468395f
 workflow-scm-step:427.v4ca_6512e7df1
-workflow-step-api:657.v03b_e8115821b_
+workflow-step-api:678.v3ee58b_469476
 workflow-support:907.v6713a_ed8a_573
 ws-cleanup:0.46
