@@ -1,7 +1,7 @@
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
-ARG JENKINS_VERSION=2.466-jdk17
+ARG JENKINS_VERSION=2.467-jdk17
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
-ARG JENKINS_TEST_VERSION=2.467-rc35102.e0469e57fcdb_
+ARG JENKINS_TEST_VERSION=2.468-rc35117.17e6a_5d39c04
 
 # We then use the official Jenkins image with the specified version as our base image.
 FROM jenkins/jenkins:"${JENKINS_VERSION}"
