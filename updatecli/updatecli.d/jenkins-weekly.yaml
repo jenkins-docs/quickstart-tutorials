@@ -1,5 +1,5 @@
 ---
-name: Bump Jenkins' LTS version in the controller Dockerfile
+name: Bump Jenkins' Weekly version in the controller Dockerfile
 
 scms:
   default:
@@ -14,35 +14,35 @@ scms:
       branch: "{{ .github.branch }}"
 
 sources:
-  JenkinsLatestLTS:
-    name: Get the latest Jenkins LTS version
-    kind: shell
+  JenkinsLatestWeekly:
+    name: Get the latest Jenkins Weekly version
+    kind: jenkins
     spec:
-      command: bash ./updatecli/scripts/jenkins-lts.sh 0 # source input value passed as argument
+      release: weekly
 
 conditions:
-  # Test that the latest LTS Jenkins version exists
-  jenkinsLatestLTSVersion:
+  # Test that the latest Weekly Jenkins version exists
+  jenkinsLatestWeeklyVersion:
     kind: jenkins
-    sourceid: JenkinsLatestLTS
+    sourceid: JenkinsLatestWeekly
 
 targets:
-  setJenkinsLatestLTS:
+  setJenkinsLatestWeekly:
     kind: dockerfile
     spec:
       file: dockerfiles/Dockerfile
       instruction:
         keyword: "ARG"
         matcher: "JENKINS_VERSION"
-    name: "[jenkins-controller] Bump Jenkins LTS version in dockerfiles/Dockerfile"
-    sourceid: JenkinsLatestLTS
+    name: "[jenkins-controller] Bump Jenkins Weekly version in dockerfiles/Dockerfile"
+    sourceid: JenkinsLatestWeekly
     scmid: default
 
 actions:
   default:
     kind: github/pullrequest
     scmid: default
-    title: Update Jenkins LTS versions to {{ source "JenkinsLatestLTS" }} in the controller Dockerfile
+    title: Update Jenkins Weekly versions to {{ source "JenkinsLatestWeekly" }} in the controller Dockerfile
     spec:
       labels:
         - dependencies
