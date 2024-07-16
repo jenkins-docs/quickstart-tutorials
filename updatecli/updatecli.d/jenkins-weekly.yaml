@@ -1,49 +1,76 @@
 ---
+# This YAML configuration defines a pipeline for automatically updating the Jenkins Weekly version
+# in a Dockerfile. It utilizes various components such as sources, conditions, targets, and actions
+# to achieve this automation.
+
+# Define the pipeline's name and the SCM (Source Control Management) configurations.
 name: Bump Jenkins' Weekly version in the controller Dockerfile
 
 scms:
   default:
     kind: github
     spec:
-      user: "{{ .github.user }}"
-      email: "{{ .github.email }}"
-      owner: "{{ .github.owner }}"
-      repository: "{{ .github.repository }}"
-      token: "{{ requiredEnv .github.token }}"
-      username: "{{ .github.username }}"
-      branch: "{{ .github.branch }}"
+      user: "{{ .github.user }}" # GitHub user for authentication
+      email: "{{ .github.email }}" # Email associated with the GitHub user
+      owner: "{{ .github.owner }}" # Owner of the GitHub repository
+      repository: "{{ .github.repository }}" # Name of the GitHub repository
+      token: "{{ requiredEnv .github.token }}" # GitHub token for authentication
+      username: "{{ .github.username }}" # GitHub username
+      branch: "{{ .github.branch }}" # Branch to apply changes
 
+# Define the sources for the pipeline. These are the origins of data used in the pipeline.
 sources:
   JenkinsLatestWeekly:
     name: Get the latest Jenkins Weekly version
     kind: jenkins
     spec:
-      release: weekly
+        release: weekly # Specifies that the weekly release of Jenkins is to be fetched
+  JenkinsLatestWeeklyJDK17:
+    name: Get the latest Jenkins Weekly version with JDK 17
+    kind: jenkins
+    spec:
+        release: weekly # Specifies that the weekly release of Jenkins is to be fetched
+        jdk: 17 # Specifies JDK 17 for the Jenkins version
+    transformers:
+      - addsuffix: "-jdk17" # Adds a suffix to the version to denote JDK 17
 
+# Define conditions that must be met for the pipeline to proceed.
 conditions:
   # Test that the latest Weekly Jenkins version exists
-  jenkinsLatestWeeklyVersion:
+  jenkinsWeekly:
     kind: jenkins
-    sourceid: JenkinsLatestWeekly
+    sourceid: JenkinsLatestWeekly # Links this condition to the JenkinsLatestWeekly source
+    spec:
+      release: weekly
+  # Test that the docker image exists
+  dockerImage:
+    kind: dockerimage
+    sourceid: JenkinsLatestWeekly # Links this condition to the JenkinsLatestWeekly source
+    spec:
+      image: "jenkins/jenkins" # Specifies the Docker image to check
+    transformers:
+      - addsuffix: "-jdk17" # Adds a suffix to denote JDK 17
 
+# Define the targets for the pipeline. These are the end goals the pipeline aims to achieve.
 targets:
   setJenkinsLatestWeekly:
     kind: dockerfile
+    sourceid: JenkinsLatestWeeklyJDK17 # Links this target to the JenkinsLatestWeeklyJDK17 source
     spec:
-      file: dockerfiles/Dockerfile
+      file: dockerfiles/Dockerfile # Specifies the Dockerfile to be updated
       instruction:
-        keyword: "ARG"
-        matcher: "JENKINS_VERSION"
+        keyword: "ARG" # Specifies the Dockerfile instruction to update
+        matcher: "JENKINS_VERSION" # Specifies the argument to be updated
     name: "[jenkins-controller] Bump Jenkins Weekly version in dockerfiles/Dockerfile"
-    sourceid: JenkinsLatestWeekly
-    scmid: default
+    scmid: default # Links this target to the default SCM configuration
 
+# Define the actions to be taken once the conditions are met and targets are ready.
 actions:
   default:
     kind: github/pullrequest
-    scmid: default
-    title: Update Jenkins Weekly versions to {{ source "JenkinsLatestWeekly" }} in the controller Dockerfile
+    scmid: default # Links this action to the default SCM configuration
+    title: Update Jenkins Weekly versions to {{ source "JenkinsLatestWeekly" }}-jdk17 in the controller Dockerfile
     spec:
       labels:
-        - dependencies
-        - chore
+        - dependencies # Label for the pull request
+        - chore # Label for the pull request
