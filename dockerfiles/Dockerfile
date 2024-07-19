@@ -45,11 +45,11 @@ RUN echo "${JENKINS_TEST_VERSION}" > /usr/share/jenkins/ref/jenkins.install.Upgr
 
 # Copy the plugins.txt file from the build context to /usr/share/jenkins/ref/plugins.txt inside the image.
 # This file lists the plugins to be installed in Jenkins.
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt.override
 
 # Use the Jenkins plugin CLI to install the plugins listed in plugins.txt.
-RUN jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
+RUN ln -s /usr/share/jenkins/ref/plugins.txt.override /usr/share/jenkins/ref/plugins.txt && jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
 
 # Copy a pre-configured Jenkins configuration file (jenkins.yaml) to /usr/share/jenkins/ref/jenkins.yaml inside the image.
 # This file contains settings for Jenkins.
-COPY jenkins.yaml /usr/share/jenkins/ref/jenkins.yaml
+COPY jenkins.yaml /usr/share/jenkins/ref/jenkins.yaml.override
