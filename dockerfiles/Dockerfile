@@ -25,11 +25,11 @@ USER jenkins
 RUN echo "${JENKINS_VERSION}" > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 
 # We copy a list of plugins to install to the Jenkins ref directory in the image.
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt.override
 
 # We use the Jenkins plugin CLI to install the plugins listed in the plugins.txt file.
-RUN jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
+RUN ln -s /usr/share/jenkins/ref/plugins.txt.override /usr/share/jenkins/ref/plugins.txt && jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
 
 # We copy a pre-configured Jenkins configuration file to the Jenkins ref directory in the image.
 # This allows us to pre-configure Jenkins with our desired settings.
-COPY jenkins.yaml /usr/share/jenkins/ref/jenkins.yaml
+COPY jenkins.yaml /usr/share/jenkins/ref/jenkins.yaml.override
