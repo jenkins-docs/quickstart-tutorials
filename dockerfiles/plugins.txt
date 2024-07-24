@@ -33,7 +33,7 @@ javax-mail-api:1.6.2-10
 jaxb:2.3.9-1
 jjwt-api:0.11.5-112.ve82dfb_224b_a_d
 jquery3-api:3.7.1-2
-junit:1265.v65b_14fa_f12f0
+junit:1279.v72cf99b_25c43
 locale:519.v4e20f313cfa_f
 mailer:472.vf7c289a_4b_420
 matrix-auth:3.2.2
