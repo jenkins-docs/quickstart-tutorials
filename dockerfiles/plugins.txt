@@ -3,7 +3,7 @@ antisamy-markup-formatter:162.v0e6ec0fcfcf6
 apache-httpcomponents-client-4-api:4.5.14-208.v438351942757
 bootstrap5-api:5.3.3-1
 bouncycastle-api:2.30.1.78.1-248.ve27176eb_46cb_
-branch-api:2.1169.va_f810c56e895
+branch-api:2.1178.v969d9eb_c728e
 build-timeout:1.33
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.0
@@ -61,7 +61,7 @@ resource-disposer:0.23
 scm-api:690.vfc8b_54395023
 script-security:1341.va_2819b_414686
 snakeyaml-api:2.2-111.vc6598e30cc65
-ssh-credentials:342.ve5a_f1db_5a_132
+ssh-credentials:343.v884f71d78167
 ssh-slaves:2.973.v0fa_8c0dea_f9f
 sshd:3.330.vc866a_8389b_58
 structs:338.v848422169819
