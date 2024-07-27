@@ -19,7 +19,7 @@ echarts-api:5.5.0-1
 font-awesome-api:6.5.2-1
 git-client:5.0.0
 git:5.2.2
-github-api:1.318-461.v7a_c09c9fa_d63
+github-api:1.321-468.v6a_9f5f2d5a_7e
 github-branch-source:1790.v5a_7859812c8d
 github:1.39.0
 gradle:2.12
@@ -57,7 +57,7 @@ pipeline-stage-view:2.34
 plain-credentials:183.va_de8f1dd5a_2b_
 plugin-util-api:4.1.0
 resource-disposer:0.23
-scm-api:690.vfc8b_54395023
+scm-api:696.v778d637b_a_762
 script-security:1341.va_2819b_414686
 snakeyaml-api:2.2-111.vc6598e30cc65
 ssh-credentials:343.v884f71d78167
