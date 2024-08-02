@@ -9,7 +9,7 @@ caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.0
 cloudbees-folder:6.942.vb_43318a_156b_2
 commons-lang3-api:3.14.0-76.vda_5591261cfe
-commons-text-api:1.12.0-119.v73ef73f2345d
+commons-text-api:1.12.0-129.v99a_50df237f7
 configuration-as-code:1836.vccda_4a_122a_a_e
 credentials-binding:681.vf91669a_32e45
 credentials:1371.vfee6b_095f0a_3
@@ -20,7 +20,7 @@ font-awesome-api:6.5.2-1
 git-client:5.0.0
 git:5.2.2
 github-api:1.321-468.v6a_9f5f2d5a_7e
-github-branch-source:1790.v5a_7859812c8d
+github-branch-source:1793.v1831e9c68d77
 github:1.39.0
 gradle:2.12
 instance-identity:185.v303dc7c645f9
@@ -71,8 +71,8 @@ variant:60.v7290fc0eb_b_cd
 workflow-aggregator:600.vb_57cdd26fdd7
 workflow-api:1322.v857eeeea_9902
 workflow-basic-steps:1058.vcb_fc1e3a_21a_9
-workflow-cps:3908.vd6b_b_5a_a_54010
-workflow-durable-task-step:1360.v82d13453da_a_f
+workflow-cps:3922.va_f73b_7c4246b_
+workflow-durable-task-step:1364.v2fd76fb_6fd41
 workflow-job:1436.vfa_244484591f
 workflow-multibranch:791.v28fb_f74dfca_e
 workflow-scm-step:427.v4ca_6512e7df1
