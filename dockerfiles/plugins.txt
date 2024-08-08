@@ -1,4 +1,4 @@
-ant:497.v94e7d9fffa_b_9
+ant:511.v0a_a_1a_334f41b_
 antisamy-markup-formatter:162.v0e6ec0fcfcf6
 apache-httpcomponents-client-4-api:4.5.14-208.v438351942757
 bootstrap5-api:5.3.3-1
@@ -14,11 +14,11 @@ configuration-as-code:1836.vccda_4a_122a_a_e
 credentials-binding:681.vf91669a_32e45
 credentials:1371.vfee6b_095f0a_3
 display-url-api:2.204.vf6fddd8a_8b_e9
-durable-task:555.v6802fe0f0b_82
+durable-task:568.v8fb_5c57e8417
 echarts-api:5.5.0-1
 font-awesome-api:6.5.2-1
 git-client:5.0.0
-git:5.2.2
+git:5.3.0
 github-api:1.321-468.v6a_9f5f2d5a_7e
 github-branch-source:1793.v1831e9c68d77
 github:1.39.0
@@ -33,7 +33,7 @@ javax-mail-api:1.6.2-10
 jaxb:2.3.9-1
 jjwt-api:0.11.5-112.ve82dfb_224b_a_d
 jquery3-api:3.7.1-2
-junit:1280.v310a_78b_9a_1e0
+junit:1284.vf75d778f98c5
 locale:519.v4e20f313cfa_f
 mailer:472.vf7c289a_4b_420
 matrix-auth:3.2.2
@@ -60,7 +60,7 @@ plugin-util-api:4.1.0
 resource-disposer:0.23
 scm-api:696.v778d637b_a_762
 script-security:1341.va_2819b_414686
-snakeyaml-api:2.2-111.vc6598e30cc65
+snakeyaml-api:2.2-121.v5a_68b_9300b_d4
 ssh-credentials:343.v884f71d78167
 ssh-slaves:2.973.v0fa_8c0dea_f9f
 sshd:3.330.vc866a_8389b_58
