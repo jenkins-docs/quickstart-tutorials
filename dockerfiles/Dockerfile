@@ -1,13 +1,13 @@
 # Dockerfile for setting up a Jenkins environment with a specific version and pre-configured settings.
 
 # Define the Jenkins version to use for the base image.
-ARG JENKINS_VERSION=2.470-jdk17
+ARG JENKINS_VERSION=2.471-jdk17
 
 # Use the official Jenkins Docker image with the specified version.
 FROM jenkins/jenkins:${JENKINS_VERSION}
 
 # Define a specific Jenkins test version for testing purposes.
-ARG JENKINS_TEST_VERSION=2.471-rc35177.dd52929b_a_337
+ARG JENKINS_TEST_VERSION=2.472-rc35210.d0b_b_d36b_e005
 # Make the Jenkins test version available as an environment variable.
 ENV JENKINS_TEST_VERSION=$JENKINS_TEST_VERSION
 
