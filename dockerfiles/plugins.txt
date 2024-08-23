@@ -20,9 +20,9 @@ font-awesome-api:6.6.0-1
 git-client:5.0.0
 git:5.3.0
 github-api:1.321-475.vf7ef62885c83
-github-branch-source:1793.v1831e9c68d77
+github-branch-source:1797.v86fdb_4d57d43
 github:1.40.0
-gradle:2.12
+gradle:2.12.1
 instance-identity:185.v303dc7c645f9
 ionicons-api:74.v93d5eb_813d5f
 jackson2-api:2.17.0-379.v02de8ec9f64c
@@ -33,7 +33,7 @@ javax-mail-api:1.6.2-10
 jaxb:2.3.9-1
 jjwt-api:0.11.5-112.ve82dfb_224b_a_d
 jquery3-api:3.7.1-2
-junit:1291.v60776881903c
+junit:1296.vb_f538b_c88630
 mailer:472.vf7c289a_4b_420
 matrix-auth:3.2.2
 matrix-project:832.va_66e270d2946
@@ -72,7 +72,7 @@ workflow-aggregator:600.vb_57cdd26fdd7
 workflow-api:1336.vee415d95c521
 workflow-basic-steps:1058.vcb_fc1e3a_21a_9
 workflow-cps:3943.v3519a_3260660
-workflow-durable-task-step:1364.v2fd76fb_6fd41
+workflow-durable-task-step:1371.vb_7cec8f3b_95e
 workflow-job:1436.vfa_244484591f
 workflow-multibranch:795.ve0cb_1f45ca_9a_
 workflow-scm-step:427.v4ca_6512e7df1
