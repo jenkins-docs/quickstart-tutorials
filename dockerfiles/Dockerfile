@@ -7,7 +7,7 @@ ARG JENKINS_VERSION=2.473-jdk17
 FROM jenkins/jenkins:${JENKINS_VERSION}
 
 # Define a specific Jenkins test version for testing purposes.
-ARG JENKINS_TEST_VERSION=2.474-rc35258.b_81c74cfe120
+ARG JENKINS_TEST_VERSION=2.474-rc35263.dd24b_6b_a_3b_0c
 # Make the Jenkins test version available as an environment variable.
 ENV JENKINS_TEST_VERSION=$JENKINS_TEST_VERSION
 
