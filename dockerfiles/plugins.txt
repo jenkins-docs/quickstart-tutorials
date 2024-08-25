@@ -18,7 +18,7 @@ durable-task:568.v8fb_5c57e8417
 echarts-api:5.5.1-1
 font-awesome-api:6.6.0-1
 git-client:5.0.0
-git:5.3.0
+git:5.4.0
 github-api:1.321-468.v6a_9f5f2d5a_7e
 github-branch-source:1797.v86fdb_4d57d43
 github:1.40.0
