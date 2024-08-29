@@ -23,7 +23,7 @@ jobs:
 
       # This step installs Updatecli in the runner using the updatecli-action
       - name: Install Updatecli in the runner
-        uses: updatecli/updatecli-action@v2.62.0
+        uses: updatecli/updatecli-action@v2.66.0
 
       # This step runs Updatecli in Dry Run mode
       # It uses the "diff" command of updatecli with the specified config and values files

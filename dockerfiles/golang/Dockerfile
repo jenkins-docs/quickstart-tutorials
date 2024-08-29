@@ -1,11 +1,11 @@
-FROM jenkins/ssh-agent:5.44.0 as ssh-agent
+FROM jenkins/ssh-agent:5.46.0 as ssh-agent
 
 # ca-certificates because curl uses certificates from ca-certificates
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
 # Now time to install golang
-ARG GOLANG_VERSION=1.22.5
+ARG GOLANG_VERSION=1.23.0
 ARG TARGETARCH
 ENV ARCHITECTURE=$TARGETARCH
 

@@ -1,11 +1,11 @@
-FROM jenkins/ssh-agent:5.44.0 as ssh-agent
+FROM jenkins/ssh-agent:5.46.0 as ssh-agent
 
 # ca-certificates because curl uses certificates from ca-certificates
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
 # Now time to install maven
-ARG MAVEN_VERSION=3.9.8
+ARG MAVEN_VERSION=3.9.9
 
 # Set SHELL flags for RUN commands to allow -e and pipefail
 # Rationale:https://github.com/hadolint/hadolint/wiki/DL4006
