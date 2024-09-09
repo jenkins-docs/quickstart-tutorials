@@ -16,7 +16,7 @@ credentials:1371.vfee6b_095f0a_3
 display-url-api:2.204.vf6fddd8a_8b_e9
 durable-task:568.v8fb_5c57e8417
 echarts-api:5.5.1-1
-font-awesome-api:6.6.0-1
+font-awesome-api:6.6.0-2
 git-client:5.0.0
 git:5.4.1
 github-api:1.321-468.v6a_9f5f2d5a_7e
