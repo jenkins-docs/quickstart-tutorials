@@ -16,7 +16,7 @@ credentials:1371.vfee6b_095f0a_3
 display-url-api:2.204.vf6fddd8a_8b_e9
 durable-task:568.v8fb_5c57e8417
 echarts-api:5.5.1-1
-font-awesome-api:6.6.0-1
+font-awesome-api:6.6.0-2
 git-client:5.0.0
 git:5.4.1
 github-api:1.321-475.vf7ef62885c83
@@ -43,7 +43,7 @@ mina-sshd-api-core:2.13.2-125.v200281b_61d59
 okhttp-api:4.11.0-179.vdc1e64343d52
 pipeline-build-step:540.vb_e8849e1a_b_d8
 pipeline-graph-analysis:216.vfd8b_ece330ca_
-pipeline-graph-view:332.vb_232ced67fa_9
+pipeline-graph-view:340.v28cecee8b_25f
 pipeline-groovy-lib:730.ve57b_34648c63
 pipeline-input-step:495.ve9c153f6067b_
 pipeline-milestone-step:119.vdfdc43fc3b_9a_
@@ -71,7 +71,7 @@ variant:60.v7290fc0eb_b_cd
 workflow-aggregator:600.vb_57cdd26fdd7
 workflow-api:1336.vee415d95c521
 workflow-basic-steps:1058.vcb_fc1e3a_21a_9
-workflow-cps:3953.v19f11da_8d2fa_
+workflow-cps:3961.ve48ee2c44a_b_3
 workflow-durable-task-step:1371.vb_7cec8f3b_95e
 workflow-job:1436.vfa_244484591f
 workflow-multibranch:795.ve0cb_1f45ca_9a_
