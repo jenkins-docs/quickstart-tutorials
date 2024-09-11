@@ -7,7 +7,7 @@ branch-api:2.1178.v969d9eb_c728e
 build-timeout:1.33
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.1
-cloudbees-folder:6.942.vb_43318a_156b_2
+cloudbees-folder:6.951.v5f91d88d76b_b_
 commons-lang3-api:3.17.0-84.vb_b_938040b_078
 commons-text-api:1.12.0-129.v99a_50df237f7
 configuration-as-code:1850.va_a_8c31d3158b_
@@ -33,7 +33,7 @@ javax-mail-api:1.6.2-10
 jaxb:2.3.9-1
 jjwt-api:0.11.5-112.ve82dfb_224b_a_d
 jquery3-api:3.7.1-2
-junit:1296.vb_f538b_c88630
+junit:1300.v03d9d8a_cf1fb_
 locale:519.v4e20f313cfa_f
 mailer:472.vf7c289a_4b_420
 matrix-auth:3.2.2
