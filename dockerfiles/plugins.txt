@@ -18,11 +18,11 @@ durable-task:577.v2a_8a_4b_7c0247
 echarts-api:5.5.1-1
 font-awesome-api:6.6.0-2
 git-client:5.0.0
-git:5.4.1
+git:5.5.0
 github-api:1.321-468.v6a_9f5f2d5a_7e
 github-branch-source:1797.v86fdb_4d57d43
 github:1.40.0
-gradle:2.12.1
+gradle:2.13
 instance-identity:185.v303dc7c645f9
 ionicons-api:74.v93d5eb_813d5f
 jackson2-api:2.17.0-379.v02de8ec9f64c
