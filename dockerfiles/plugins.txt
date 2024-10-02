@@ -12,7 +12,7 @@ commons-lang3-api:3.17.0-84.vb_b_938040b_078
 commons-text-api:1.12.0-129.v99a_50df237f7
 configuration-as-code:1850.va_a_8c31d3158b_
 credentials-binding:681.vf91669a_32e45
-credentials:1380.va_435002fa_924
+credentials:1381.v2c3a_12074da_b_
 display-url-api:2.204.vf6fddd8a_8b_e9
 durable-task:577.v2a_8a_4b_7c0247
 echarts-api:5.5.1-1
