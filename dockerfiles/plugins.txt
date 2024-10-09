@@ -22,7 +22,7 @@ git:5.5.2
 github-api:1.321-468.v6a_9f5f2d5a_7e
 github-branch-source:1797.v86fdb_4d57d43
 github:1.40.0
-gradle:2.13
+gradle:2.13.1
 instance-identity:201.vd2a_b_5a_468a_a_6
 ionicons-api:74.v93d5eb_813d5f
 jackson2-api:2.17.0-379.v02de8ec9f64c
