@@ -59,7 +59,7 @@ plain-credentials:183.va_de8f1dd5a_2b_
 plugin-util-api:5.1.0
 resource-disposer:0.24
 scm-api:696.v778d637b_a_762
-script-security:1362.v67dc1f0e1b_b_3
+script-security:1365.v4778ca_84b_de5
 snakeyaml-api:2.3-123.v13484c65210a_
 ssh-credentials:343.v884f71d78167
 ssh-slaves:2.973.v0fa_8c0dea_f9f
