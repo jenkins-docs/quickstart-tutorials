@@ -15,7 +15,7 @@ credentials-binding:681.vf91669a_32e45
 credentials:1384.vf0a_2ed06f9c6
 display-url-api:2.204.vf6fddd8a_8b_e9
 durable-task:577.v2a_8a_4b_7c0247
-echarts-api:5.5.1-1
+echarts-api:5.5.1-2
 font-awesome-api:6.6.0-2
 git-client:5.0.0
 git:5.5.2
@@ -72,7 +72,7 @@ variant:60.v7290fc0eb_b_cd
 workflow-aggregator:600.vb_57cdd26fdd7
 workflow-api:1336.vee415d95c521
 workflow-basic-steps:1058.vcb_fc1e3a_21a_9
-workflow-cps:3969.vdc9d3a_efcc6a_
+workflow-cps:3975.v567e2a_1ffa_22
 workflow-durable-task-step:1371.vb_7cec8f3b_95e
 workflow-job:1436.vfa_244484591f
 workflow-multibranch:795.ve0cb_1f45ca_9a_
