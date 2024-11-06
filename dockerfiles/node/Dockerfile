@@ -1,5 +1,5 @@
-FROM jenkins/ssh-agent:5.48.0 as ssh-agent
-ARG NODE_MAJOR=20
+FROM jenkins/ssh-agent:6.1.0 as ssh-agent
+ARG NODE_MAJOR=22
 
 # ca-certificates because curl uses certificates from ca-certificates
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl gnupg && \
