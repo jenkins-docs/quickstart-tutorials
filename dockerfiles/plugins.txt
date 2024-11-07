@@ -3,7 +3,7 @@ antisamy-markup-formatter:162.v0e6ec0fcfcf6
 apache-httpcomponents-client-4-api:4.5.14-208.v438351942757
 bootstrap5-api:5.3.3-1
 bouncycastle-api:2.30.1.78.1-248.ve27176eb_46cb_
-branch-api:2.1197.vfa_d0c47c267d
+branch-api:2.1200.v4b_a_3da_2eb_db_4
 build-timeout:1.33
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.1
