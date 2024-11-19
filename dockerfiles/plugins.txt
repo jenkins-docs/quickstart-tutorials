@@ -34,7 +34,7 @@ jaxb:2.3.9-1
 jjwt-api:0.11.5-112.ve82dfb_224b_a_d
 jquery3-api:3.7.1-2
 junit:1309.v0078b_fecd6ed
-locale:546.v1609030511ca_
+locale:549.v824602fe3393
 mailer:489.vd4b_25144138f
 matrix-auth:3.2.3
 matrix-project:840.v812f627cb_578
