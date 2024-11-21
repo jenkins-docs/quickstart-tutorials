@@ -79,15 +79,21 @@ while true; do
   sleep 2  # Wait for 5 seconds before the next iteration of the loop.
 done
 
+# Check if jenkins_controller is reachable, otherwise fall back to multi_jenkins_controller
+JENKINS_CONTROLLER="jenkins_controller"
+if ! curl -s -f http://jenkins_controller:8080/login > /dev/null; then
+    JENKINS_CONTROLLER="multi_jenkins_controller"
+fi
+
 # Check If Jenkins is running or not
 # If the message is found, awk exits with a non-zero status (1), and the loop continues.
 # If the message is not found, the loop exits, and the "Jenkins is running" message is displayed.
-timeout 60 bash -c 'until curl -s -f http://jenkins_controller:8080/login > /dev/null; do sleep 5; done' && echo "Jenkins is running" || echo "Jenkins is not running"
+timeout 60 bash -c 'until curl -s -f http://$JENKINS_CONTROLLER:8080/login > /dev/null; do sleep 5; done' && echo "Jenkins is running" || echo "Jenkins is not running"
 echo "Jenkins is ready"
 # Get the Jenkins version
-JENKINS_VERSION=$(curl -s -I -k http://admin:admin@jenkins_controller:8080 | grep -i '^X-Jenkins:' | awk '{print $2}')
+JENKINS_VERSION=$(curl -s -I -k http://admin:admin@$JENKINS_CONTROLLER:8080 | grep -i '^X-Jenkins:' | awk '{print $2}')
 echo "Jenkins version is: $JENKINS_VERSION"
 
 # Use the token in the curl command to reload the configuration
-# curl -X POST "http://admin:admin@jenkins_controller:8080/reload-configuration-as-code/?casc-reload-token=$JCASC_TOKEN"
-curl -X POST "http://admin:admin@jenkins_controller:8080/reload-configuration-as-code/?casc-reload-token=thisisnotsecure"
+# curl -X POST "http://admin:admin@$JENKINS_CONTROLLER:8080/reload-configuration-as-code/?casc-reload-token=$JCASC_TOKEN"
+curl -X POST "http://admin:admin@$JENKINS_CONTROLLER:8080/reload-configuration-as-code/?casc-reload-token=thisisnotsecure"

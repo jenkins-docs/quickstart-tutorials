@@ -59,7 +59,6 @@ services:
       - python
       - node
       - android
-      - multi
       - golang
       - default
     # The CASC_RELOAD_TOKEN environment variable is used by the Jenkins controller to restart the Configuration as Code (JCasc) plugin configuration.
