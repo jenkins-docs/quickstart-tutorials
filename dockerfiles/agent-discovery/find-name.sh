@@ -79,16 +79,16 @@ while true; do
   sleep 2  # Wait for 5 seconds before the next iteration of the loop.
 done
 
-# Check if jenkins_controller is reachable, otherwise fall back to multi_jenkins_controller
+## Check if jenkins_controller is reachable, otherwise fall back to multi_jenkins_controller
 JENKINS_CONTROLLER="jenkins_controller"
-if ! curl -s -f "http://${JENKINS_CONTROLLER}:8080/login" > /dev/null; then
+if ! curl -s -f --max-time 60 "http://${JENKINS_CONTROLLER}:8080/login" > /dev/null; then
     echo "Primary controller not reachable, falling back to multi controller..."
-     JENKINS_CONTROLLER="multi_jenkins_controller"
-     if ! curl -s -f "http://${JENKINS_CONTROLLER}:8080/login" > /dev/null; then
-      echo "Error: Neither primary nor multi controller is reachable"
-      exit 1
+    JENKINS_CONTROLLER="multi_jenkins_controller"
+    if ! curl -s -f --max-time 60 "http://${JENKINS_CONTROLLER}:8080/login" > /dev/null; then
+        echo "Error: Neither primary nor multi controller is reachable"
+        exit 1
     fi
- fi
+fi
 
 # Check If Jenkins is running or not
 # If the message is found, awk exits with a non-zero status (1), and the loop continues.
