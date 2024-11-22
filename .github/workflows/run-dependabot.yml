@@ -1,0 +1,19 @@
+name: Run Dependabot
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Dependabot
+        uses: dependabot/fetch-metadata@v1
+        with:
+          package-ecosystem: "github-actions"
+          directory: "/"
+          schedule:
+            interval: "daily"
