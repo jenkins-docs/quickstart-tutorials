@@ -15,5 +15,3 @@ jobs:
         with:
           package-ecosystem: "github-actions"
           directory: "/"
-          schedule:
-            interval: "daily"
