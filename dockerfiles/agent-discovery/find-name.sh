@@ -88,7 +88,8 @@ fi
 # Check If Jenkins is running or not
 # If the message is found, awk exits with a non-zero status (1), and the loop continues.
 # If the message is not found, the loop exits, and the "Jenkins is running" message is displayed.
-timeout 60 bash -c 'until curl -s -f http://$JENKINS_CONTROLLER:8080/login > /dev/null; do sleep 5; done' && echo "Jenkins is running" || echo "Jenkins is not running"
+timeout 60 bash -c "until curl -s -f http://${JENKINS_CONTROLLER}:8080/login > /dev/null; do sleep 5; done" && echo "Jenkins is running" || echo "Jenkins is not running"
+
 echo "Jenkins is ready"
 # Get the Jenkins version
 JENKINS_VERSION=$(curl -s -I -k http://admin:admin@$JENKINS_CONTROLLER:8080 | grep -i '^X-Jenkins:' | awk '{print $2}')
