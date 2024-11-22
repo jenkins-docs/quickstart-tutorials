@@ -84,12 +84,20 @@ JENKINS_CONTROLLER="jenkins_controller"
 if ! curl -s -f "http://${JENKINS_CONTROLLER}:8080/login" > /dev/null; then
     echo "Primary controller not reachable, falling back to multi controller..."
      JENKINS_CONTROLLER="multi_jenkins_controller"
+     if ! curl -s -f "http://${JENKINS_CONTROLLER}:8080/login" > /dev/null; then
+      echo "Error: Neither primary nor multi controller is reachable"
+      exit 1
+    fi
  fi
 
 # Check If Jenkins is running or not
 # If the message is found, awk exits with a non-zero status (1), and the loop continues.
 # If the message is not found, the loop exits, and the "Jenkins is running" message is displayed.
 timeout 60 bash -c "until curl -s -f http://${JENKINS_CONTROLLER}:8080/login > /dev/null; do sleep 5; done" && echo "Jenkins is running" || echo "Jenkins is not running"
+# The colon (:) is a no-op command in Bash, which means it does nothing and always returns a true exit status. It is often used as a placeholder or to evaluate expressions without executing any commands.
+# The ${JENKINS_STARTUP_TIMEOUT:=60} part is a parameter expansion. It checks if the JENKINS_STARTUP_TIMEOUT variable is set and not null. If it is not set, it assigns the value 60 to JENKINS_STARTUP_TIMEOUT
+: "${JENKINS_STARTUP_TIMEOUT:=60}"  # Default to 60 seconds if not set
+timeout "${JENKINS_STARTUP_TIMEOUT}" bash -c "until curl -s -f http://${JENKINS_CONTROLLER}:8080/login > /dev/null; do sleep 5; done" && echo "Jenkins is running" || echo "Jenkins is not running"
 
 echo "Jenkins is ready"
 # Get the Jenkins version
