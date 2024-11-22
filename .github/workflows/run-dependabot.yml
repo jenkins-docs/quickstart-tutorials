@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Dependabot
-        uses: dependabot/dependabot-core@v1
+        uses: dependabot/dependabot-core@v0.288.0
         with:
           package-manager: "github-actions"
           directory: "/"
