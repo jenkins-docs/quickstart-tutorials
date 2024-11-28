@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:6.2.0 as ssh-agent
+FROM jenkins/ssh-agent:6.3.0 as ssh-agent
 
 # ca-certificates because curl uses certificates from ca-certificates
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && apt-get clean && \
