@@ -108,7 +108,7 @@ services:
   # The healthcheck command for each agent checks if the authorized_keys file exists in the /home/jenkins/.ssh directory.
   # The /home/jenkins/.ssh directory in each agent container is mapped to the agent-ssh-dir volume on the host.
   default_agent:
-    image: jenkins/ssh-agent:6.4.0
+    image: jenkins/ssh-agent:6.5.0
     container_name: desktop-jenkins_agent-1
     profiles:
       - default
