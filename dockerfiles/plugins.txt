@@ -7,7 +7,7 @@ branch-api:2.1200.v4b_a_3da_2eb_db_4
 build-timeout:1.33
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.1
-cloudbees-folder:6.973.vc9b_85a_61e4fc
+cloudbees-folder:6.975.v4161e479479f
 commons-lang3-api:3.17.0-84.vb_b_938040b_078
 commons-text-api:1.12.0-129.v99a_50df237f7
 configuration-as-code:1903.v004d55388f30
@@ -62,7 +62,7 @@ scm-api:698.v8e3b_c788f0a_6
 script-security:1369.v9b_98a_4e95b_2d
 snakeyaml-api:2.3-123.v13484c65210a_
 ssh-credentials:349.vb_8b_6b_9709f5b_
-ssh-slaves:2.973.v0fa_8c0dea_f9f
+ssh-slaves:2.1010.v64ec48721231
 sshd:3.330.vc866a_8389b_58
 structs:338.v848422169819
 timestamper:1.28
