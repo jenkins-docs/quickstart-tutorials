@@ -7,7 +7,7 @@ branch-api:2.1206.vd9f35001c95c
 build-timeout:1.33
 caffeine-api:3.1.8-133.v17b_1ff2e0599
 checks-api:2.2.1
-cloudbees-folder:6.975.v4161e479479f
+cloudbees-folder:6.976.v4dc79fb_c458d
 commons-lang3-api:3.17.0-84.vb_b_938040b_078
 commons-text-api:1.12.0-129.v99a_50df237f7
 configuration-as-code:1915.vcdd0a_d0d2625
