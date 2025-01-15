@@ -42,6 +42,11 @@ updates:
     directory: "./dockerfiles/sidekick"
     schedule:
       interval: weekly
+    open-pull-requests-limit: 10    
+  - package-ecosystem: docker
+    directory: "./dockerfiles/agent-discovery"
+    schedule:
+      interval: weekly
     open-pull-requests-limit: 10
   - package-ecosystem: docker
     directory: "./dockerfiles/android"
