@@ -4,7 +4,7 @@ apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
 bootstrap5-api:5.3.3-2
 bouncycastle-api:2.30.1.80-256.vf98926042a_9b_
 branch-api:2.1214.v3f652804588d
-build-timeout:1.35
+build-timeout:1.36
 caffeine-api:3.2.0-161.v691ef352cee1
 checks-api:2.2.3
 cloudbees-folder:6.982.vf165a_16c9507
@@ -16,7 +16,7 @@ credentials:1408.va_622a_b_f5b_1b_1
 display-url-api:2.209.v582ed814ff2f
 durable-task:581.v299a_5609d767
 echarts-api:5.5.1-6
-font-awesome-api:6.6.0-3
+font-awesome-api:6.7.2-1
 git-client:6.1.2
 git:5.7.0
 github-api:1.321-478.vc9ce627ce001
@@ -33,7 +33,7 @@ javax-mail-api:1.6.2-10
 jaxb:2.3.9-1
 jjwt-api:0.11.5-112.ve82dfb_224b_a_d
 jquery3-api:3.7.1-3
-junit:1314.vd966e9a_88895
+junit:1316.v13ec14a_de230
 locale:560.vc5b_91b_3a_2b_68
 mailer:489.vd4b_25144138f
 matrix-auth:3.2.4
