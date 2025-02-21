@@ -7,7 +7,7 @@ config_file="/workspace/quickstart-tutorials/dockerfiles/jenkins.yaml"
 service_url=$(echo "$GITPOD_WORKSPACE_URL" | awk -F/ '{print $3}')
 
 # Define an array of targets
-targets=("maven" "node" "python" "multi" "default")
+targets=("maven" "node" "python" "multi" "cpp" "default")
 
 # Initialize an empty string for the message
 message="As a gentle reminder, the current profiles are: "
