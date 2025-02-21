@@ -283,7 +283,7 @@ services:
     volumes:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   cpp:
-    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:cpp_{BRANCH_SUFFIX}
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:cpp_${BRANCH_SUFFIX}
     environment:
       - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
     container_name: desktop-jenkins_agent-1-cpp
