@@ -205,6 +205,23 @@ services:
       retries: 5
     volumes:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
+  cpp:
+    build: dockerfiles/cpp/.
+    container_name: desktop-jenkins_agent-1-cpp
+    profiles:
+      - cpp
+    depends_on:
+      sidekick_service:
+        condition: service_completed_successfully
+      jenkins_controller:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - agent-ssh-dir:/home/jenkins/.ssh:ro
 volumes:
   jenkins_home: null
   agent-ssh-dir:
