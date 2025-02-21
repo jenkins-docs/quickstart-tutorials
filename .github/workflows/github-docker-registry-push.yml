@@ -213,4 +213,4 @@ jobs:
           context: ./dockerfiles/cpp
           platforms: linux/amd64, linux/aarch64
           push: true
-          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:cpp_agent_${{ env.BRANCH }}
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:cpp__${{ env.BRANCH }}
