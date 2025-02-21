@@ -15,7 +15,7 @@ services:
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /ssh-dir path inside the container
     # The healthcheck command checks if the conductor_ok file exists in the /ssh-dir directory.
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1" ]
       # Checks if the conductor_ok file exists in the /ssh-dir path
       interval: 5s
       timeout: 10s
@@ -42,7 +42,7 @@ services:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
     # The healthcheck command checks if the find-name.sh script can be executed successfully.
     healthcheck:
-      test: ["CMD-SHELL", "/usr/local/bin/find-name.sh || exit 0"]
+      test: [ "CMD-SHELL", "/usr/local/bin/find-name.sh || exit 0" ]
       interval: 5s
       timeout: 10s
       retries: 50
@@ -60,6 +60,7 @@ services:
       - node
       - android
       - golang
+      - cpp
       - default
     # The CASC_RELOAD_TOKEN environment variable is used by the Jenkins controller to restart the Configuration as Code (JCasc) plugin configuration.
     environment:
@@ -77,7 +78,7 @@ services:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1" ]
       # Checks if the conductor_ok file exists in the /ssh-dir path
       interval: 5s
       timeout: 10s
@@ -98,7 +99,7 @@ services:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1" ]
       # Checks if the conductor_ok file exists in the /ssh-dir path
       interval: 5s
       timeout: 10s
@@ -118,7 +119,7 @@ services:
       jenkins_controller:
         condition: service_started
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1" ]
       # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
       interval: 5s
       timeout: 10s
@@ -148,7 +149,7 @@ services:
       jenkins_controller:
         condition: service_started
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1" ]
       # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
       interval: 5s
       timeout: 10s
@@ -166,7 +167,7 @@ services:
       jenkins_controller:
         condition: service_started
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1" ]
       # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
       interval: 5s
       timeout: 10s
@@ -188,7 +189,7 @@ services:
     ports:
       - "3000:3000"
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1" ]
       # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
       interval: 5s
       timeout: 10s
@@ -210,7 +211,7 @@ services:
     ports:
       - "3000:3000"
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1" ]
       # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
       interval: 5s
       timeout: 10s
@@ -231,7 +232,7 @@ services:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1" ]
       # Checks if the conductor_ok file exists in the /ssh-dir path
       interval: 5s
       timeout: 10s
@@ -252,7 +253,7 @@ services:
       - "3000:3000"
       - "5000:5000"
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1" ]
       # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
       interval: 5s
       timeout: 10s
@@ -274,7 +275,7 @@ services:
     ports:
       - "3000:3000"
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1" ]
       # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
       interval: 5s
       timeout: 10s
@@ -282,22 +283,28 @@ services:
     volumes:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   cpp:
-    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:cpp_agent_${BRANCH_SUFFIX}
+    image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:cpp_{BRANCH_SUFFIX}
+    environment:
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
     container_name: desktop-jenkins_agent-1-cpp
     profiles:
       - cpp
     depends_on:
       sidekick_service:
-        condition: service_completed_successfully
+        condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
       jenkins_controller:
         condition: service_started
+    ports:
+      - "3000:3000"
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      test: [ "CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1" ]
+      # Checks if the authorized_keys file exists in the /home/jenkins/.ssh path
       interval: 5s
       timeout: 10s
       retries: 5
     volumes:
-      - agent-ssh-dir:/home/jenkins/.ssh:ro
+      - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
+
 volumes:
   jenkins_home: null
   empty_jenkins_home: null
