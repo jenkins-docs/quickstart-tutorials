@@ -85,6 +85,16 @@ targets:
         matcher: jenkins/ssh-agent
     sourceid: jenkins/ssh-agent
     scmid: default
+  jenkins/cpp-agent:
+    name: '[jenkins/ssh-agent] Bump Docker image tag in "dockerfiles/cpp/Dockerfile"'
+    kind: dockerfile
+    spec:
+      file: dockerfiles/cpp/Dockerfile
+      instruction:
+        keyword: FROM
+        matcher: jenkins/ssh-agent
+    sourceid: jenkins/ssh-agent
+    scmid: default
   default-agent:
     name: '[jenkins/ssh-agent] Bump Docker image tag in "docker-compose.yaml"'
     kind: yaml
