@@ -25,6 +25,7 @@ services:
       - android
       - multi
       - golang
+      - dotnet
       - default
     # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
     depends_on:
@@ -222,6 +223,25 @@ services:
       retries: 5
     volumes:
       - agent-ssh-dir:/home/jenkins/.ssh:ro
+  dotnet:
+    build: dockerfiles/dotnet/.
+    container_name: desktop-jenkins_agent-1-dotnet
+    profiles:
+      - dotnet
+    depends_on:
+      sidekick_service:
+        condition: service_completed_successfully
+      jenkins_controller:
+        condition: service_started
+    ports:
+      - "5000:5000"    
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - agent-ssh-dir:/home/jenkins/.ssh:ro    
 volumes:
   jenkins_home: null
   agent-ssh-dir:
