@@ -52,3 +52,9 @@ multi:
 github_actions:
   - changed-files:
       - any-glob-to-any-file: '/.github/workflows/*'
+
+
+# Add 'dotnet' label to any change to Dockerfile* files within the root dir
+dotnet:
+  - changed-files:
+      - any-glob-to-any-file: 'dockerfiles/dotnet/**'
