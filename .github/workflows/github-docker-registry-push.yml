@@ -214,3 +214,13 @@ jobs:
           platforms: linux/amd64, linux/aarch64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:cpp_${{ env.BRANCH }}
+      
+      - name: Build and push the jenkins agent for dotnet tutorial
+        # This step builds and pushes the Jenkins agent for the C++ tutorial
+        if: contains(env.files, 'dockerfiles/dotnet/Dockerfile')
+        uses: docker/build-push-action@v6
+        with:
+          context: ./dockerfiles/dotnet
+          platforms: linux/amd64, linux/aarch64
+          push: true
+          tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:dotnet_${{ env.BRANCH }}
