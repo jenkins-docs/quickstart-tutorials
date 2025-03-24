@@ -57,7 +57,7 @@ pipeline-stage-step:322.vecffa_99f371c
 pipeline-stage-tags-metadata:2.2247.va_423189a_7dff
 pipeline-stage-view:2.37
 plain-credentials:183.va_de8f1dd5a_2b_
-plugin-util-api:6.0.0
+plugin-util-api:6.1.0
 resource-disposer:0.25
 scm-api:704.v3ce5c542825a_
 script-security:1373.vb_b_4a_a_c26fa_00
