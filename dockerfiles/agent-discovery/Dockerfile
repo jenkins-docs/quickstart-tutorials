@@ -1,7 +1,7 @@
 # This Dockerfile is used to prepare a Debian-based Docker image with several utilities installed.
 
 # We start from the Debian 'bookworm' image dated 2023-11-20.
-FROM debian:bookworm-20250224-slim as prepare-stage
+FROM debian:bookworm-20250317-slim as prepare-stage
 
 # Copy all shell scripts from the current directory to /usr/local/bin/ in the image.
 COPY *sh /usr/local/bin/
