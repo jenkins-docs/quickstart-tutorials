@@ -7,7 +7,7 @@ branch-api:2.1214.v3f652804588d
 build-timeout:1.37
 caffeine-api:3.2.0-166.v72a_6d74b_870f
 checks-api:367.v18b_7f530e54a_
-cloudbees-folder:6.991.v1d5f531726d0
+cloudbees-folder:6.999.v42253c105443
 commons-lang3-api:3.17.0-87.v5cf526e63b_8b_
 commons-text-api:1.13.0-153.v91dcd89e2a_22
 configuration-as-code:1947.v7d33fe23569c
@@ -75,7 +75,7 @@ workflow-api:1366.vf1fb_e1a_f6b_22
 workflow-basic-steps:1079.vce64b_a_929c5a_
 workflow-cps:4050.v8b_a_69b_587c39
 workflow-durable-task-step:1405.v1fcd4a_d00096
-workflow-job:1506.v77f78a_b_8cc5e
+workflow-job:1508.v9cb_c3a_a_89dfd
 workflow-multibranch:803.v08103b_87c280
 workflow-scm-step:437.v05a_f66b_e5ef8
 workflow-step-api:700.v6e45cb_a_5a_a_21
