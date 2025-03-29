@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:6.10.0 as ssh-agent
+FROM jenkins/ssh-agent:6.11.1 as ssh-agent
 
 ARG NODE_MAJOR=20
 
