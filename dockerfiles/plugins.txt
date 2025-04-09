@@ -3,11 +3,11 @@ antisamy-markup-formatter:173.v680e3a_b_69ff3
 apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
 bootstrap5-api:5.3.3-2
 bouncycastle-api:2.30.1.80-256.vf98926042a_9b_
-branch-api:2.1214.v3f652804588d
+branch-api:2.1217.v43d8b_b_d8b_2c7
 build-timeout:1.37
 caffeine-api:3.2.0-166.v72a_6d74b_870f
 checks-api:367.v18b_7f530e54a_
-cloudbees-folder:6.999.v42253c105443
+cloudbees-folder:6.1003.v5338b_c4d6992
 commons-lang3-api:3.17.0-87.v5cf526e63b_8b_
 commons-text-api:1.13.0-153.v91dcd89e2a_22
 configuration-as-code:1953.v148f87d74b_1e
@@ -34,7 +34,7 @@ javax-mail-api:1.6.2-11
 jaxb:2.3.9-133.vb_ec76a_73f706
 jjwt-api:0.11.5-120.v0268cf544b_89
 jquery3-api:3.7.1-3
-junit:1319.v000471ca_e5e2
+junit:1321.v399b_3e395b_5a_
 locale:566.v3323643741cc
 mailer:489.vd4b_25144138f
 matrix-auth:3.2.6
@@ -71,7 +71,7 @@ token-macro:444.v52de7e9c573d
 trilead-api:2.192.vc50a_d147e369
 variant:70.va_d9f17f859e0
 workflow-aggregator:608.v67378e9d3db_1
-workflow-api:1366.vf1fb_e1a_f6b_22
+workflow-api:1371.ve334280b_d611
 workflow-basic-steps:1079.vce64b_a_929c5a_
 workflow-cps:4080.va_15b_44a_91525
 workflow-durable-task-step:1405.v1fcd4a_d00096
