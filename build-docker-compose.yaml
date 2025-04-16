@@ -63,7 +63,7 @@ services:
       timeout: 10s
       retries: 5
   default_agent:
-    image: jenkins/ssh-agent:6.12.0
+    image: jenkins/ssh-agent:6.12.0-jdk21
     container_name: desktop-jenkins_agent-1
     profiles:
       - default
