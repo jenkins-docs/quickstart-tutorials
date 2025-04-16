@@ -25,14 +25,14 @@ sources:
     kind: jenkins
     spec:
         release: weekly # Specifies that the weekly release of Jenkins is to be fetched
-  JenkinsLatestWeeklyJDK17:
-    name: Get the latest Jenkins Weekly version with JDK 17
+  JenkinsLatestWeeklyJDK21:
+    name: Get the latest Jenkins Weekly version with JDK 21
     kind: jenkins
     spec:
         release: weekly # Specifies that the weekly release of Jenkins is to be fetched
-        jdk: 17 # Specifies JDK 17 for the Jenkins version
+        jdk: 21 # Specifies JDK 21 for the Jenkins version
     transformers:
-      - addsuffix: "-jdk17" # Adds a suffix to the version to denote JDK 17
+      - addsuffix: "-jdk21" # Adds a suffix to the version to denote JDK 21
 
 # Define conditions that must be met for the pipeline to proceed.
 conditions:
@@ -49,13 +49,13 @@ conditions:
     spec:
       image: "jenkins/jenkins" # Specifies the Docker image to check
     transformers:
-      - addsuffix: "-jdk17" # Adds a suffix to denote JDK 17
+      - addsuffix: "-jdk21" # Adds a suffix to denote JDK 21
 
 # Define the targets for the pipeline. These are the end goals the pipeline aims to achieve.
 targets:
   setJenkinsLatestWeekly:
     kind: dockerfile
-    sourceid: JenkinsLatestWeeklyJDK17 # Links this target to the JenkinsLatestWeeklyJDK17 source
+    sourceid: JenkinsLatestWeeklyJDK21 # Links this target to the JenkinsLatestWeeklyJDK21 source
     spec:
       file: dockerfiles/Dockerfile # Specifies the Dockerfile to be updated
       instruction:
@@ -69,7 +69,7 @@ actions:
   default:
     kind: github/pullrequest
     scmid: default # Links this action to the default SCM configuration
-    title: Update Jenkins Weekly versions to {{ source "JenkinsLatestWeekly" }}-jdk17 in the controller Dockerfile
+    title: Update Jenkins Weekly versions to {{ source "JenkinsLatestWeekly" }}-jdk21 in the controller Dockerfile
     spec:
       labels:
         - dependencies # Label for the pull request
