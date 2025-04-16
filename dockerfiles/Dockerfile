@@ -4,7 +4,7 @@
 ARG JENKINS_VERSION=2.506-jdk21
 
 # We then use the official Jenkins image with the specified version as our base image.
-FROM jenkins/jenkins:"${JENKINS_VERSION}"-jdk21
+FROM jenkins/jenkins:"${JENKINS_VERSION}"
 
 # We switch to the root user to have the necessary permissions for the upcoming operations.
 USER root
