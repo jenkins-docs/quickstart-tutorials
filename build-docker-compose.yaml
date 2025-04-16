@@ -63,7 +63,7 @@ services:
       timeout: 10s
       retries: 5
   default_agent:
-    image: jenkins/ssh-agent:6.10.0
+    image: jenkins/ssh-agent:6.12.0
     container_name: desktop-jenkins_agent-1
     profiles:
       - default
@@ -234,14 +234,14 @@ services:
       jenkins_controller:
         condition: service_started
     ports:
-      - "5000:5000"    
+      - "5000:5000"
     healthcheck:
       test: ["CMD-SHELL", "[ -f /home/jenkins/.ssh/authorized_keys ] || exit 1"]
       interval: 5s
       timeout: 10s
       retries: 5
     volumes:
-      - agent-ssh-dir:/home/jenkins/.ssh:ro    
+      - agent-ssh-dir:/home/jenkins/.ssh:ro
 volumes:
   jenkins_home: null
   agent-ssh-dir:

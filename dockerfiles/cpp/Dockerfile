@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:6.10.0
+FROM jenkins/ssh-agent:6.12.0
 
 # Install necessary C++ build tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
