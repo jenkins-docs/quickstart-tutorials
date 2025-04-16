@@ -1,7 +1,7 @@
 ant:513.vde9e7b_a_0da_0f
 antisamy-markup-formatter:173.v680e3a_b_69ff3
 apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
-bootstrap5-api:5.3.3-2
+bootstrap5-api:5.3.3-3
 bouncycastle-api:2.30.1.80-256.vf98926042a_9b_
 branch-api:2.1217.v43d8b_b_d8b_2c7
 build-timeout:1.38
