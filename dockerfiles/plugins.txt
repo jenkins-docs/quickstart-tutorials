@@ -52,10 +52,10 @@ pipeline-milestone-step:127.vb_52887ca_3b_6d
 pipeline-model-api:2.2255.v56a_15e805f12
 pipeline-model-definition:2.2255.v56a_15e805f12
 pipeline-model-extensions:2.2255.v56a_15e805f12
-pipeline-rest-api:2.37
+pipeline-rest-api:2.38
 pipeline-stage-step:322.vecffa_99f371c
 pipeline-stage-tags-metadata:2.2255.v56a_15e805f12
-pipeline-stage-view:2.37
+pipeline-stage-view:2.38
 plain-credentials:195.vb_906e9073dee
 plugin-util-api:6.1.0
 resource-disposer:0.25
