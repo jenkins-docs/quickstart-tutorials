@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:6.15.0-jdk21 as ssh-agent
+FROM jenkins/ssh-agent:6.16.0-jdk21 as ssh-agent
 
 # ca-certificates because curl uses certificates from ca-certificates
 RUN apt-get update && apt-get install -y --no-install-recommends adb build-essential ca-certificates curl file git python3 python3-pip unzip
