@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:6.14.0-jdk21 AS ssh-agent
+FROM jenkins/ssh-agent:6.16.0-jdk21 AS ssh-agent
 
 # install dotnet dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends libc6 libgcc1 libgssapi-krb5-2 libicu72 libssl3 libstdc++6 zlib1g wget && apt-get clean && \
