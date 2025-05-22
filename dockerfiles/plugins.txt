@@ -11,7 +11,7 @@ cloudbees-folder:6.1012.v79a_86a_1ea_c1f
 commons-lang3-api:3.17.0-87.v5cf526e63b_8b_
 commons-text-api:1.13.1-176.v74d88f22034b_
 configuration-as-code:1967.va_968e15fd05b_
-coverage:2.5.0
+coverage:2.6.0
 credentials-binding:687.v619cb_15e923f
 credentials:1415.v831096eb_5534
 display-url-api:2.209.v582ed814ff2f
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.15.0-161.vb_200831a_c15b_
 okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:567.vea_ce550ece97
 pipeline-graph-analysis:237.v2b_75640ca_888
-pipeline-graph-view:533.v1610543dc627
+pipeline-graph-view:536.vd9674ce4b_46a_
 pipeline-groovy-lib:752.vdddedf804e72
 pipeline-input-step:517.vf8e782ee645c
 pipeline-milestone-step:138.v78ca_76831a_43
