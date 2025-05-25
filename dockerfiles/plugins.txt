@@ -26,7 +26,7 @@ github:1.43.0
 gradle:2.15
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:88.va_4187cb_eddf1
-jackson2-api:2.18.3-402.v74c4eb_f122b_2
+jackson2-api:2.19.0-404.vb_b_0fd2fea_e10
 jakarta-activation-api:2.1.3-2
 jakarta-mail-api:2.1.3-2
 javax-activation-api:1.2.0-8
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.15.0-161.vb_200831a_c15b_
 okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:567.vea_ce550ece97
 pipeline-graph-analysis:237.v2b_75640ca_888
-pipeline-graph-view:536.vd9674ce4b_46a_
+pipeline-graph-view:538.v647ee88449dd
 pipeline-groovy-lib:752.vdddedf804e72
 pipeline-input-step:517.vf8e782ee645c
 pipeline-milestone-step:138.v78ca_76831a_43
