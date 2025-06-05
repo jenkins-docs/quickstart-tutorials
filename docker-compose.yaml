@@ -14,6 +14,8 @@ services:
     volumes:
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /ssh-dir path inside the container
     # The healthcheck command checks if the conductor_ok file exists in the /ssh-dir directory.
+    networks:
+      - jenkins-net
     healthcheck:
       test: ["CMD-SHELL", "[ -f /ssh-dir/conductor_ok ] || exit 1"]
       # Checks if the conductor_ok file exists in the /ssh-dir path
@@ -38,6 +40,8 @@ services:
       - dotnet
       - default
     # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -76,6 +80,10 @@ services:
       # Mounting the token as "container secret" makes it available in JCasc as the variable ${CASC_RELOAD_TOKEN}
       - ./secrets/jcasc_token:/run/secrets/CASC_RELOAD_TOKEN:ro
     # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
+    networks:
+      jenkins-net:
+        aliases:
+          - jenkins_controller # Add secondary alias
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -97,6 +105,8 @@ services:
       - empty_jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /app path inside the container
     # This service depends on the sidekick_service (generating SSH keys and JCasc token) completing successfully.
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -115,6 +125,8 @@ services:
     container_name: desktop-jenkins_agent-1
     profiles:
       - default
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -133,6 +145,8 @@ services:
     container_name: desktop-jenkins_agent-1
     profiles:
       - wizard
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -145,6 +159,8 @@ services:
     container_name: desktop-jenkins_agent-1-maven
     profiles:
       - maven
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -163,6 +179,8 @@ services:
     container_name: desktop-jenkins_agent-1-python
     profiles:
       - python
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -183,6 +201,8 @@ services:
     container_name: desktop-jenkins_agent-1-node
     profiles:
       - node
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -205,6 +225,8 @@ services:
     container_name: desktop-jenkins_agent-1-android
     profiles:
       - android
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -227,6 +249,8 @@ services:
       - "8080:8080"
     profiles:
       - multi
+    networks:
+      - jenkins-net
     volumes:
       - jenkins_home:/var/jenkins_home # Mounts the jenkins_home volume to the /var/jenkins_home path inside the container
       - agent-ssh-dir:/ssh-dir # Mounts the agent-ssh-dir volume to the /app path inside the container
@@ -246,6 +270,8 @@ services:
     container_name: desktop-jenkins_agent-1-multi
     profiles:
       - multi
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -269,6 +295,8 @@ services:
     container_name: desktop-jenkins_agent-1-golang
     profiles:
       - golang
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -291,6 +319,8 @@ services:
     container_name: desktop-jenkins_agent-1
     profiles:
       - cpp
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -313,6 +343,8 @@ services:
     container_name: desktop-jenkins_agent-1
     profiles:
       - dotnet
+    networks:
+      - jenkins-net
     depends_on:
       sidekick_service:
         condition: service_completed_successfully # Depends on the successful completion of the sidekick_service
@@ -333,3 +365,8 @@ volumes:
   empty_jenkins_home: null
   agent-ssh-dir:
     name: agent-ssh-dir # Creates a named volume called agent-ssh-dir
+
+networks:
+  jenkins-net:
+    driver: bridge
+    attachable: true
