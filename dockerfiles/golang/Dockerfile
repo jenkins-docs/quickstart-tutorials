@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
   rm -rf /var/lib/apt/lists/*
 
 # Now time to install golang
-ARG GOLANG_VERSION=1.24.3
+ARG GOLANG_VERSION=1.24.4
 ARG TARGETARCH
 ENV ARCHITECTURE=$TARGETARCH
 
