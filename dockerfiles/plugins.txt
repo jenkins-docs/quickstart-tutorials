@@ -1,7 +1,7 @@
 ant:513.vde9e7b_a_0da_0f
 antisamy-markup-formatter:173.v680e3a_b_69ff3
 apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
-bootstrap5-api:5.3.5-1
+bootstrap5-api:5.3.7-1
 bouncycastle-api:2.30.1.80-261.v00c0e2618ec3
 branch-api:2.1226.ve1e7e0b_4b_95f
 build-timeout:1.38
@@ -11,12 +11,12 @@ cloudbees-folder:6.1026.ve06dfa_cf31c3
 commons-lang3-api:3.17.0-87.v5cf526e63b_8b_
 commons-text-api:1.13.1-176.v74d88f22034b_
 configuration-as-code:1971.vf9280461ea_89
-coverage:2.7.0
+coverage:2.7.1
 credentials-binding:687.v619cb_15e923f
 credentials:1415.v831096eb_5534
 display-url-api:2.209.v582ed814ff2f
 durable-task:587.v84b_877235b_45
-echarts-api:5.6.0-4
+echarts-api:5.6.0-5
 font-awesome-api:6.7.2-1
 git-client:6.2.0
 git:5.7.0
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.15.0-161.vb_200831a_c15b_
 okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:571.v08a_fffd4b_0ce
 pipeline-graph-analysis:241.vc3d48fb_b_2582
-pipeline-graph-view:588.v1efd7e219272
+pipeline-graph-view:589.v74b_6361e5234
 pipeline-groovy-lib:752.vdddedf804e72
 pipeline-input-step:527.vd61b_1d3c5078
 pipeline-milestone-step:138.v78ca_76831a_43
@@ -64,9 +64,9 @@ script-security:1373.vb_b_4a_a_c26fa_00
 snakeyaml-api:2.3-125.v4d77857a_b_402
 ssh-credentials:359.v2191c4cf635f
 ssh-slaves:3.1031.v72c6b_883b_869
-sshd:3.353.v2b_d33c46e970
+sshd:3.372.v5d04a_e92d8cf
 structs:350.v3b_30f09f2363
-timestamper:1.29
+timestamper:1.30
 token-macro:444.v52de7e9c573d
 trilead-api:2.209.v0e69b_c43c245
 variant:70.va_d9f17f859e0
@@ -74,7 +74,7 @@ workflow-aggregator:608.v67378e9d3db_1
 workflow-api:1373.v7b_813f10efa_b_
 workflow-basic-steps:1079.vce64b_a_929c5a_
 workflow-cps:4150.ve20ca_b_a_a_2815
-workflow-durable-task-step:1431.v16e66c8a_58b_f
+workflow-durable-task-step:1434.v1b_595c29ddd7
 workflow-job:1540.v295eccc9778f
 workflow-multibranch:806.vb_b_688f609ee9
 workflow-scm-step:437.v05a_f66b_e5ef8
