@@ -3,7 +3,7 @@ antisamy-markup-formatter:173.v680e3a_b_69ff3
 apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
 bootstrap5-api:5.3.7-1
 bouncycastle-api:2.30.1.80-261.v00c0e2618ec3
-branch-api:2.1226.ve1e7e0b_4b_95f
+branch-api:2.1229.ve86b_d02b_5e56
 build-timeout:1.38
 caffeine-api:3.2.0-166.v72a_6d74b_870f
 checks-api:373.vfe7645102093
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.15.0-161.vb_200831a_c15b_
 okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:571.v08a_fffd4b_0ce
 pipeline-graph-analysis:241.vc3d48fb_b_2582
-pipeline-graph-view:590.v06d574696250
+pipeline-graph-view:594.v595395fa_3656
 pipeline-groovy-lib:752.vdddedf804e72
 pipeline-input-step:527.vd61b_1d3c5078
 pipeline-milestone-step:138.v78ca_76831a_43
