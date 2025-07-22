@@ -5,7 +5,7 @@ bootstrap5-api:5.3.7-1
 bouncycastle-api:2.30.1.80-261.v00c0e2618ec3
 branch-api:2.1233.vfb_6b_2b_3ed499
 build-timeout:1.38
-caffeine-api:3.2.0-166.v72a_6d74b_870f
+caffeine-api:3.2.2-178.v353b_8428ed56
 checks-api:373.vfe7645102093
 cloudbees-folder:6.1036.vb_94fd035b_287
 commons-lang3-api:3.18.0-98.v3a_674c06072d
@@ -26,7 +26,7 @@ github:1.44.0
 gradle:2.15
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:88.va_4187cb_eddf1
-jackson2-api:2.19.0-404.vb_b_0fd2fea_e10
+jackson2-api:2.19.2-408.v18248a_324cfe
 jakarta-activation-api:2.1.3-2
 jakarta-mail-api:2.1.3-2
 javax-activation-api:1.2.0-8
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.15.0-161.vb_200831a_c15b_
 okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:571.v08a_fffd4b_0ce
 pipeline-graph-analysis:241.vc3d48fb_b_2582
-pipeline-graph-view:600.vc287d1a_d4b_47
+pipeline-graph-view:603.v23e636851f81
 pipeline-groovy-lib:752.vdddedf804e72
 pipeline-input-step:527.vd61b_1d3c5078
 pipeline-milestone-step:138.v78ca_76831a_43
@@ -73,7 +73,7 @@ variant:70.va_d9f17f859e0
 workflow-aggregator:608.v67378e9d3db_1
 workflow-api:1380.ve03e7a_63d139
 workflow-basic-steps:1079.vce64b_a_929c5a_
-workflow-cps:4168.v7ea_f89c358b_d
+workflow-cps:4169.vb_7e492a_1c7b_e
 workflow-durable-task-step:1434.v1b_595c29ddd7
 workflow-job:1540.v295eccc9778f
 workflow-multibranch:806.vb_b_688f609ee9
