@@ -12,7 +12,7 @@ commons-lang3-api:3.18.0-98.v3a_674c06072d
 commons-text-api:1.13.1-176.v74d88f22034b_
 configuration-as-code:1971.vf9280461ea_89
 coverage:2.7.1
-credentials-binding:696.v256688029804
+credentials-binding:702.vfe613e537e88
 credentials:1415.v831096eb_5534
 display-url-api:2.209.v582ed814ff2f
 durable-task:587.v84b_877235b_45
@@ -49,12 +49,12 @@ pipeline-graph-view:603.v23e636851f81
 pipeline-groovy-lib:752.vdddedf804e72
 pipeline-input-step:527.vd61b_1d3c5078
 pipeline-milestone-step:138.v78ca_76831a_43
-pipeline-model-api:2.2255.v56a_15e805f12
-pipeline-model-definition:2.2255.v56a_15e805f12
-pipeline-model-extensions:2.2255.v56a_15e805f12
+pipeline-model-api:2.2258.v4e96d2b_da_f9b_
+pipeline-model-definition:2.2258.v4e96d2b_da_f9b_
+pipeline-model-extensions:2.2258.v4e96d2b_da_f9b_
 pipeline-rest-api:2.38
 pipeline-stage-step:322.vecffa_99f371c
-pipeline-stage-tags-metadata:2.2255.v56a_15e805f12
+pipeline-stage-tags-metadata:2.2258.v4e96d2b_da_f9b_
 pipeline-stage-view:2.38
 plain-credentials:199.v9f8e1f741799
 plugin-util-api:6.1.0
