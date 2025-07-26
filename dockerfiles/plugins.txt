@@ -13,11 +13,11 @@ commons-text-api:1.13.1-176.v74d88f22034b_
 configuration-as-code:1971.vf9280461ea_89
 coverage:2.7.1
 credentials-binding:702.vfe613e537e88
-credentials:1415.v831096eb_5534
+credentials:1417.vd854994a_f6b_e
 display-url-api:2.209.v582ed814ff2f
-durable-task:587.v84b_877235b_45
+durable-task:594.v093d5387225c
 echarts-api:5.6.0-5
-font-awesome-api:6.7.2-1
+font-awesome-api:7.0.0-1
 git-client:6.2.0
 git:5.7.0
 github-api:1.321-488.v9b_c0da_9533f8
@@ -45,9 +45,9 @@ mina-sshd-api-core:2.15.0-161.vb_200831a_c15b_
 okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:571.v08a_fffd4b_0ce
 pipeline-graph-analysis:241.vc3d48fb_b_2582
-pipeline-graph-view:609.v8a_70a_c44a_376
+pipeline-graph-view:611.v56a_84da_a_4b_a_d
 pipeline-groovy-lib:752.vdddedf804e72
-pipeline-input-step:527.vd61b_1d3c5078
+pipeline-input-step:532.v9e7466cb_4406
 pipeline-milestone-step:138.v78ca_76831a_43
 pipeline-model-api:2.2258.v4e96d2b_da_f9b_
 pipeline-model-definition:2.2258.v4e96d2b_da_f9b_
