@@ -1,2 +1,2 @@
 - Docker version 28.0.4, build b8034c0
-- Docker Compose version v2.37.3
+- Docker Compose version v2.36.2
