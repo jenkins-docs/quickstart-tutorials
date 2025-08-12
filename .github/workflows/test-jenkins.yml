@@ -23,7 +23,7 @@ jobs:
       BRANCH_SUFFIX: clean-up
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0  # Fetch all history for all branches and tags.
 
@@ -269,7 +269,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up and start Docker Compose
         run: |
