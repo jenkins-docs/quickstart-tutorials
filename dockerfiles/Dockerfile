@@ -1,7 +1,7 @@
 # This Dockerfile is used to create a Jenkins server with a specific version and pre-configured settings.
 
 # We start by defining an ARG for the Jenkins version. This allows us to easily change the version of Jenkins we want to use.
-ARG JENKINS_VERSION=2.522-jdk21
+ARG JENKINS_VERSION=2.523-jdk21
 
 # We then use the official Jenkins image with the specified version as our base image.
 FROM jenkins/jenkins:"${JENKINS_VERSION}"
