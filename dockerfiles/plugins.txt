@@ -22,7 +22,7 @@ git-client:6.3.3
 git:5.7.0
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1848.v42f74f7f4500
-github:1.44.0
+github:1.45.0
 gradle:2.16.1149.v711b_998b_0532
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
