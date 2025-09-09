@@ -34,7 +34,7 @@ javax-mail-api:1.6.2-11
 jaxb:2.3.9-133.vb_ec76a_73f706
 jjwt-api:0.11.5-120.v0268cf544b_89
 jquery3-api:3.7.1-594.vb_3864f326cf0
-junit:1354.v5b_348580de7f
+junit:1355.v45e2ea_65863c
 locale:597.v7781ce70d4cf
 mailer:522.va_995fa_cfb_8b_d
 matrix-auth:3.2.8
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.16.0-167.va_269f38cc024
 okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:571.v08a_fffd4b_0ce
 pipeline-graph-analysis:241.vc3d48fb_b_2582
-pipeline-graph-view:628.va_6f6a_1d12848
+pipeline-graph-view:637.vb_6105ed84508
 pipeline-groovy-lib:752.vdddedf804e72
 pipeline-input-step:534.v352f0a_e98918
 pipeline-milestone-step:138.v78ca_76831a_43
