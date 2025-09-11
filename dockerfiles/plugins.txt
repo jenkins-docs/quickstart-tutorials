@@ -26,7 +26,7 @@ github:1.45.0
 gradle:2.16.1149.v711b_998b_0532
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.19.2-408.v18248a_324cfe
+jackson2-api:2.20.0-411.v6ef8fdee4fe9
 jakarta-activation-api:2.1.3-2
 jakarta-mail-api:2.1.3-3
 javax-activation-api:1.2.0-8
@@ -44,7 +44,7 @@ mina-sshd-api-common:2.16.0-167.va_269f38cc024
 mina-sshd-api-core:2.16.0-167.va_269f38cc024
 okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:571.v08a_fffd4b_0ce
-pipeline-graph-analysis:241.vc3d48fb_b_2582
+pipeline-graph-analysis:245.v88f03631a_b_21
 pipeline-graph-view:637.vb_6105ed84508
 pipeline-groovy-lib:752.vdddedf804e72
 pipeline-input-step:534.v352f0a_e98918
@@ -74,8 +74,8 @@ workflow-aggregator:608.v67378e9d3db_1
 workflow-api:1384.vdc05a_48f535f
 workflow-basic-steps:1079.vce64b_a_929c5a_
 workflow-cps:4183.v94b_6fd39da_c1
-workflow-durable-task-step:1452.v0ee719c104a_7
-workflow-job:1540.v295eccc9778f
+workflow-durable-task-step:1458.va_2e10a_a_b_7c4d
+workflow-job:1546.v62a_c59c112dd
 workflow-multibranch:811.vcd33d074c2a_0
 workflow-scm-step:437.v05a_f66b_e5ef8
 workflow-step-api:706.v518c5dcb_24c0
