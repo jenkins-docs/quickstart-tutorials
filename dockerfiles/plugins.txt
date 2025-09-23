@@ -3,7 +3,7 @@ antisamy-markup-formatter:173.v680e3a_b_69ff3
 apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
 bootstrap5-api:5.3.8-876.vb_c62a_27d9a_77
 bouncycastle-api:2.30.1.81-264.v95c79c0e772c
-branch-api:2.1244.vf95c81f1641c
+branch-api:2.1253.v6e7f7519f710
 build-timeout:1.38
 caffeine-api:3.2.2-178.v353b_8428ed56
 checks-api:373.vfe7645102093
@@ -46,7 +46,7 @@ okhttp-api:4.11.0-189.v976fa_d3379d6
 pipeline-build-step:571.v08a_fffd4b_0ce
 pipeline-graph-analysis:245.v88f03631a_b_21
 pipeline-graph-view:642.v39f37c8e1e70
-pipeline-groovy-lib:752.vdddedf804e72
+pipeline-groovy-lib:763.v13008816b_de7
 pipeline-input-step:534.v352f0a_e98918
 pipeline-milestone-step:138.v78ca_76831a_43
 pipeline-model-api:2.2273.v643f36ed9e94
