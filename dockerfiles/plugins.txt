@@ -21,7 +21,7 @@ font-awesome-api:7.0.1-872.vb_679b_2c95492
 git-client:6.4.0
 git:5.7.0
 github-api:1.330-492.v3941a_032db_2a_
-github-branch-source:1864.v411feec5e78e
+github-branch-source:1869.vdb_846d75405b_
 github:1.45.0
 gradle:2.16.1149.v711b_998b_0532
 instance-identity:203.v15e81a_1b_7a_38
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.16.0-167.va_269f38cc024
 okhttp-api:4.12.0-195.vc02552c04ffd
 pipeline-build-step:571.v08a_fffd4b_0ce
 pipeline-graph-analysis:245.v88f03631a_b_21
-pipeline-graph-view:642.v39f37c8e1e70
+pipeline-graph-view:646.va_da_a_047edca_c
 pipeline-groovy-lib:763.v13008816b_de7
 pipeline-input-step:534.v352f0a_e98918
 pipeline-milestone-step:138.v78ca_76831a_43
