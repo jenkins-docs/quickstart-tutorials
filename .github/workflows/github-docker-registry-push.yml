@@ -131,7 +131,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:simple_controller_${{ env.BRANCH }}
 
@@ -141,7 +141,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/maven
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:maven_agent_${{ env.BRANCH }}
 
@@ -151,7 +151,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/python
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:python_agent_${{ env.BRANCH }}
 
@@ -161,7 +161,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/node
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:node_agent_${{ env.BRANCH }}
 
@@ -171,7 +171,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/sidekick
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:sidekick_${{ env.BRANCH }}
 
@@ -181,7 +181,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/agent-discovery/
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:agent_discovery_${{ env.BRANCH }}
 
@@ -191,7 +191,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/multi
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:multi_controller_${{ env.BRANCH }}
 
@@ -221,7 +221,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/cpp
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:cpp_${{ env.BRANCH }}
 
@@ -231,6 +231,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/dotnet
-          platforms: linux/amd64, linux/aarch64
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPO_NAME }}/jenkinsci-tutorials:dotnet_${{ env.BRANCH }}
