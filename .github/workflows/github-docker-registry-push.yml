@@ -35,12 +35,6 @@ jobs:
         id: changes
         run: echo "files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | tr '\n' ' ')" >> $GITHUB_ENV
 
-      - name: Write Docker versions to file
-        # This step writes the Docker and Docker Compose versions to a file
-        run: |
-          echo "- $(docker --version)" > docker-versions.txt
-          echo "- $(docker compose version)" >> docker-versions.txt
-
       - name: Authenticate GH CLI
         # This step authenticates the GitHub CLI
         run: gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
@@ -50,14 +44,35 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git checkout -b docker-versions-update
+
+          # Ensure we start from a clean main branch
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+
+          # Create unique branch name to avoid conflicts
+          BRANCH_NAME="docker-versions-update-$(date +%s)"
+          git checkout -b "$BRANCH_NAME"
+
+          # Write Docker versions to file
+          echo "- $(docker --version)" > docker-versions.txt
+          echo "- $(docker compose version)" >> docker-versions.txt
+
+          # Only add the specific file we want
           git add docker-versions.txt
-          if git diff-index --quiet HEAD --; then
-            echo "No changes to commit"
+
+          # Check if there are actually changes to commit
+          if git diff --cached --quiet; then
+            echo "No changes to docker-versions.txt, skipping PR creation"
           else
-            git commit -m "Update Docker versions"
-            git push origin docker-versions-update
-            echo 'y' | gh pr create --fill
+            git commit -m "chore: update Docker versions
+            git push origin "$BRANCH_NAME"
+            # Create PR with explicit title and body instead of --fill
+            gh pr create \
+              --title "chore: update Docker versions" \
+              --body "Automated update of docker-versions.txt with current Docker and Docker Compose versions.
+              --base main \
+              --head "$BRANCH_NAME"
           fi
 
       - name: Check for Dockerfile and context changes
