@@ -78,15 +78,16 @@ jobs:
       - name: Check for Dockerfile and context changes
         # This step checks for changes in Dockerfile and context
         run: |
+          HAS_DOCKER_CHANGES=false
           for file in ${{ env.files }}; do
-            if [[ $file =~ (^|/)Dockerfile($|/)|(^|/)dockerfiles/ ]]; then
-              echo "Dockerfile or dockerfiles directory has changed."
-              echo "Changed file: $file"
+            if [[ "$file" =~ (^|/)Dockerfile($|/)|(^|/)dockerfiles/ ]]; then
+              echo "Dockerfile or dockerfiles directory has changed: $file"
+              HAS_DOCKER_CHANGES=true
               break
             fi
           done
-          
-          if (( $? == 0 )); then
+
+          if [[ "$HAS_DOCKER_CHANGES" == "false" ]]; then
             echo "No Dockerfile or context directory changes. Skipping Docker image build and push steps."
             echo "Changed files: ${{ env.files }}"
           fi
