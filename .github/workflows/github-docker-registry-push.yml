@@ -74,20 +74,7 @@ jobs:
               git commit -m "chore: update Docker versions"
               git push origin "$BRANCH_NAME"
               # Create PR with explicit title and body instead of --fill
-              gh pr create \
-                --title "chore: update Docker versions" \
-                --body "$(cat <<'EOF'
-Automated update of docker-versions.txt with current Docker and Docker Compose versions.
-
-**Changes:**
-- Updated Docker version information
-- Updated Docker Compose version information
-
-This PR only contains changes to \`docker-versions.txt\` and no other files.
-EOF
-)" \
-                --base main \
-                --head "$BRANCH_NAME"
+              gh pr create --title "chore: update Docker versions" --body "Automated update of docker-versions.txt with current Docker and Docker Compose versions." --base main --head "$BRANCH_NAME" --base main --head "$BRANCH_NAME"
             fi
           fi
 
