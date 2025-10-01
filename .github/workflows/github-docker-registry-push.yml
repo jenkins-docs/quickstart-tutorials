@@ -22,7 +22,16 @@ jobs:
     steps:
       - name: Check if PR is from a fork
         # This step checks if the pull request is from a fork
-        run: echo "IS_FORK=$(if [ '${{ github.event.pull_request.head.repo.full_name }}' != '${{ github.repository }}' ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_ENV
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            if [ '${{ github.event.pull_request.head.repo.full_name }}' != '${{ github.repository }}' ]; then
+              echo "IS_FORK=true" >> $GITHUB_ENV
+            else
+              echo "IS_FORK=false" >> $GITHUB_ENV
+            fi
+          else
+            echo "IS_FORK=false" >> $GITHUB_ENV
+          fi
 
       - name: Checkout
         # This step checks out the repository
