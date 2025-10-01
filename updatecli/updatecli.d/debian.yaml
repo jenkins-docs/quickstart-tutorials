@@ -13,16 +13,16 @@ scms:
       branch: "{{ .github.branch }}"
 
 sources:
-  bookwormLatestVersion:
+  trixieLatestVersion:
     kind: dockerimage
-    name: "Get the latest Debian Bookworm Linux version"
+    name: "Get the latest Debian Trixie Linux version"
     spec:
       image: "debian"
-      tagfilter: "bookworm-*"
+      tagfilter: "trixie-*"
       versionfilter:
         kind: regex
         pattern: >-
-          bookworm-\d+$
+          trixie-\d+$
 
 targets:
   debian:
@@ -34,14 +34,14 @@ targets:
       instruction:
         keyword: FROM
         matcher: debian
-    sourceid: bookwormLatestVersion
+    sourceid: trixieLatestVersion
 
 actions:
   default:
     kind: github/pullrequest
     scmid: default
-    title: Bump Debian Bookworm Linux version to {{ source "bookwormLatestVersion" }}
+    title: Bump Debian Trixie Linux version to {{ source "trixieLatestVersion" }}
     spec:
       labels:
         - dependencies
-        - debian-bookworm
+        - debian-trixie
