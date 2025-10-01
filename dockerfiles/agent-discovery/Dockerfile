@@ -1,7 +1,7 @@
 # This Dockerfile is used to prepare a Debian-based Docker image with several utilities installed.
 
 # We start from the Debian 'trixie' image.
-FROM debian:trixie-20250610-slim as prepare-stage
+FROM debian:trixie-20250929-slim as prepare-stage
 
 # Copy all shell scripts from the current directory to /usr/local/bin/ in the image.
 COPY *sh /usr/local/bin/
