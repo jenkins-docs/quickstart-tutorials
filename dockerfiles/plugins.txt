@@ -59,7 +59,7 @@ pipeline-stage-view:2.38
 plain-credentials:199.v9f8e1f741799
 plugin-util-api:6.1192.v30fe6e2837ff
 resource-disposer:0.25
-scm-api:710.v7b_a_484d81f45
+scm-api:711.va_e7ca_4d96f53
 script-security:1378.vf25626395f49
 snakeyaml-api:2.3-125.v4d77857a_b_402
 ssh-credentials:361.vb_f6760818e8c
