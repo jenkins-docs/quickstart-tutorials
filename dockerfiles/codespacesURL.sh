@@ -37,20 +37,20 @@ done
 message=${message%??}
 
 # Display information to user
-echo ""
-echo "🚀 Jenkins Quickstart Tutorials Setup"
-echo "======================================"
-echo ""
-echo "Once you run \033[42;30mdocker compose --profile <profile-name> up\033[0m,"
-echo "Jenkins will be accessible at: \033[36m${service_url}\033[0m"
-echo ""
-echo -e "${message}"
-echo ""
-echo "Quick start commands:"
+printf "\n"
+printf "🚀 Jenkins Quickstart Tutorials Setup\n"
+printf "======================================\n"
+printf "\n"
+printf "Once you run \033[42;30mdocker compose --profile <profile-name> up\033[0m,\n"
+printf "Jenkins will be accessible at: \033[36m%s\033[0m\n" "${service_url}"
+printf "\n"
+printf "%b\n" "${message}"
+printf "\n"
+printf "Quick start commands:\n"
 for target in "${targets[@]}"; do
-  echo "  • \033[42;30mdocker compose --profile ${target} up -d\033[0m - Start ${target} tutorial"
+  printf "  • \033[42;30mdocker compose --profile %s up -d\033[0m - Start %s tutorial\n" "${target}" "${target}"
 done
-echo ""
+printf "\n"
 
 # Check if jenkins.yaml exists
 if [ ! -f "${config_file}" ]; then
