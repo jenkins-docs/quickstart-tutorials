@@ -83,3 +83,12 @@ cat "$WELCOME_FILE"
 
 echo "✅ Setup Complete! Welcome message saved to $WELCOME_FILE"
 echo ""
+
+# Add welcome message to .bashrc so it shows on every new terminal
+if ! grep -q "Jenkins Quickstart Tutorials Welcome" ~/.bashrc; then
+    echo "" >> ~/.bashrc
+    echo "# Jenkins Quickstart Tutorials Welcome" >> ~/.bashrc
+    echo "if [ -f /workspaces/quickstart-tutorials/.devcontainer/welcome.txt ]; then" >> ~/.bashrc
+    echo "    cat /workspaces/quickstart-tutorials/.devcontainer/welcome.txt" >> ~/.bashrc
+    echo "fi" >> ~/.bashrc
+fi
