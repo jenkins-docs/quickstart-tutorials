@@ -71,7 +71,7 @@ targets:
     scmid: default
     spec:
       file: .devcontainer/setup.sh
-      matchpattern: '(YQ_VERSION="\$\{YQ_VERSION:-v)([^"]+)(".*)'
+      matchpattern: '(YQ_VERSION="\$\{YQ_VERSION:-v)([0-9.]+)(}")'
       replacepattern: '${1}{{ source "yq" }}${3}'
 
   docker-feature-version:
@@ -81,8 +81,10 @@ targets:
     scmid: default
     spec:
       file: .devcontainer/devcontainer.json
-      matchpattern: '("ghcr\.io/devcontainers/features/docker-in-docker:2":\s*\{\s*"version":\s*")([^"]+)(".*)'
+      matchpattern: '("version": ")([0-9.]+)(",)'
       replacepattern: '${1}{{ source "docker-version" }}${3}'
+      search:
+        pattern: 'ghcr\.io/devcontainers/features/docker-in-docker'
 
   github-cli-feature-version:
     name: '[.devcontainer/devcontainer.json] Bump GitHub CLI version'
@@ -91,8 +93,10 @@ targets:
     scmid: default
     spec:
       file: .devcontainer/devcontainer.json
-      matchpattern: '("ghcr\.io/devcontainers/features/github-cli:1":\s*\{\s*"version":\s*")([^"]+)(".*)'
+      matchpattern: '("version": ")([0-9.]+)(")'
       replacepattern: '${1}{{ source "github-cli" }}${3}'
+      search:
+        pattern: 'ghcr\.io/devcontainers/features/github-cli'
 
 actions:
   default:
