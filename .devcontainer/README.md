@@ -35,6 +35,8 @@ After starting a tutorial with `docker compose --profile <name> up -d`:
 - Jenkins URL: `https://<codespace>-8080.<domain>` (shown in PORTS panel)
 - Default credentials: admin/admin
 
+**Important:** Open Jenkins in a regular browser tab, not the VS Code preview pane. The preview may show "Please reopen the preview" due to Jenkins security headers. Click the globe icon 🌐 in the PORTS panel or copy the URL to your browser.
+
 ## Troubleshooting
 
 **Port 8080 refuses connection:**

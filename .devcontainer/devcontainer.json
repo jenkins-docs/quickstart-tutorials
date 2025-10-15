@@ -20,7 +20,7 @@
   "portsAttributes": {
     "8080": {
       "label": "Jenkins Controller",
-      "onAutoForward": "openPreview",
+      "onAutoForward": "openBrowser",
       "protocol": "http",
       "visibility": "public"
     },
