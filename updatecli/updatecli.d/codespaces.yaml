@@ -57,6 +57,7 @@ conditions:
   dockerhub-image-exists:
     name: Check if Docker version is available in devcontainer feature
     kind: dockerimage
+    sourceid: docker-version
     spec:
       # The devcontainer feature uses standard docker versions
       image: docker
@@ -66,8 +67,8 @@ targets:
   yq-setup-script:
     name: '[.devcontainer/setup.sh] Bump yq version'
     kind: file
-    scmid: default
     sourceid: yq
+    scmid: default
     spec:
       file: .devcontainer/setup.sh
       matchpattern: '(YQ_VERSION="\$\{YQ_VERSION:-v)([^"]+)(".*)'
@@ -76,8 +77,8 @@ targets:
   docker-feature-version:
     name: '[.devcontainer/devcontainer.json] Bump Docker version'
     kind: file
-    scmid: default
     sourceid: docker-version
+    scmid: default
     spec:
       file: .devcontainer/devcontainer.json
       matchpattern: '("ghcr\.io/devcontainers/features/docker-in-docker:2":\s*\{\s*"version":\s*")([^"]+)(".*)'
@@ -86,8 +87,8 @@ targets:
   github-cli-feature-version:
     name: '[.devcontainer/devcontainer.json] Bump GitHub CLI version'
     kind: file
-    scmid: default
     sourceid: github-cli
+    scmid: default
     spec:
       file: .devcontainer/devcontainer.json
       matchpattern: '("ghcr\.io/devcontainers/features/github-cli:1":\s*\{\s*"version":\s*")([^"]+)(".*)'
