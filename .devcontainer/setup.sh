@@ -92,3 +92,9 @@ if ! grep -q "Jenkins Quickstart Tutorials Welcome" ~/.bashrc; then
     echo "    cat /workspaces/quickstart-tutorials/.devcontainer/welcome.txt" >> ~/.bashrc
     echo "fi" >> ~/.bashrc
 fi
+
+# Set port 8080 visibility to public using gh CLI (if in Codespaces)
+if [ -n "$CODESPACE_NAME" ]; then
+    echo "🔓 Setting port 8080 visibility to public..."
+    gh codespace ports visibility 8080:public -c "$CODESPACE_NAME" 2>/dev/null || echo "⚠️  Could not set port visibility automatically. Please set port 8080 to public manually in the PORTS panel."
+fi
