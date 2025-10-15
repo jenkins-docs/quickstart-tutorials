@@ -1,0 +1,70 @@
+---
+name: 'deps(devcontainer): update Docker and GitHub CLI versions'
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  dockerLatestMinor:
+    name: Get latest Docker minor version
+    kind: githubrelease
+    spec:
+      owner: moby
+      repository: moby
+      token: "{{ requiredEnv .github.token }}"
+      versionfilter:
+        kind: semver
+        pattern: '~27.0'
+
+  githubcliLatestMinor:
+    name: Get latest GitHub CLI minor version
+    kind: githubrelease
+    spec:
+      owner: cli
+      repository: cli
+      token: "{{ requiredEnv .github.token }}"
+      versionfilter:
+        kind: semver
+        pattern: '~2.62'
+
+targets:
+  dockerVersion:
+    name: 'deps(devcontainer): update Docker version'
+    scmid: default
+    kind: json
+    spec:
+      file: .devcontainer/devcontainer.json
+      key: $.features."ghcr.io/devcontainers/features/docker-in-docker:2".version
+    sourceid: dockerLatestMinor
+    transformers:
+      - trimprefix: v
+
+  githubcliVersion:
+    name: 'deps(devcontainer): update GitHub CLI version'
+    scmid: default
+    kind: json
+    spec:
+      file: .devcontainer/devcontainer.json
+      key: $.features."ghcr.io/devcontainers/features/github-cli:1".version
+    sourceid: githubcliLatestMinor
+    transformers:
+      - trimprefix: v
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: 'chore(deps): update devcontainer dependencies'
+    spec:
+      labels:
+        - dependencies
+        - devcontainer
