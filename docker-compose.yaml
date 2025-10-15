@@ -197,7 +197,7 @@ services:
   node:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:node_agent_${BRANCH_SUFFIX}
     environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1-node
     profiles:
       - node
@@ -221,7 +221,7 @@ services:
   android:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:android_agent_${BRANCH_SUFFIX}
     environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1-android
     profiles:
       - android
@@ -266,7 +266,7 @@ services:
   multi:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:node_agent_${BRANCH_SUFFIX}
     environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1-multi
     profiles:
       - multi
@@ -291,7 +291,7 @@ services:
   golang:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:golang_${BRANCH_SUFFIX}
     environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1-golang
     profiles:
       - golang
@@ -315,7 +315,7 @@ services:
   cpp:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:cpp_${BRANCH_SUFFIX}
     environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1
     profiles:
       - cpp
@@ -339,7 +339,7 @@ services:
   dotnet:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:dotnet_${BRANCH_SUFFIX}
     environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1
     profiles:
       - dotnet
