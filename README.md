@@ -2,15 +2,31 @@
 
 This repository includes the files necessary for transitioning from `docker` to `docker compose` in our Jenkins tutorials and installation guides.
 
-### How to Set Up the Repository in Gitpod?
+### How to Set Up the Repository in GitHub Codespaces? (Recommended)
 
-- To initialize your Gitpod workspace, prepend `gitpod.io/#` to any GitHub, GitLab, or Bitbucket repository URL.
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jenkins-docs/quickstart-tutorials)
+
+**Benefits:**
+- No local installation required
+- Consistent environment for all users
+- Free tier: 60 hours/month
+- Accessible from any device with a browser
+
+**Quick Start:**
+1. Click the badge above or the green "Code" button → "Codespaces" tab
+2. Click "Create codespace on main"
+3. Wait for the environment to initialize (~2-3 minutes)
+4. Follow the welcome message in the terminal to start a tutorial
+
+### How to Set Up the Repository in GitPod? (Legacy)
+
+**Note**: GitPod's free tier has sunset. We recommend using GitHub Codespaces instead.
+
 - Access our Gitpod workspace [here](https://gitpod.io/#https://github.com/jenkins-docs/quickstart-tutorials).
-- If you plan to use Gitpod regularly, we recommend installing the Gitpod extension. This extension adds a Gitpod button to every GitHub repository you visit, making it easy to launch a workspace. You can find the extension [here](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki) for Chromium and [here](https://addons.mozilla.org/firefox/addon/gitpod/) for Firefox.
 
-## Gitpod
+## GitPod (Legacy)
 
-Gitpod is a cloud-based development environment designed for teams. It supports various IDEs, including VScode, IntelliJ, and many more, enabling efficient and secure software development.
+GitPod is a cloud-based development environment designed for teams. It supports various IDEs, including VScode, IntelliJ, and many more, enabling efficient and secure software development.
 
 ### Steps to Run Examples from the Repository
 
