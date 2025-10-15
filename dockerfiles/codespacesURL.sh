@@ -25,17 +25,6 @@ fi
 # Define an array of available tutorial profiles
 targets=("maven" "node" "python" "multi" "cpp" "dotnet" "golang" "android" "default" "wizard")
 
-# Initialize message string
-message="📚 Available tutorial profiles: "
-
-# Build the profiles list message
-for target in "${targets[@]}"; do
-  message+="\033[36m${target}\033[0m, "
-done
-
-# Remove the trailing comma and space
-message=${message%??}
-
 # Display information to user
 printf "\n"
 printf "🚀 Jenkins Quickstart Tutorials Setup\n"
@@ -44,8 +33,19 @@ printf "\n"
 printf "Once you run \033[42;30mdocker compose --profile <profile-name> up\033[0m,\n"
 printf "Jenkins will be accessible at: \033[36m%s\033[0m\n" "${service_url}"
 printf "\n"
-printf "%b\n" "${message}"
-printf "\n"
+
+# Display available profiles with color formatting
+printf "📚 Available tutorial profiles: "
+first=true
+for target in "${targets[@]}"; do
+  if [ "${first}" = true ]; then
+    printf "\033[36m%s\033[0m" "${target}"
+    first=false
+  else
+    printf ", \033[36m%s\033[0m" "${target}"
+  fi
+done
+printf "\n\n"
 printf "Quick start commands:\n"
 for target in "${targets[@]}"; do
   printf "  • \033[42;30mdocker compose --profile %s up -d\033[0m - Start %s tutorial\n" "${target}" "${target}"
