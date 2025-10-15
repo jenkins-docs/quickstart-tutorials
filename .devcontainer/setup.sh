@@ -10,7 +10,7 @@ echo "================================"
 
 # Install yq (YAML processor) - required for JCasc configuration
 echo "📦 Installing yq YAML processor..."
-YQ_VERSION="${YQ_VERSION:-v4.44.3}"
+YQ_VERSION="${YQ_VERSION:-v4.48.1}"
 YQ_URL="https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"
 
 # Try wget first, fall back to curl if unavailable
