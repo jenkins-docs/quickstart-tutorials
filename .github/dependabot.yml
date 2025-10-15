@@ -4,7 +4,8 @@
 version: 2
 # Note: GitPod support is legacy (free tier sunset). Migrated to GitHub Codespaces.
 # Codespaces uses devcontainer.json which Dependabot cannot monitor (not a Dockerfile).
-# Manual updates for mcr.microsoft.com/devcontainers/base:ubuntu-24.04 as needed.
+# Codespaces dependencies (yq, devcontainer features) are tracked by UpdateCLI.
+# See updatecli/updatecli.d/codespaces.yaml for automated updates.
 
 # Enable version updates for GitHub Actions workflows
 updates:

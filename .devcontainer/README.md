@@ -2,25 +2,21 @@
 
 This directory contains the GitHub Codespaces dev container configuration.
 
-## Port Visibility Issue
+## Port Visibility
 
-If port 8080 shows as **private** after creating a Codespace, you need to manually change it to **public**:
+Port 8080 may show as **private** in the PORTS panel, but this is usually not an issue - you can still access Jenkins using the forwarded URL.
 
-### Manual Steps:
+**Note:** The port visibility label in the UI can be misleading. Even when marked as "private", the Jenkins URL provided in the welcome message will work in your browser. Only change visibility to "public" if you need to share the URL with others.
+
+### Manual Steps (if needed for sharing):
 1. Open the **PORTS** panel at the bottom of VS Code (next to TERMINAL)
 2. Find port **8080** in the list
 3. **Right-click** on port 8080
 4. Select **Port Visibility** → **Public**
-5. Refresh your browser and access Jenkins
 
-### Why is this needed?
+### Technical Details
 
-The `devcontainer.json` includes `"visibility": "public"` for port 8080, but GitHub Codespaces may not always apply this setting automatically, especially:
-- On the first Codespace creation
-- If there's an organization policy
-- If the port is forwarded before the container is fully started
-
-The setup script attempts to set the port visibility automatically using the GitHub CLI, but if that fails, manual intervention is required.
+The `devcontainer.json` includes `"visibility": "public"` for port 8080, but GitHub Codespaces may not always apply this setting automatically. The setup script attempts to set visibility using the GitHub CLI, but this is optional since Codespaces authentication allows private port access.
 
 ## Files
 
@@ -40,9 +36,10 @@ After starting a tutorial with `docker compose --profile <name> up -d`:
 ## Troubleshooting
 
 **Port 8080 refuses connection:**
-- Ensure port visibility is set to **public** (see steps above)
 - Verify Jenkins is running: `docker compose ps`
 - Check logs: `docker compose logs jenkins_controller`
+- Wait 1-2 minutes for Jenkins to fully start
+- Port visibility (private/public) should not affect access for the Codespace owner
 
 **Welcome message not showing:**
 - Run: `source ~/.bashrc` in your terminal
