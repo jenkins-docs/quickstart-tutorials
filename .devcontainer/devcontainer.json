@@ -1,0 +1,54 @@
+{
+  "name": "Jenkins Quickstart Tutorials",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "27.0",
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "2.62"
+    }
+  },
+
+  "onCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "cat .devcontainer/welcome.txt 2>/dev/null || echo 'Run: .devcontainer/setup.sh for tutorial instructions'",
+
+  "forwardPorts": [8080, 3000, 5000],
+
+  "portsAttributes": {
+    "8080": {
+      "label": "Jenkins Controller",
+      "onAutoForward": "openBrowser",
+      "protocol": "http",
+      "visibility": "public"
+    },
+    "3000": {
+      "label": "Application Port (Node/Android/Go)",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    },
+    "5000": {
+      "label": "Application Port (Multi/.NET)",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "remoteUser": "vscode",
+
+  "updateContentCommand": "echo 'Container updated successfully'"
+}
