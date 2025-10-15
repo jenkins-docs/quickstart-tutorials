@@ -1,5 +1,9 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+#
+# Note: GitPod configuration (.gitpod.yml and .gitpod.Dockerfile) is in legacy mode
+# as we've migrated to GitHub Codespaces. GitPod configs will not receive dependency
+# updates but remain functional for users who prefer GitPod.
 
 version: 2
 # Enable version updates for GitHub Actions workflows
