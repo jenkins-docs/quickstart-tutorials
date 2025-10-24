@@ -1,0 +1,109 @@
+---
+name: 'deps(codespaces): bump devcontainer dependencies'
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  yq:
+    name: Get latest yq release
+    kind: githubrelease
+    spec:
+      owner: mikefarah
+      repository: yq
+      token: "{{ requiredEnv .github.token }}"
+      typefilter:
+        latest: true
+    transformers:
+      - trimprefix: "v"
+
+  docker-version:
+    name: Get latest Docker stable version
+    kind: githubrelease
+    spec:
+      owner: moby
+      repository: moby
+      token: "{{ requiredEnv .github.token }}"
+      typefilter:
+        latest: true
+    transformers:
+      - trimprefix: "v"
+      - findsubmatch:
+          pattern: '^(\d+\.\d+)\.\d+$'
+          captureindex: 1
+
+  github-cli:
+    name: Get latest GitHub CLI release
+    kind: githubrelease
+    spec:
+      owner: cli
+      repository: cli
+      token: "{{ requiredEnv .github.token }}"
+      typefilter:
+        latest: true
+    transformers:
+      - trimprefix: "v"
+
+conditions:
+  dockerhub-image-exists:
+    name: Check if Docker version is available in devcontainer feature
+    kind: dockerimage
+    sourceid: docker-version
+    spec:
+      # The devcontainer feature uses standard docker versions
+      image: docker
+      tag: '{{ source "docker-version" }}'
+
+targets:
+  yq-setup-script:
+    name: '[.devcontainer/setup.sh] Bump yq version'
+    kind: file
+    sourceid: yq
+    scmid: default
+    spec:
+      file: .devcontainer/setup.sh
+      matchpattern: '(YQ_VERSION="\$\{YQ_VERSION:-v)([0-9.]+)(}")'
+      replacepattern: '${1}{{ source "yq" }}${3}'
+
+  docker-feature-version:
+    name: '[.devcontainer/devcontainer.json] Bump Docker version'
+    kind: file
+    sourceid: docker-version
+    scmid: default
+    spec:
+      file: .devcontainer/devcontainer.json
+      matchpattern: '("version": ")([0-9.]+)(",)'
+      replacepattern: '${1}{{ source "docker-version" }}${3}'
+      search:
+        pattern: 'ghcr\.io/devcontainers/features/docker-in-docker'
+
+  github-cli-feature-version:
+    name: '[.devcontainer/devcontainer.json] Bump GitHub CLI version'
+    kind: file
+    sourceid: github-cli
+    scmid: default
+    spec:
+      file: .devcontainer/devcontainer.json
+      matchpattern: '("version": ")([0-9.]+)(")'
+      replacepattern: '${1}{{ source "github-cli" }}${3}'
+      search:
+        pattern: 'ghcr\.io/devcontainers/features/github-cli'
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: 'chore(deps): update Codespaces dependencies'
+    spec:
+      labels:
+        - dependencies
+        - codespaces
