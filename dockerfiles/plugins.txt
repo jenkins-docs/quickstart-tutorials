@@ -21,7 +21,7 @@ font-awesome-api:7.1.0-882.v1dfb_771e3278
 git-client:6.4.0
 git:5.8.0
 github-api:1.330-492.v3941a_032db_2a_
-github-branch-source:1906.v21c5c13d25c6
+github-branch-source:1910.v4ca_b_2c639cb_0
 github:1.45.0
 gradle:2.16.1149.v711b_998b_0532
 instance-identity:203.v15e81a_1b_7a_38
