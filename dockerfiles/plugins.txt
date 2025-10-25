@@ -49,12 +49,12 @@ pipeline-graph-view:661.v6003f4542123
 pipeline-groovy-lib:776.vfee5327b_b_a_5b_
 pipeline-input-step:534.v352f0a_e98918
 pipeline-milestone-step:138.v78ca_76831a_43
-pipeline-model-api:2.2273.v643f36ed9e94
-pipeline-model-definition:2.2273.v643f36ed9e94
-pipeline-model-extensions:2.2273.v643f36ed9e94
+pipeline-model-api:2.2277.v00573e73ddf1
+pipeline-model-definition:2.2277.v00573e73ddf1
+pipeline-model-extensions:2.2277.v00573e73ddf1
 pipeline-rest-api:2.38
 pipeline-stage-step:322.vecffa_99f371c
-pipeline-stage-tags-metadata:2.2273.v643f36ed9e94
+pipeline-stage-tags-metadata:2.2277.v00573e73ddf1
 pipeline-stage-view:2.38
 plain-credentials:199.v9f8e1f741799
 plugin-util-api:6.1192.v30fe6e2837ff
