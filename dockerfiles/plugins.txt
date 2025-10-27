@@ -61,7 +61,7 @@ plugin-util-api:6.1192.v30fe6e2837ff
 resource-disposer:0.25
 scm-api:712.v8846fdd68c88
 script-security:1378.vf25626395f49
-snakeyaml-api:2.3-125.v4d77857a_b_402
+snakeyaml-api:2.5-143.v93b_c004f89de
 ssh-credentials:361.vb_f6760818e8c
 ssh-slaves:3.1085.vc64d040efa_85
 sshd:3.374.v19b_d59ce6610
