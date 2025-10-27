@@ -21,7 +21,7 @@ font-awesome-api:7.1.0-882.v1dfb_771e3278
 git-client:6.4.0
 git:5.8.0
 github-api:1.330-492.v3941a_032db_2a_
-github-branch-source:1910.v4ca_b_2c639cb_0
+github-branch-source:1911.vc09e01781005
 github:1.45.0
 gradle:2.16.1149.v711b_998b_0532
 instance-identity:203.v15e81a_1b_7a_38
@@ -61,7 +61,7 @@ plugin-util-api:6.1192.v30fe6e2837ff
 resource-disposer:0.25
 scm-api:712.v8846fdd68c88
 script-security:1378.vf25626395f49
-snakeyaml-api:2.3-125.v4d77857a_b_402
+snakeyaml-api:2.5-143.v93b_c004f89de
 ssh-credentials:361.vb_f6760818e8c
 ssh-slaves:3.1085.vc64d040efa_85
 sshd:3.374.v19b_d59ce6610
