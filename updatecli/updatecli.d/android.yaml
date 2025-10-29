@@ -1,0 +1,63 @@
+---
+name: Bump Android SDK components in android agent
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  androidCommandLineTools:
+    kind: shell
+    spec:
+      command: 'curl -sL https://developer.android.com/studio | grep -oP "commandlinetools-linux-\K\d+(?=_latest\.zip)" | head -1'
+      environments:
+        - name: PATH
+
+  androidBuildTools:
+    kind: shell
+    spec:
+      command: 'curl -sL https://developer.android.com/tools/releases/build-tools | grep -oP "(\d+\.\d+\.\d+)" | grep "^35\." | head -1'
+      environments:
+        - name: PATH
+
+conditions:
+
+targets:
+  androidCommandLineToolsURL:
+    name: "[android-agent] Update command-line tools version in Dockerfile"
+    kind: file
+    spec:
+      file: dockerfiles/android/Dockerfile
+      matchpattern: 'commandlinetools-linux-(\d+)_latest\.zip'
+      replacepattern: 'commandlinetools-linux-{{ source "androidCommandLineTools" }}_latest.zip'
+    sourceid: androidCommandLineTools
+    scmid: default
+
+  androidBuildToolsVersion:
+    name: "[android-agent] Update build tools version in Dockerfile"
+    kind: dockerfile
+    spec:
+      file: dockerfiles/android/Dockerfile
+      instruction:
+        keyword: "ARG"
+        matcher: "ANDROID_BUILD_TOOLS_VERSION"
+    sourceid: androidBuildTools
+    scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: '[Android] Bump Android SDK components to latest versions'
+    spec:
+      labels:
+        - dependencies
+        - android
