@@ -27,12 +27,12 @@ ENV ANDROID_HOME /usr/local/android-sdk-linux
 ENV ANDROID_SDK_ROOT /usr/local/android-sdk-linux
 ENV CMDLINE_TOOLS_HOME $ANDROID_HOME/cmdline-tools/latest
 ENV PATH /usr/local/bin:$PATH:$CMDLINE_TOOLS_HOME/bin:$ANDROID_HOME/:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-ARG ANDROID_BUILD_TOOLS_VERSION=30.0.3
+ARG ANDROID_BUILD_TOOLS_VERSION=35.0.0
 
 RUN mkdir -p /usr/local/android-sdk-linux/cmdline-tools/latest && cd /usr/local/android-sdk-linux && \
-  curl -L -O  https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
-  unzip -qq commandlinetools-linux-8512546_latest.zip -d tmp && mv tmp/cmdline-tools/* cmdline-tools/latest && \
-  rm -rf /usr/local/android-sdk-linux/commandlinetools-linux-8512546_latest.zip && \
+  curl -L -O  https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip && \
+  unzip -qq commandlinetools-linux-13114758_latest.zip -d tmp && mv tmp/cmdline-tools/* cmdline-tools/latest && \
+  rm -rf /usr/local/android-sdk-linux/commandlinetools-linux-13114758_latest.zip && \
   yes|/usr/local/android-sdk-linux/cmdline-tools/latest/bin/sdkmanager --licenses && \
   /usr/local/android-sdk-linux/cmdline-tools/latest/bin/sdkmanager --update && \
   /usr/local/android-sdk-linux/cmdline-tools/latest/bin/sdkmanager --list && \
@@ -40,7 +40,7 @@ RUN mkdir -p /usr/local/android-sdk-linux/cmdline-tools/latest && cd /usr/local/
                                                       "ndk;25.0.8775105" \
                                                       "extras;google;m2repository" \
                                                       "extras;android;m2repository" \
-                                                      "platforms;android-33" \
+                                                      "platforms;android-36" \
                                                       "emulator" \
                                                       "build-tools;$ANDROID_BUILD_TOOLS_VERSION" \
                                                       "add-ons;addon-google_apis-google-24" \
