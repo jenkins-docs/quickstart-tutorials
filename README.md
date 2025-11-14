@@ -82,4 +82,4 @@ Please let us know the following details when you open an issue:
 
 The tutorials have been tested with:
 - Docker version `28.0.4`
-- Docker Compose version `2.27.1`
+- Docker Compose version `2.38.2`
