@@ -89,7 +89,7 @@ jobs:
       -
         name: Login to GitHub Container Registry
         # This step logs in to GHCR
-        if: contains(env.files, 'Dockerfile')
+        if: contains(env.files, 'Dockerfile') && env.IS_FORK == 'false'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -119,7 +119,7 @@ jobs:
 
       - name: Build and push a simple jenkins controller
         # This step builds and pushes a simple Jenkins controller
-        if: contains(env.files, 'dockerfiles/Dockerfile') || contains(env.files, 'dockerfiles/')
+        if: (contains(env.files, 'dockerfiles/Dockerfile') || contains(env.files, 'dockerfiles/')) && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles
@@ -129,7 +129,7 @@ jobs:
 
       - name: Build and push the jenkins agent for maven tutorial
         # This step builds and pushes the Jenkins agent for the Maven tutorial
-        if: contains(env.files, 'dockerfiles/maven/Dockerfile')
+        if: contains(env.files, 'dockerfiles/maven/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/maven
@@ -139,7 +139,7 @@ jobs:
 
       - name: Build and push the jenkins agent for python tutorial
         # This step builds and pushes the Jenkins agent for the Python tutorial
-        if: contains(env.files, 'dockerfiles/python/Dockerfile')
+        if: contains(env.files, 'dockerfiles/python/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/python
@@ -149,7 +149,7 @@ jobs:
 
       - name: Build and push the jenkins agent for node tutorial
         # This step builds and pushes the Jenkins agent for the Node.js tutorial
-        if: contains(env.files, 'dockerfiles/node/Dockerfile')
+        if: contains(env.files, 'dockerfiles/node/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/node
@@ -159,7 +159,7 @@ jobs:
 
       - name: Build and push the jenkins agent for the sidekick container
         # This step builds and pushes the Jenkins agent for the sidekick container
-        if: contains(env.files, 'dockerfiles/sidekick/Dockerfile')
+        if: contains(env.files, 'dockerfiles/sidekick/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/sidekick
@@ -169,7 +169,7 @@ jobs:
 
       - name: Build and push the jenkins agent for the agent-finding container
         # This step builds and pushes the Jenkins agent for the agent-finding container
-        if: contains(env.files, 'dockerfiles/agent-discovery/Dockerfile')
+        if: contains(env.files, 'dockerfiles/agent-discovery/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/agent-discovery/
@@ -179,7 +179,7 @@ jobs:
 
       - name: Build and push the jenkins agent for multi-branch controller
         # This step builds and pushes the Jenkins agent for the multi-branch controller
-        if: contains(env.files, 'dockerfiles/multi/Dockerfile')
+        if: contains(env.files, 'dockerfiles/multi/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/multi
@@ -189,7 +189,7 @@ jobs:
 
       - name: Build and push the jenkins agent for Android
         # This step builds and pushes the Jenkins agent for Android
-        if: contains(env.files, 'dockerfiles/android/Dockerfile')
+        if: contains(env.files, 'dockerfiles/android/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/android
@@ -199,7 +199,7 @@ jobs:
 
       - name: Build and push the jenkins agent for golang tutorial
         # This step builds and pushes the Jenkins agent for the Golang tutorial
-        if: contains(env.files, 'dockerfiles/golang/Dockerfile')
+        if: contains(env.files, 'dockerfiles/golang/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/golang
@@ -209,7 +209,7 @@ jobs:
 
       - name: Build and push the jenkins agent for cpp tutorial
         # This step builds and pushes the Jenkins agent for the C++ tutorial
-        if: contains(env.files, 'dockerfiles/cpp/Dockerfile')
+        if: contains(env.files, 'dockerfiles/cpp/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/cpp
@@ -219,7 +219,7 @@ jobs:
       
       - name: Build and push the jenkins agent for dotnet tutorial
         # This step builds and pushes the Jenkins agent for the C++ tutorial
-        if: contains(env.files, 'dockerfiles/dotnet/Dockerfile')
+        if: contains(env.files, 'dockerfiles/dotnet/Dockerfile') && env.IS_FORK == 'false'
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/dotnet
