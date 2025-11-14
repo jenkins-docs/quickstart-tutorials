@@ -117,8 +117,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   node:
     build: dockerfiles/node/.
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
     container_name: desktop-jenkins_agent-1-node
     profiles:
       - node
@@ -139,8 +137,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   multi:
     build: dockerfiles/multi/.
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
     container_name: desktop-jenkins_agent-1-multi
     profiles:
       - multi
@@ -162,8 +158,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   android:
     build: dockerfiles/android/.
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
     container_name: desktop-jenkins_agent-1-android
     profiles:
       - android
@@ -185,8 +179,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   golang:
     build: dockerfiles/golang/.
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
     container_name: desktop-jenkins_agent-1-golang
     profiles:
       - golang
