@@ -57,7 +57,9 @@ jobs:
           else
             git commit -m "Update Docker versions"
             git push origin docker-versions-update
-            echo 'y' | gh pr create --fill
+            # Create PR targeting the same branch where this workflow is running
+            BASE_BRANCH="${GITHUB_REF#refs/heads/}"
+            echo 'y' | gh pr create --fill --base "$BASE_BRANCH"
           fi
 
       - name: Check for Dockerfile and context changes
