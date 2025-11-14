@@ -4,19 +4,40 @@ This repository includes the files necessary for transitioning from `docker` to 
 
 ### How to Set Up the Repository in GitHub Codespaces? (Recommended)
 
+GitHub Codespaces provides a cloud-based development environment with Docker pre-installed and configured.
+
+#### Quick Start
+1. Click the button below to open this repository in GitHub Codespaces:
+
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jenkins-docs/quickstart-tutorials)
+
+2. Wait for the Codespace to build (first time: ~2-3 minutes, subsequent starts: ~30 seconds)
+3. Once ready, the setup script will automatically install required tools
+4. Follow the instructions in the terminal to start a tutorial
+
+#### What's Included?
+- Docker and Docker Compose pre-installed
+- `yq` YAML processor for configuration
+- GitHub CLI (`gh`) for repository operations
+- Automatic port forwarding for Jenkins (8080) and applications (3000, 5000)
+- Jenkins URL automatically configured for Codespaces environment
+
+#### Free Tier
+- 60 hours/month for free accounts (sufficient for all tutorials)
+- 120 hours/month with [GitHub Student Developer Pack](https://education.github.com/pack)
+
+## Cloud Development Environments
+
+### GitHub Codespaces
+
+GitHub Codespaces is a cloud-based development environment integrated with GitHub. It provides instant, configured development environments with Docker pre-installed, making it perfect for these Jenkins tutorials.
 
 **Benefits:**
 - No local installation required
 - Consistent environment for all users
 - Free tier: 60 hours/month
 - Accessible from any device with a browser
-
-**Quick Start:**
-1. Click the badge above or the green "Code" button → "Codespaces" tab
-2. Click "Create codespace on main"
-3. Wait for the environment to initialize (~2-3 minutes)
-4. Follow the welcome message in the terminal to start a tutorial
+- Automatic backups via GitHub
 
 ### Steps to Run Examples from the Repository
 
