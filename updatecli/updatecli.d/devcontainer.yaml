@@ -40,30 +40,26 @@ targets:
   dockerVersion:
     name: 'deps(devcontainer): update Docker version'
     scmid: default
-    kind: file
+    kind: json
     sourceid: dockerLatestMinor
     spec:
       file: .devcontainer/devcontainer.json
-      matchpattern: '("version": "v?)([0-9.]*)(",)'
-      replacepattern: '${1}{{ source "dockerLatestMinor" }}${3}'
-      search:
-        pattern: 'ghcr\.io/devcontainers/features/docker-in-docker'
+      key: '$.features."ghcr.io/devcontainers/features/docker-in-docker:2".version'
     transformers:
       - trimprefix: v
+      - addprefix: v
 
   githubcliVersion:
     name: 'deps(devcontainer): update GitHub CLI version'
     scmid: default
-    kind: file
+    kind: json
     sourceid: githubcliLatestMinor
     spec:
       file: .devcontainer/devcontainer.json
-      matchpattern: '("version": "v?)([0-9.]+)(")'
-      replacepattern: '${1}{{ source "githubcliLatestMinor" }}${3}'
-      search:
-        pattern: 'ghcr\.io/devcontainers/features/github-cli'
+      key: '$.features."ghcr.io/devcontainers/features/github-cli:1".version'
     transformers:
       - trimprefix: v
+      - addprefix: v
 
 actions:
   default:
