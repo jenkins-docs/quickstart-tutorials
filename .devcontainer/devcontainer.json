@@ -4,11 +4,11 @@
 
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
-      "version": "v27.0.3",
+      "version": "vv2.83.1",
       "dockerDashComposeVersion": "v2"
     },
     "ghcr.io/devcontainers/features/github-cli:1": {
-      "version": "v2.83.1"
+      "version": "vv2.83.1"
     }
   },
 
