@@ -18,16 +18,6 @@ This repository includes the files necessary for transitioning from `docker` to 
 3. Wait for the environment to initialize (~2-3 minutes)
 4. Follow the welcome message in the terminal to start a tutorial
 
-### How to Set Up the Repository in GitPod? (Legacy)
-
-**Note**: GitPod's free tier has sunset. We recommend using GitHub Codespaces instead.
-
-- Access our Gitpod workspace [here](https://gitpod.io/#https://github.com/jenkins-docs/quickstart-tutorials).
-
-## GitPod (Legacy)
-
-GitPod is a cloud-based development environment designed for teams. It supports various IDEs, including VScode, IntelliJ, and many more, enabling efficient and secure software development.
-
 ### Steps to Run Examples from the Repository
 
 - Use `docker compose up` to run examples from this project. Currently, we have four working examples:
@@ -51,25 +41,12 @@ GitPod is a cloud-based development environment designed for teams. It supports 
 
 - Check the status of the container with the `docker ps` or `docker compose ps` commands.
 - Access your running Jenkins instance at [http://127.0.0.1:8080](http://127.0.0.1:8080).
-- On Gitpod, if containers are running successfully after entering `docker compose --profile <tutorial-name> up`, a pop-up titled `A service is available on port 8080` should appear. If it doesn't, you can view the running service in the `PORTS` section on the right side of the terminal.
 
 ### Clean Up Instructions
 
 - To stop and remove running containers, use `docker compose --profile <tutorial-name> down`.
 - If you encounter a `Resource is still in use` warning, use the `--remove-orphans` option which would give `docker compose --profile <tutorial-name> down --remove-orphans`.
 - To remove the created volumes (should you need to restart from scratch), add the `-v` option which would give `docker compose --profile <tutorial-name> down -v`.
-
-### Suppressing Jenkins Warning using JCASC
-
-To improve the Gitpod experience with Jenkins, we've suppressed a reverse proxy setup warning in Jenkins that was causing issues in the Gitpod environment. We achieved this using Jenkins Configuration as Code ([JCASC](https://www.jenkins.io/projects/jcasc/)) and added the following property to the JCASC YAML file:
-
-```yaml
-jenkins:
-  disabledAdministrativeMonitors:
-    - "hudson.diagnosis.ReverseProxySetupMonitor"
-```
-
-For more detailed information about this configuration and the context behind it, please refer to the [corresponding issue](https://github.com/ash-sxn/GSoC-2023-docker-based-quickstart/issues/61).
 
 ### Encountering Issues?
 

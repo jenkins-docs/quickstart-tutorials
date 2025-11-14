@@ -44,7 +44,7 @@ targets:
     sourceid: dockerLatestMinor
     spec:
       file: .devcontainer/devcontainer.json
-      matchpattern: '("version": ")([0-9.]*)(",)'
+      matchpattern: '("version": "v?)([0-9.]*)(",)'
       replacepattern: '${1}{{ source "dockerLatestMinor" }}${3}'
       search:
         pattern: 'ghcr\.io/devcontainers/features/docker-in-docker'
@@ -58,7 +58,7 @@ targets:
     sourceid: githubcliLatestMinor
     spec:
       file: .devcontainer/devcontainer.json
-      matchpattern: '("version": ")([0-9.]+)(")'
+      matchpattern: '("version": "v?)([0-9.]+)(")'
       replacepattern: '${1}{{ source "githubcliLatestMinor" }}${3}'
       search:
         pattern: 'ghcr\.io/devcontainers/features/github-cli'
