@@ -40,11 +40,11 @@ targets:
   dockerVersion:
     name: 'deps(devcontainer): update Docker version'
     scmid: default
-    kind: json
+    kind: yaml
     sourceid: dockerLatestMinor
     spec:
       file: .devcontainer/devcontainer.json
-      key: '$.features["ghcr.io/devcontainers/features/docker-in-docker:2"].version'
+      key: '.features["ghcr.io/devcontainers/features/docker-in-docker:2"].version'
     transformers:
       - trimprefix: v
       - addprefix: v
@@ -52,11 +52,11 @@ targets:
   githubcliVersion:
     name: 'deps(devcontainer): update GitHub CLI version'
     scmid: default
-    kind: json
+    kind: yaml
     sourceid: githubcliLatestMinor
     spec:
       file: .devcontainer/devcontainer.json
-      key: '$.features["ghcr.io/devcontainers/features/github-cli:1"].version'
+      key: '.features["ghcr.io/devcontainers/features/github-cli:1"].version'
     transformers:
       - trimprefix: v
       - addprefix: v
