@@ -196,8 +196,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   node:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:node_agent_${BRANCH_SUFFIX}
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1-node
     profiles:
       - node
@@ -220,8 +218,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   android:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:android_agent_${BRANCH_SUFFIX}
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1-android
     profiles:
       - android
@@ -265,8 +261,6 @@ services:
       retries: 5
   multi:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:node_agent_${BRANCH_SUFFIX}
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1-multi
     profiles:
       - multi
@@ -290,8 +284,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   golang:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:golang_${BRANCH_SUFFIX}
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1-golang
     profiles:
       - golang
@@ -314,8 +306,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   cpp:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:cpp_${BRANCH_SUFFIX}
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1
     profiles:
       - cpp
@@ -338,8 +328,6 @@ services:
       - agent-ssh-dir:/home/jenkins/.ssh:ro # Mounts the agent-ssh-dir volume to the /home/jenkins/.ssh path inside the container as read-only
   dotnet:
     image: ${IMAGE_PREFIX}/${GHCR_USERNAME}/quickstart-tutorials/jenkinsci-tutorials:dotnet_${BRANCH_SUFFIX}
-    environment:
-      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL:-}
     container_name: desktop-jenkins_agent-1
     profiles:
       - dotnet
