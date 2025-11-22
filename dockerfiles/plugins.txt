@@ -27,8 +27,8 @@ gradle:2.16.1149.v711b_998b_0532
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
 jackson2-api:2.20.1-423.v13951f6b_6532
-jakarta-activation-api:2.1.3-2
-jakarta-mail-api:2.1.3-3
+jakarta-activation-api:2.1.4-1
+jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
 javax-mail-api:1.6.2-11
 jaxb:2.3.9-133.vb_ec76a_73f706
