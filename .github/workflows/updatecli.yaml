@@ -19,7 +19,7 @@ jobs:
     steps:
       # This step checks out the repository using the checkout action
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       # This step installs Updatecli in the runner using the updatecli-action
       - name: Install Updatecli in the runner
