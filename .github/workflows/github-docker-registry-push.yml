@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Check if PR is from a fork
         # This step checks if the pull request is from a fork
+        # Fixed: Check event type before accessing pull_request fields to prevent
+        # IS_FORK being incorrectly set to true for push events (issue #20105424925)
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             if [ '${{ github.event.pull_request.head.repo.full_name }}' != '${{ github.repository }}' ]; then
