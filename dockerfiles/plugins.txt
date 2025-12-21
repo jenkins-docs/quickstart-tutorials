@@ -23,7 +23,7 @@ git:5.8.1
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1917.v9ee8a_39b_3d0d
 github:1.45.0
-gradle:2.17.1202.v321a_33e01211
+gradle:2.18.1203.v2c96b_1243c72
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
 jackson2-api:2.20.1-423.v13951f6b_6532
