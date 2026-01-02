@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:7.10.1-jdk21 as ssh-agent
+FROM jenkins/ssh-agent:7.11.0-jdk21 as ssh-agent
 ARG NODE_MAJOR=24
 
 # ca-certificates because curl uses certificates from ca-certificates
