@@ -22,7 +22,7 @@ sources:
       versionfilter:
         kind: regex
         pattern: >-
-          bookworm-\d+$
+          trixie-\d+$
 
 targets:
   debian:
