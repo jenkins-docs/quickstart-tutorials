@@ -26,14 +26,6 @@ GitHub Codespaces provides a cloud-based development environment with Docker pre
 - 60 hours/month for free accounts (sufficient for all tutorials)
 - 120 hours/month with [GitHub Student Developer Pack](https://education.github.com/pack)
 
-### How to Set Up the Repository in GitPod? (Legacy)
-
-**Note**: GitPod's free tier has sunset. We recommend using GitHub Codespaces instead.
-
-- To initialize your Gitpod workspace, prepend `gitpod.io/#` to any GitHub, GitLab, or Bitbucket repository URL.
-- Access our Gitpod workspace [here](https://gitpod.io/#https://github.com/jenkins-docs/quickstart-tutorials).
-- If you plan to use Gitpod regularly, we recommend installing the Gitpod extension. This extension adds a Gitpod button to every GitHub repository you visit, making it easy to launch a workspace. You can find the extension [here](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki) for Chromium and [here](https://addons.mozilla.org/firefox/addon/gitpod/) for Firefox.
-
 ## Cloud Development Environments
 
 ### GitHub Codespaces
@@ -46,10 +38,6 @@ GitHub Codespaces is a cloud-based development environment integrated with GitHu
 - Free tier: 60 hours/month
 - Accessible from any device with a browser
 - Automatic backups via GitHub
-
-### GitPod (Legacy)
-
-Gitpod is a cloud-based development environment designed for teams. It supports various IDEs, including VScode, IntelliJ, and many more, enabling efficient and secure software development. However, the free tier is now limited to 10 hours/month.
 
 ### Steps to Run Examples from the Repository
 
@@ -74,7 +62,7 @@ Gitpod is a cloud-based development environment designed for teams. It supports 
 
 - Check the status of the container with the `docker ps` or `docker compose ps` commands.
 - Access your running Jenkins instance at [http://127.0.0.1:8080](http://127.0.0.1:8080).
-- On Gitpod, if containers are running successfully after entering `docker compose --profile <tutorial-name> up`, a pop-up titled `A service is available on port 8080` should appear. If it doesn't, you can view the running service in the `PORTS` section on the right side of the terminal.
+- On GitHub Codespaces, port 8080 is automatically forwarded and you'll see a notification to open the forwarded port in your browser.
 
 ### Clean Up Instructions
 
@@ -82,17 +70,15 @@ Gitpod is a cloud-based development environment designed for teams. It supports 
 - If you encounter a `Resource is still in use` warning, use the `--remove-orphans` option which would give `docker compose --profile <tutorial-name> down --remove-orphans`.
 - To remove the created volumes (should you need to restart from scratch), add the `-v` option which would give `docker compose --profile <tutorial-name> down -v`.
 
-### Suppressing Jenkins Warning using JCASC
+### Jenkins Configuration using JCASC
 
-To improve the Gitpod experience with Jenkins, we've suppressed a reverse proxy setup warning in Jenkins that was causing issues in the Gitpod environment. We achieved this using Jenkins Configuration as Code ([JCASC](https://www.jenkins.io/projects/jcasc/)) and added the following property to the JCASC YAML file:
+This repository uses Jenkins Configuration as Code ([JCASC](https://www.jenkins.io/projects/jcasc/)) to provide pre-configured Jenkins environments. The configuration includes:
 
-```yaml
-jenkins:
-  disabledAdministrativeMonitors:
-    - "hudson.diagnosis.ReverseProxySetupMonitor"
-```
+- Pre-configured admin credentials (admin/admin)
+- Automatic agent registration via SSH
+- Suppressed reverse proxy warnings for cloud development environments
 
-For more detailed information about this configuration and the context behind it, please refer to the [corresponding issue](https://github.com/ash-sxn/GSoC-2023-docker-based-quickstart/issues/61).
+For more detailed information about the configuration, please refer to `dockerfiles/jenkins.yaml`.
 
 ### Encountering Issues?
 

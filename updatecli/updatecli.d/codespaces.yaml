@@ -81,7 +81,7 @@ targets:
     scmid: default
     spec:
       file: .devcontainer/devcontainer.json
-      matchpattern: '("version": ")([0-9.]+)(",)'
+      matchpattern: '("version": ")([0-9.]*)(",)'
       replacepattern: '${1}{{ source "docker-version" }}${3}'
       search:
         pattern: 'ghcr\.io/devcontainers/features/docker-in-docker'

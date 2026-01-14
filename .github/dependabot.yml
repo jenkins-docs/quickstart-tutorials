@@ -2,8 +2,7 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
-# Note: GitPod support is legacy (free tier sunset). Migrated to GitHub Codespaces.
-# Codespaces uses devcontainer.json which Dependabot cannot monitor (not a Dockerfile).
+# Note: GitHub Codespaces uses devcontainer.json which Dependabot cannot monitor (not a Dockerfile).
 # Codespaces dependencies (yq, devcontainer features) are tracked by UpdateCLI.
 # See updatecli/updatecli.d/codespaces.yaml for automated updates.
 
@@ -68,12 +67,3 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
-
-  # GitPod (legacy) - disabled, not actively maintained
-  - package-ecosystem: docker
-    directory: "./.gitpod"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 0
-    ignore:
-      - dependency-name: "gitpod/workspace-full"
