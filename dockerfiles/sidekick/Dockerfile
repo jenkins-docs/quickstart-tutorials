@@ -1,6 +1,6 @@
 # This Dockerfile is used to prepare a Debian-based Docker image with several utilities installed.
 
-# We start from the Debian 'bookworm' image dated 2023-11-20.
+# We start from the Debian 'trixie' image.
 FROM debian:trixie-20260112 as prepare-stage
 
 # Copy all shell scripts from the current directory to /usr/local/bin/ in the image.
