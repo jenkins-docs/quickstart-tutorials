@@ -1,0 +1,126 @@
+---
+name: Bump Android SDK components in android agent
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  # Uses Python stdlib to parse official Google SDK repository XML
+  # This is more reliable than shell pipelines with curl/grep/sed
+  androidCommandLineTools:
+    kind: shell
+    spec:
+      command: |
+        python3 -c "
+        import xml.etree.ElementTree as ET
+        import urllib.request
+        import urllib.error
+        import re
+        import sys
+
+        try:
+            with urllib.request.urlopen('https://dl.google.com/android/repository/repository2-3.xml') as f:
+                tree = ET.parse(f)
+        except (urllib.error.URLError, urllib.error.HTTPError) as e:
+            print(f'Error fetching SDK repository: {e}', file=sys.stderr)
+            sys.exit(1)
+
+        found = False
+        for elem in tree.iter():
+            if elem.tag.endswith('url') and elem.text and 'commandlinetools-linux' in elem.text:
+                m = re.search(r'commandlinetools-linux-(\d+)_', elem.text)
+                if m:
+                    print(m.group(1))
+                    found = True
+                    break
+
+        if not found:
+            print('Error: No commandlinetools-linux version found', file=sys.stderr)
+            sys.exit(1)
+        "
+      environments:
+        - name: PATH
+
+  # Gets latest stable build-tools version (excludes release candidates)
+  androidBuildTools:
+    kind: shell
+    spec:
+      command: |
+        python3 -c "
+        import xml.etree.ElementTree as ET
+        import urllib.request
+        import urllib.error
+        import sys
+
+        try:
+            with urllib.request.urlopen('https://dl.google.com/android/repository/repository2-3.xml') as f:
+                tree = ET.parse(f)
+        except (urllib.error.URLError, urllib.error.HTTPError) as e:
+            print(f'Error fetching SDK repository: {e}', file=sys.stderr)
+            sys.exit(1)
+
+        versions = []
+        for elem in tree.iter():
+            if elem.tag.endswith('remotePackage'):
+                path = elem.get('path', '')
+                if path.startswith('build-tools;') and '-rc' not in path:
+                    versions.append(path.replace('build-tools;', ''))
+
+        if not versions:
+            print('Error: No stable build-tools versions found', file=sys.stderr)
+            sys.exit(1)
+
+        def version_key(v):
+            try:
+                return tuple(int(x) for x in v.split('.'))
+            except ValueError:
+                return (0,)  # Invalid versions sort to beginning
+
+        versions.sort(key=version_key)
+        print(versions[-1])
+        "
+      environments:
+        - name: PATH
+
+conditions:
+
+targets:
+  androidCommandLineToolsURL:
+    name: "[android-agent] Update command-line tools version in Dockerfile"
+    kind: file
+    spec:
+      file: dockerfiles/android/Dockerfile
+      matchpattern: 'commandlinetools-linux-(\d+)_latest\.zip'
+      replacepattern: 'commandlinetools-linux-{{ source "androidCommandLineTools" }}_latest.zip'
+    sourceid: androidCommandLineTools
+    scmid: default
+
+  androidBuildToolsVersion:
+    name: "[android-agent] Update build tools version in Dockerfile"
+    kind: dockerfile
+    spec:
+      file: dockerfiles/android/Dockerfile
+      instruction:
+        keyword: "ARG"
+        matcher: "ANDROID_BUILD_TOOLS_VERSION"
+    sourceid: androidBuildTools
+    scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: '[Android] Bump Android SDK components to latest versions'
+    spec:
+      labels:
+        - dependencies
+        - android
