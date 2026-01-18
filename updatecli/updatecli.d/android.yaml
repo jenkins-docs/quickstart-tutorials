@@ -1,0 +1,77 @@
+---
+name: Bump Android SDK components in android agent
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  # Uses official Google SDK repository XML (not JS-rendered website)
+  androidCommandLineTools:
+    kind: shell
+    spec:
+      command: >-
+        curl -sL "https://dl.google.com/android/repository/repository2-3.xml" |
+        grep 'commandlinetools-linux' |
+        sed 's/.*commandlinetools-linux-\([0-9]*\).*/\1/' |
+        sort -n |
+        tail -1
+      environments:
+        - name: PATH
+
+  # Uses official Google SDK repository XML to get latest stable build-tools
+  # Excludes release candidates (-rc versions) and sorts by version number
+  androidBuildTools:
+    kind: shell
+    spec:
+      command: >-
+        curl -sL "https://dl.google.com/android/repository/repository2-3.xml" |
+        grep 'remotePackage path="build-tools;' |
+        grep -v '-rc' |
+        sed 's/.*build-tools;\([^"]*\)".*/\1/' |
+        sort -V |
+        tail -1
+      environments:
+        - name: PATH
+
+conditions:
+
+targets:
+  androidCommandLineToolsURL:
+    name: "[android-agent] Update command-line tools version in Dockerfile"
+    kind: file
+    spec:
+      file: dockerfiles/android/Dockerfile
+      matchpattern: 'commandlinetools-linux-(\d+)_latest\.zip'
+      replacepattern: 'commandlinetools-linux-{{ source "androidCommandLineTools" }}_latest.zip'
+    sourceid: androidCommandLineTools
+    scmid: default
+
+  androidBuildToolsVersion:
+    name: "[android-agent] Update build tools version in Dockerfile"
+    kind: dockerfile
+    spec:
+      file: dockerfiles/android/Dockerfile
+      instruction:
+        keyword: "ARG"
+        matcher: "ANDROID_BUILD_TOOLS_VERSION"
+    sourceid: androidBuildTools
+    scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: '[Android] Bump Android SDK components to latest versions'
+    spec:
+      labels:
+        - dependencies
+        - android
