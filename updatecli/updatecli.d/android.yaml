@@ -14,31 +14,49 @@ scms:
       branch: "{{ .github.branch }}"
 
 sources:
-  # Uses official Google SDK repository XML (not JS-rendered website)
+  # Uses Python stdlib to parse official Google SDK repository XML
+  # This is more reliable than shell pipelines with curl/grep/sed
   androidCommandLineTools:
     kind: shell
     spec:
-      command: >-
-        curl -sL "https://dl.google.com/android/repository/repository2-3.xml" |
-        grep 'commandlinetools-linux' |
-        sed 's/.*commandlinetools-linux-\([0-9]*\).*/\1/' |
-        sort -n |
-        tail -1
+      command: |
+        python3 -c "
+        import xml.etree.ElementTree as ET
+        import urllib.request
+        import re
+        with urllib.request.urlopen('https://dl.google.com/android/repository/repository2-3.xml') as f:
+            tree = ET.parse(f)
+        for elem in tree.iter():
+            if elem.tag.endswith('url') and elem.text and 'commandlinetools-linux' in elem.text:
+                m = re.search(r'commandlinetools-linux-(\d+)_', elem.text)
+                if m:
+                    print(m.group(1))
+                    break
+        "
       environments:
         - name: PATH
 
-  # Uses official Google SDK repository XML to get latest stable build-tools
-  # Excludes release candidates (-rc versions) and sorts by version number
+  # Gets latest stable build-tools version (excludes release candidates)
   androidBuildTools:
     kind: shell
     spec:
-      command: >-
-        curl -sL "https://dl.google.com/android/repository/repository2-3.xml" |
-        grep 'remotePackage path="build-tools;' |
-        grep -v '-rc' |
-        sed 's/.*build-tools;\([^"]*\)".*/\1/' |
-        sort -V |
-        tail -1
+      command: |
+        python3 -c "
+        import xml.etree.ElementTree as ET
+        import urllib.request
+        with urllib.request.urlopen('https://dl.google.com/android/repository/repository2-3.xml') as f:
+            tree = ET.parse(f)
+        versions = []
+        for elem in tree.iter():
+            if elem.tag.endswith('remotePackage'):
+                path = elem.get('path', '')
+                if path.startswith('build-tools;') and '-rc' not in path:
+                    versions.append(path.replace('build-tools;', ''))
+        def version_key(v):
+            return tuple(int(x) for x in v.split('.'))
+        versions.sort(key=version_key)
+        print(versions[-1])
+        "
       environments:
         - name: PATH
 
