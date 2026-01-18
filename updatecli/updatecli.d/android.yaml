@@ -14,17 +14,31 @@ scms:
       branch: "{{ .github.branch }}"
 
 sources:
+  # Uses official Google SDK repository XML (not JS-rendered website)
   androidCommandLineTools:
     kind: shell
     spec:
-      command: 'curl -sL https://developer.android.com/studio | grep -oP "commandlinetools-linux-\K\d+(?=_latest\.zip)" | head -1'
+      command: >-
+        curl -sL "https://dl.google.com/android/repository/repository2-3.xml" |
+        grep 'commandlinetools-linux' |
+        sed 's/.*commandlinetools-linux-\([0-9]*\).*/\1/' |
+        sort -n |
+        tail -1
       environments:
         - name: PATH
 
+  # Uses official Google SDK repository XML to get latest stable build-tools
+  # Excludes release candidates (-rc versions) and sorts by version number
   androidBuildTools:
     kind: shell
     spec:
-      command: 'curl -sL https://developer.android.com/tools/releases/build-tools | grep -oP "(\d+\.\d+\.\d+)" | grep "^35\." | head -1'
+      command: >-
+        curl -sL "https://dl.google.com/android/repository/repository2-3.xml" |
+        grep 'remotePackage path="build-tools;' |
+        grep -v '-rc' |
+        sed 's/.*build-tools;\([^"]*\)".*/\1/' |
+        sort -V |
+        tail -1
       environments:
         - name: PATH
 
