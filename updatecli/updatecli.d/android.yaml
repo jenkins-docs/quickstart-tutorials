@@ -23,15 +23,29 @@ sources:
         python3 -c "
         import xml.etree.ElementTree as ET
         import urllib.request
+        import urllib.error
         import re
-        with urllib.request.urlopen('https://dl.google.com/android/repository/repository2-3.xml') as f:
-            tree = ET.parse(f)
+        import sys
+
+        try:
+            with urllib.request.urlopen('https://dl.google.com/android/repository/repository2-3.xml') as f:
+                tree = ET.parse(f)
+        except (urllib.error.URLError, urllib.error.HTTPError) as e:
+            print(f'Error fetching SDK repository: {e}', file=sys.stderr)
+            sys.exit(1)
+
+        found = False
         for elem in tree.iter():
             if elem.tag.endswith('url') and elem.text and 'commandlinetools-linux' in elem.text:
                 m = re.search(r'commandlinetools-linux-(\d+)_', elem.text)
                 if m:
                     print(m.group(1))
+                    found = True
                     break
+
+        if not found:
+            print('Error: No commandlinetools-linux version found', file=sys.stderr)
+            sys.exit(1)
         "
       environments:
         - name: PATH
@@ -44,16 +58,33 @@ sources:
         python3 -c "
         import xml.etree.ElementTree as ET
         import urllib.request
-        with urllib.request.urlopen('https://dl.google.com/android/repository/repository2-3.xml') as f:
-            tree = ET.parse(f)
+        import urllib.error
+        import sys
+
+        try:
+            with urllib.request.urlopen('https://dl.google.com/android/repository/repository2-3.xml') as f:
+                tree = ET.parse(f)
+        except (urllib.error.URLError, urllib.error.HTTPError) as e:
+            print(f'Error fetching SDK repository: {e}', file=sys.stderr)
+            sys.exit(1)
+
         versions = []
         for elem in tree.iter():
             if elem.tag.endswith('remotePackage'):
                 path = elem.get('path', '')
                 if path.startswith('build-tools;') and '-rc' not in path:
                     versions.append(path.replace('build-tools;', ''))
+
+        if not versions:
+            print('Error: No stable build-tools versions found', file=sys.stderr)
+            sys.exit(1)
+
         def version_key(v):
-            return tuple(int(x) for x in v.split('.'))
+            try:
+                return tuple(int(x) for x in v.split('.'))
+            except ValueError:
+                return (0,)  # Invalid versions sort to beginning
+
         versions.sort(key=version_key)
         print(versions[-1])
         "
