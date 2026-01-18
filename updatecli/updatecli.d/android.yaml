@@ -35,7 +35,7 @@ sources:
       command: >-
         curl -sL "https://dl.google.com/android/repository/repository2-3.xml" |
         grep 'remotePackage path="build-tools;' |
-        grep -v '\-rc' |
+        grep -v '-rc' |
         sed 's/.*build-tools;\([^"]*\)".*/\1/' |
         sort -V |
         tail -1
