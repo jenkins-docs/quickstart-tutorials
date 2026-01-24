@@ -21,7 +21,7 @@ font-awesome-api:7.1.0-882.v1dfb_771e3278
 git-client:6.5.0
 git:5.8.1
 github-api:1.330-492.v3941a_032db_2a_
-github-branch-source:1917.v9ee8a_39b_3d0d
+github-branch-source:1934.v23cf60a_47fc3
 github:1.45.0
 gradle:2.18.1203.v2c96b_1243c72
 instance-identity:203.v15e81a_1b_7a_38
@@ -34,7 +34,7 @@ javax-mail-api:1.6.2-11
 jaxb:2.3.9-143.v5979df3304e6
 jjwt-api:0.11.5-120.v0268cf544b_89
 jquery3-api:3.7.1-619.vdb_10e002501a_
-junit:1369.v15da_00283f06
+junit:1380.v491ff054cd35
 locale:614.va_6a_5a_1a_f2b_38
 mailer:525.v2458b_d8a_1a_71
 matrix-auth:3.2.9
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.16.0-167.va_269f38cc024
 okhttp-api:4.12.0-195.vc02552c04ffd
 pipeline-build-step:584.vdb_a_2cc3a_d07a_
 pipeline-graph-analysis:245.v88f03631a_b_21
-pipeline-graph-view:661.v6003f4542123
+pipeline-graph-view:763.v0e91db_e845ee
 pipeline-groovy-lib:787.ve2fef0efdca_6
 pipeline-input-step:540.v14b_100d754dd
 pipeline-milestone-step:138.v78ca_76831a_43
@@ -71,7 +71,7 @@ token-macro:477.vd4f0dc3cb_cf1
 trilead-api:2.284.v1974ea_324382
 variant:70.va_d9f17f859e0
 workflow-aggregator:608.v67378e9d3db_1
-workflow-api:1384.vdc05a_48f535f
+workflow-api:1398.v67030756d3fb_
 workflow-basic-steps:1098.v808b_fd7f8cf4
 workflow-cps:4254.v0c8e228524ea_
 workflow-durable-task-step:1464.v2d3f5c68f84c
