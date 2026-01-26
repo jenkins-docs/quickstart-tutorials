@@ -19,7 +19,7 @@ durable-task:651.v1f5e074fc83f
 echarts-api:6.0.0-1165.vd1283a_3e37d4
 font-awesome-api:7.1.0-882.v1dfb_771e3278
 git-client:6.5.0
-git:5.8.1
+git:5.9.0
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1934.v23cf60a_47fc3
 github:1.45.0
