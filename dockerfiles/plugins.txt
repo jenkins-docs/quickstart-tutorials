@@ -13,7 +13,7 @@ commons-text-api:1.15.0-210.v7480a_da_70b_9e
 configuration-as-code:2037.v8e5349845172
 coverage:2.3139.v731d2e83ea_8a_
 credentials-binding:717.v951d49b_5f3a_a_
-credentials:1480.v2246fd131e83
+credentials:1487.va_d001ede2c31
 display-url-api:2.217.va_6b_de84cc74b_
 durable-task:651.v1f5e074fc83f
 echarts-api:6.0.0-1165.vd1283a_3e37d4
