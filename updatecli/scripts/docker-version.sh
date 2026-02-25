@@ -11,7 +11,7 @@ docker_version=$(echo "$file_content" | grep -- "- Docker version" | cut -d ' ' 
 docker_version=$(echo "$docker_version" | cut -d ',' -f 1)
 
 # Get the current version from README.md
-current_version=$(grep -oP 'Docker version `\K[^`]+' README.md)
+current_version=$(grep -oP 'Docker version `\K[^`]+' README.md | head -n1)
 
 # Compare versions: only output the new version if it's strictly newer
 if [ -n "$current_version" ] && [ -n "$docker_version" ]; then

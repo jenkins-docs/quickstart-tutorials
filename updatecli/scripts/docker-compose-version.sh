@@ -8,7 +8,7 @@ file_content=$(cat docker-versions.txt)
 docker_compose_version=$(echo "$file_content" | grep -- "- Docker Compose version" | cut -d ' ' -f 5)
 
 # Get the current version from README.md (strip leading 'v' if present for comparison)
-current_version=$(grep -oP 'Docker Compose version `\K[^`]+' README.md)
+current_version=$(grep -oP 'Docker Compose version `\K[^`]+' README.md | head -n1)
 
 # Strip leading 'v' for comparison (updatecli trimprefix transformer handles the output)
 new_clean=$(echo "$docker_compose_version" | sed 's/^v//')
@@ -19,7 +19,7 @@ if [ -n "$current_clean" ] && [ -n "$new_clean" ]; then
   newer=$(printf '%s\n%s' "$new_clean" "$current_clean" | sort -V | tail -n1)
   if [ "$newer" = "$current_clean" ] || [ "$new_clean" = "$current_clean" ]; then
     # Current version is same or newer, output it unchanged to avoid a downgrade
-    echo "$docker_compose_version"
+    echo "v${current_clean}"
     exit 0
   fi
 fi
