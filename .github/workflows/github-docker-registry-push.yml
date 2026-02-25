@@ -63,9 +63,44 @@ jobs:
           BRANCH_NAME="docker-versions-update-$(date +%s)"
           git checkout -b "$BRANCH_NAME"
 
-          # Write Docker versions to file
-          echo "- $(docker --version)" > docker-versions.txt
-          echo "- $(docker compose version)" >> docker-versions.txt
+          # Helper: compare two semver strings, return 0 if $1 > $2
+          version_gt() {
+            # Use sort -V to compare versions; if the greater one is $1, it's newer
+            [ "$(printf '%s\n%s' "$1" "$2" | sort -V | tail -n1)" = "$1" ] && [ "$1" != "$2" ]
+          }
+
+          # Extract current versions from docker-versions.txt
+          CURRENT_DOCKER=$(grep "Docker version" docker-versions.txt | cut -d ' ' -f 4 | cut -d ',' -f 1)
+          CURRENT_COMPOSE=$(grep "Docker Compose version" docker-versions.txt | cut -d ' ' -f 5 | tr -d 'v')
+
+          # Get runner versions
+          RUNNER_DOCKER=$(docker --version | cut -d ' ' -f 3 | cut -d ',' -f 1)
+          RUNNER_COMPOSE=$(docker compose version | cut -d ' ' -f 4 | tr -d 'v')
+
+          echo "Current: Docker $CURRENT_DOCKER, Compose $CURRENT_COMPOSE"
+          echo "Runner:  Docker $RUNNER_DOCKER, Compose $RUNNER_COMPOSE"
+
+          # Only update if runner version is strictly newer
+          DOCKER_VERSION="${CURRENT_DOCKER}"
+          COMPOSE_VERSION="${CURRENT_COMPOSE}"
+
+          if version_gt "$RUNNER_DOCKER" "$CURRENT_DOCKER"; then
+            echo "Docker version $RUNNER_DOCKER is newer than $CURRENT_DOCKER, updating"
+            DOCKER_VERSION="$RUNNER_DOCKER"
+          else
+            echo "Docker version $RUNNER_DOCKER is not newer than $CURRENT_DOCKER, keeping current"
+          fi
+
+          if version_gt "$RUNNER_COMPOSE" "$CURRENT_COMPOSE"; then
+            echo "Docker Compose version $RUNNER_COMPOSE is newer than $CURRENT_COMPOSE, updating"
+            COMPOSE_VERSION="$RUNNER_COMPOSE"
+          else
+            echo "Docker Compose version $RUNNER_COMPOSE is not newer than $CURRENT_COMPOSE, keeping current"
+          fi
+
+          # Write versions to file
+          echo "- Docker version ${DOCKER_VERSION}, build unknown" > docker-versions.txt
+          echo "- Docker Compose version v${COMPOSE_VERSION}" >> docker-versions.txt
 
           # Only add the specific file we want
           git add docker-versions.txt
