@@ -8,7 +8,7 @@
       "dockerDashComposeVersion": "v2"
     },
     "ghcr.io/devcontainers/features/github-cli:1": {
-      "version": "2.87.2"
+      "version": "2.87.3"
     }
   },
 
