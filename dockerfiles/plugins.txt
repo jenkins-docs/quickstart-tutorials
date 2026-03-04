@@ -26,7 +26,7 @@ github:1.46.0
 gradle:2.18.1203.v2c96b_1243c72
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.20.1-423.v13951f6b_6532
+jackson2-api:2.21.1-428.vf8dd988fa_d8d
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
