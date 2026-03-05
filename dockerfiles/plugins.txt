@@ -15,9 +15,9 @@ coverage:2.3139.v731d2e83ea_8a_
 credentials-binding:717.v951d49b_5f3a_a_
 credentials:1491.v6d6145e96e1c
 display-url-api:2.217.va_6b_de84cc74b_
-durable-task:651.v1f5e074fc83f
+durable-task:664.v2b_e7a_dfff66c
 echarts-api:6.0.0-1165.vd1283a_3e37d4
-font-awesome-api:7.1.0-882.v1dfb_771e3278
+font-awesome-api:7.2.0-965.ve3840b_696418
 git-client:6.5.0
 git:5.10.0
 github-api:1.330-492.v3941a_032db_2a_
@@ -26,7 +26,7 @@ github:1.46.0
 gradle:2.18.1203.v2c96b_1243c72
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.20.1-423.v13951f6b_6532
+jackson2-api:2.21.1-428.vf8dd988fa_d8d
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.16.0-167.va_269f38cc024
 okhttp-api:4.12.0-195.vc02552c04ffd
 pipeline-build-step:584.vdb_a_2cc3a_d07a_
 pipeline-graph-analysis:254.v0f63a_a_447dca_
-pipeline-graph-view:777.vdeb_113b_b_94da_
+pipeline-graph-view:803.vb_88f7a_a_1cb_47
 pipeline-groovy-lib:787.ve2fef0efdca_6
 pipeline-input-step:540.v14b_100d754dd
 pipeline-milestone-step:138.v78ca_76831a_43
