@@ -19,11 +19,11 @@ durable-task:664.v2b_e7a_dfff66c
 echarts-api:6.0.0-1247.vf3e35a_c1813f
 font-awesome-api:7.2.0-965.ve3840b_696418
 git-client:6.5.0
-git:5.10.0
+git:5.10.1
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1967.vdea_d580c1a_b_a_
 github:1.46.0
-gradle:2.18.1203.v2c96b_1243c72
+gradle:2.19.1238.vff55739b_490f
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
 jackson2-api:2.21.1-428.vf8dd988fa_d8d
@@ -73,7 +73,7 @@ variant:70.va_d9f17f859e0
 workflow-aggregator:608.v67378e9d3db_1
 workflow-api:1398.v67030756d3fb_
 workflow-basic-steps:1098.v808b_fd7f8cf4
-workflow-cps:4261.va_1fa_c7e4db_da_
+workflow-cps:4262.va_74628df1ff2
 workflow-durable-task-step:1464.v2d3f5c68f84c
 workflow-job:1571.vb_423c255d6d9
 workflow-multibranch:821.vc3b_4ea_780798
