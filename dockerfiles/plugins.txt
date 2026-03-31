@@ -10,7 +10,7 @@ checks-api:402.vca_263b_f200e3
 cloudbees-folder:6.1079.vc0975c2de294
 commons-lang3-api:3.20.0-109.ve43756e2d2b_4
 commons-text-api:1.15.0-218.va_61573470393
-configuration-as-code:2056.v6a_e126e16620
+configuration-as-code:2061.vc08919f7fc37
 coverage:2.3139.v731d2e83ea_8a_
 credentials-binding:719.v80e905ef14eb_
 credentials:1499.va_f0e811253a_6
@@ -26,7 +26,7 @@ github:1.46.0
 gradle:2.19.1238.vff55739b_490f
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.21.1-428.vf8dd988fa_d8d
+jackson2-api:2.21.1-431.v30a_74465f776
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
