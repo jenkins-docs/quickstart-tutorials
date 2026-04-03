@@ -23,10 +23,10 @@ git:5.10.1
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1967.vdea_d580c1a_b_a_
 github:1.46.0
-gradle:2.19.1238.vff55739b_490f
+gradle:2.19.1244.v1f9866817fec
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.21.1-431.v30a_74465f776
+jackson2-api:2.21.2-433.v6d50b_92cfe52
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
