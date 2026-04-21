@@ -13,8 +13,7 @@ jenkins:
           password: "admin"
   authorizationStrategy: loggedInUsersCanDoAnything
   crumbIssuer:
-    standard:
-      excludeClientIPFromCrumb: false
+    standard: {}
   nodes:  
   - permanent:
       labelString: "docker jenkins agent"
@@ -23,7 +22,8 @@ jenkins:
           credentialsId: "jenkins-ssh-agent-private-key"
           host: "desktop-jenkins_agent-1"
           port: 22
-          sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+          sshHostKeyVerificationStrategy:
+            nonVerifyingKeyVerificationStrategy: {}
       name: "docker-ssh-jenkins-agent"
       nodeDescription: "ssh jenkins docker agent "
       remoteFS: "/home/jenkins/agent"
