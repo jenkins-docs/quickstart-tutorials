@@ -67,3 +67,73 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+
+  # Updates targeting the weekly branch
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: "*github-script*"
+
+  - package-ecosystem: docker
+    directory: "./dockerfiles"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/maven"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/multi"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/node"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/python"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/sidekick"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/agent-discovery"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/android"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/golang"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "./dockerfiles/dotnet"
+    target-branch: "weekly"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
