@@ -74,3 +74,12 @@ jobs:
               # Create pull request using gh command
               gh pr create --title "chore(jenkins): Updates Jenkins plugins" --body "This pull request updates the Jenkins plugins listed in \`plugins.txt\`." --base "$BASE_BRANCH" --head "$BRANCH_NAME"
           fi
+
+      - name: Capture Jenkins logs on failure
+        if: failure()
+        run: |
+          echo "=== Container status ==="
+          docker ps -a
+          echo "=== Jenkins controller logs ==="
+          CTRL=$(docker ps -a --format "{{.Names}}" | grep -m1 controller || true)
+          [ -n "$CTRL" ] && docker logs "$CTRL" 2>&1 | tail -200 || echo "No controller container found"
