@@ -41,13 +41,7 @@ credentials:
           username: "jenkins"
 security:
   contentSecurityPolicy:
-    header: >-
-      sandbox allow-same-origin allow-scripts allow-popups allow-forms;
-      default-src 'self';
-      img-src 'self' data:;
-      style-src 'self' 'unsafe-inline';
-      script-src 'self' 'unsafe-inline';
-      font-src 'self';
+    enforce: true
 unclassified:
   location:
     url: "http://127.0.0.1:8080/"
