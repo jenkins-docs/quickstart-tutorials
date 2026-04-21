@@ -31,6 +31,15 @@ cat /var/jenkins_home/jenkins.yaml
 # Hopefully, Jenkins will load this JCasc configuration after we change the value
 # We will modify this file later on with the name of the agent machine, but this change has to happen as soon as possible, so Jenkins knows the token to reload the configuration later on, once we have found the agent machine name.
 
+# If running in GitHub Codespaces, update the Jenkins root URL so the reverse proxy check passes
+if [ -n "${CODESPACE_NAME:-}" ] && [ -n "${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-}" ]; then
+    JENKINS_URL="https://${CODESPACE_NAME}-8080.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}/"
+    export JENKINS_URL
+    yq eval -i '.unclassified.location.url = env(JENKINS_URL)' /var/jenkins_home/jenkins.yaml
+    yq eval -i '(.jenkins.disabledAdministrativeMonitors // []) as $m | .jenkins.disabledAdministrativeMonitors = ($m + ["hudson.diagnosis.ReverseProxySetupMonitor"] | unique)' /var/jenkins_home/jenkins.yaml
+    echo "✅ Codespaces detected — Jenkins URL set to: ${JENKINS_URL}"
+fi
+
 # Get the IP address of the host machine
 # The hostname -I command is used to print all network addresses of the host.
 # The awk command is used to print the first field (the first IP address).
