@@ -30,6 +30,9 @@ services:
     stdin_open: true
     tty: true
     entrypoint: sh -c "/usr/local/bin/find-name.sh"
+    environment:
+      - CODESPACE_NAME=${CODESPACE_NAME:-}
+      - GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN=${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-}
     profiles:
       - maven
       - python
