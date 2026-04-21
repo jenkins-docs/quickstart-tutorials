@@ -81,5 +81,5 @@ jobs:
           echo "=== Container status ==="
           docker ps -a
           echo "=== Jenkins controller logs ==="
-          CTRL=$(docker ps -a --format "{{.Names}}" | grep controller | head -1)
+          CTRL=$(docker ps -a --format "{{.Names}}" | grep -m1 controller || true)
           [ -n "$CTRL" ] && docker logs "$CTRL" 2>&1 | tail -200 || echo "No controller container found"
