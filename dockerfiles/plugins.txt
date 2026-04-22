@@ -32,7 +32,7 @@ jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
 javax-mail-api:1.6.2-11
 jaxb:2.3.9-143.v5979df3304e6
-jjwt-api:0.11.5-120.v0268cf544b_89
+jjwt-api:0.13.0-141.vd58b_a_9592b_6c
 jquery3-api:3.7.1-682.vfa_cdce169929
 junit:1403.vd9d1413fd205
 locale:614.va_6a_5a_1a_f2b_38
