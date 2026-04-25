@@ -35,7 +35,7 @@ jaxb:2.3.9-143.v5979df3304e6
 jjwt-api:0.13.0-141.vd58b_a_9592b_6c
 jquery3-api:3.7.1-682.vfa_cdce169929
 junit:1403.vd9d1413fd205
-locale:614.va_6a_5a_1a_f2b_38
+locale:641.v84f22d75fd8b_
 mailer:534.v1b_36f5864073
 matrix-auth:3.2.9
 matrix-project:870.v9db_fcfc2f45b_
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.16.0-167.va_269f38cc024
 okhttp-api:5.3.2-200.vedb_720a_cf1f8
 pipeline-build-step:584.vdb_a_2cc3a_d07a_
 pipeline-graph-analysis:254.v0f63a_a_447dca_
-pipeline-graph-view:842.va_457d5d7654f
+pipeline-graph-view:854.vef85b_ee6e13a_
 pipeline-groovy-lib:797.v90ea_a_9b_e45a_0
 pipeline-input-step:551.vdff487c5998c
 pipeline-milestone-step:152.v6e22b_8cfc66c
