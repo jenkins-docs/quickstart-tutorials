@@ -45,7 +45,7 @@ mina-sshd-api-core:2.16.0-167.va_269f38cc024
 okhttp-api:5.3.2-200.vedb_720a_cf1f8
 pipeline-build-step:584.vdb_a_2cc3a_d07a_
 pipeline-graph-analysis:254.v0f63a_a_447dca_
-pipeline-graph-view:871.vd450b_6eb_d1e1
+pipeline-graph-view:872.vf5b_ec277ffb_b_
 pipeline-groovy-lib:797.v90ea_a_9b_e45a_0
 pipeline-input-step:551.vdff487c5998c
 pipeline-milestone-step:152.v6e22b_8cfc66c
