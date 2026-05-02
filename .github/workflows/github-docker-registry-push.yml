@@ -80,7 +80,7 @@ jobs:
 
       - name: Set up QEMU
         # This step sets up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
         # This step sets up Docker Buildx
