@@ -22,7 +22,7 @@ git-client:6.6.0
 git:5.10.1
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1967.1969.v205fd594c821
-github:1.46.0.1
+github:1.47.0
 gradle:2.19.1244.v1f9866817fec
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
@@ -34,7 +34,7 @@ javax-mail-api:1.6.2-11
 jaxb:2.3.9-143.v5979df3304e6
 jjwt-api:0.13.0-141.vd58b_a_9592b_6c
 jquery3-api:3.7.1-687.v68d468e40b_30
-junit:1407.v9d04cdeedb_6a_
+junit:1413.v736fa_5b_61d80
 locale:641.v84f22d75fd8b_
 mailer:534.v1b_36f5864073
 matrix-auth:3.2.10
