@@ -5,7 +5,7 @@ bootstrap5-api:5.3.8-895.v4d0d8e47fea_d
 bouncycastle-api:2.30.1.84-291.v9f17b_21896e2
 branch-api:2.1280.v0d4e5b_b_460ef
 build-timeout:1.40
-caffeine-api:3.2.3-194.v31a_b_f7a_b_5a_81
+caffeine-api:3.2.4-208.v7e2da_a_7db_82b_
 checks-api:415.vf022234a_931d
 cloudbees-folder:6.1100.ve9eed61d16c4
 commons-lang3-api:3.20.0-109.ve43756e2d2b_4
@@ -26,7 +26,7 @@ github:1.47.0
 gradle:2.19.1244.v1f9866817fec
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.21.2-436.v29efdb_7418ff
+jackson2-api:2.22.0-439.vb_b_43658d6176
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.17.1-187.v0341274c2905
 okhttp-api:5.3.2-200.vedb_720a_cf1f8
 pipeline-build-step:584.vdb_a_2cc3a_d07a_
 pipeline-graph-analysis:254.v0f63a_a_447dca_
-pipeline-graph-view:949.v1cf0f01ca_cfa_
+pipeline-graph-view:953.v23894ccf0079
 pipeline-groovy-lib:798.v5cc688825312
 pipeline-input-step:551.vdff487c5998c
 pipeline-milestone-step:152.v6e22b_8cfc66c
