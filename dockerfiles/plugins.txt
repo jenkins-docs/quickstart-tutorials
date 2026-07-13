@@ -10,12 +10,12 @@ checks-api:415.vf022234a_931d
 cloudbees-folder:6.1100.ve9eed61d16c4
 commons-lang3-api:3.20.0-109.ve43756e2d2b_4
 commons-text-api:1.15.0-218.va_61573470393
-configuration-as-code:2099.ve3a_6e23f4960
+configuration-as-code:2100.vb_fd699d2a_09c
 coverage:3.3278.va_04d3e352354
-credentials-binding:725.ve52b_2328a_fde
+credentials-binding:728.v902a_273b_8947
 credentials:1506.v948b_b_b_7dec44
 display-url-api:2.217.va_6b_de84cc74b_
-durable-task:683.vc64df45d8780
+durable-task:686.v80ff80875b_82
 echarts-api:6.0.0-1287.vfd24c22a_3d00
 font-awesome-api:7.2.0-990.vf220b_2a_496f9
 git-client:6.6.1
