@@ -12,10 +12,10 @@ commons-lang3-api:3.20.0-109.ve43756e2d2b_4
 commons-text-api:1.15.0-218.va_61573470393
 configuration-as-code:2036.v0b_c2de701dcb_
 coverage:2.3139.v731d2e83ea_8a_
-credentials-binding:725.ve52b_2328a_fde
+credentials-binding:728.v902a_273b_8947
 credentials:1496.vf6821f162d4e
 display-url-api:2.217.va_6b_de84cc74b_
-durable-task:671.v340ff7959010
+durable-task:686.v80ff80875b_82
 echarts-api:6.0.0-1247.vf3e35a_c1813f
 font-awesome-api:7.2.0-965.ve3840b_696418
 git-client:6.6.1
@@ -34,10 +34,10 @@ javax-mail-api:1.6.2-11
 jaxb:2.3.9-143.v5979df3304e6
 jjwt-api:0.13.0-141.vd58b_a_9592b_6c
 jquery3-api:3.7.1-619.vdb_10e002501a_
-junit:1413.v736fa_5b_61d80
+junit:1415.vcb_3245e24402
 locale:641.v84f22d75fd8b_
 mailer:534.v1b_36f5864073
-matrix-auth:3.2.10
+matrix-auth:3.3
 matrix-project:870.v9db_fcfc2f45b_
 metrics:4.2.37-494.v06f9a_939d33a_
 mina-sshd-api-common:2.17.1-187.v0341274c2905
