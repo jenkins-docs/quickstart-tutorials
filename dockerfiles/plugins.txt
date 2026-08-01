@@ -11,7 +11,7 @@ cloudbees-folder:6.1100.ve9eed61d16c4
 commons-lang3-api:3.20.0-109.ve43756e2d2b_4
 commons-text-api:1.15.0-218.va_61573470393
 configuration-as-code:2108.v02b_430db_0cf5
-coverage:3.3305.vf8df16102f76
+coverage:3.3311.v42c5a_f929e3e
 credentials-binding:728.v902a_273b_8947
 credentials:1506.v948b_b_b_7dec44
 display-url-api:2.217.va_6b_de84cc74b_
@@ -26,7 +26,7 @@ github:1.47.0
 gradle:2.19.1244.v1f9866817fec
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.22.0-439.vb_b_43658d6176
+jackson2-api:2.22.1-443.vc91f592333c4
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
