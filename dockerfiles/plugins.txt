@@ -10,8 +10,8 @@ checks-api:415.vf022234a_931d
 cloudbees-folder:6.1100.ve9eed61d16c4
 commons-lang3-api:3.20.0-109.ve43756e2d2b_4
 commons-text-api:1.15.0-218.va_61573470393
-configuration-as-code:2106.v3953a_5b_b_a_73e
-coverage:3.3305.vf8df16102f76
+configuration-as-code:2108.v02b_430db_0cf5
+coverage:3.3311.v42c5a_f929e3e
 credentials-binding:728.v902a_273b_8947
 credentials:1506.v948b_b_b_7dec44
 display-url-api:2.217.va_6b_de84cc74b_
@@ -26,7 +26,7 @@ github:1.47.0
 gradle:2.19.1244.v1f9866817fec
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.22.0-439.vb_b_43658d6176
+jackson2-api:2.22.1-443.vc91f592333c4
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
@@ -73,7 +73,7 @@ variant:70.va_d9f17f859e0
 workflow-aggregator:608.v67378e9d3db_1
 workflow-api:1413.v2ff1a_5e720fa_
 workflow-basic-steps:1098.v808b_fd7f8cf4
-workflow-cps:4357.vd3195c6b_d381
+workflow-cps:4360.v2020e8819a_d6
 workflow-durable-task-step:1479.v56e587f413a_7
 workflow-job:1590.v49101d088542
 workflow-multibranch:841.vec5b_9e1806ec
