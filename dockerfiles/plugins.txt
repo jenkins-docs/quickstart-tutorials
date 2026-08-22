@@ -38,7 +38,7 @@ junit:1424.vc64a_edde7777
 locale:641.v84f22d75fd8b_
 mailer:534.v1b_36f5864073
 matrix-auth:3.3
-matrix-project:905.vcc6831e8760a_
+matrix-project:917.v22eda_817646e
 metrics:4.2.37-494.v06f9a_939d33a_
 mina-sshd-api-common:2.19.0-192.v2b_a_7b_2c1dc71
 mina-sshd-api-core:2.19.0-192.v2b_a_7b_2c1dc71
