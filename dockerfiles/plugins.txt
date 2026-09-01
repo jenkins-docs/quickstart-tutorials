@@ -2,11 +2,11 @@ ant:520.vd082ecfb_16a_9
 antisamy-markup-formatter:173.v680e3a_b_69ff3
 apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
 bootstrap5-api:5.3.8-895.v4d0d8e47fea_d
-bouncycastle-api:2.30.1.84-291.v9f17b_21896e2
+bouncycastle-api:2.30.1.85-299.v15f4832d1275
 branch-api:2.1280.v0d4e5b_b_460ef
 build-timeout:1.40
 caffeine-api:3.2.4-208.v7e2da_a_7db_82b_
-checks-api:415.vf022234a_931d
+checks-api:422.vc7e8b_51488c6
 cloudbees-folder:6.1106.v3a_d9a_6d2465e
 commons-lang3-api:3.20.0-109.ve43756e2d2b_4
 commons-text-api:1.15.0-218.va_61573470393
