@@ -16,7 +16,7 @@ credentials-binding:728.v902a_273b_8947
 credentials:1511.v2e3cb_0008ef0
 display-url-api:2.217.va_6b_de84cc74b_
 durable-task:686.v80ff80875b_82
-echarts-api:6.1.0-1306.vcee1648c16a_4
+echarts-api:6.1.0-1321.v86c4c5114494
 font-awesome-api:7.3.1-1013.v0835a_879ec6d
 git-client:6.6.1
 git:5.10.1
