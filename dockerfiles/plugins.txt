@@ -23,7 +23,7 @@ git:5.10.1
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1917.v9ee8a_39b_3d0d
 github:1.47.0
-gradle:2.19.1252.v15196b_5a_6e10
+gradle:2.20.1253.vc116f0763a_eb_
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
 jackson2-api:2.22.2-445.vdc613f1d8012
@@ -60,7 +60,7 @@ plain-credentials:199.v9f8e1f741799
 plugin-util-api:6.1192.v30fe6e2837ff
 resource-disposer:0.25
 scm-api:728.vc30dcf7a_0df5
-script-security:1415.v9a_f9b_3a_c253d
+script-security:1422.v06869826dd9b_
 snakeyaml-api:2.5-149.v72471e9c6371
 ssh-credentials:372.va_250881b_08cd
 ssh-slaves:3.1097.v868116049892
@@ -73,7 +73,7 @@ variant:70.va_d9f17f859e0
 workflow-aggregator:608.v67378e9d3db_1
 workflow-api:1413.v2ff1a_5e720fa_
 workflow-basic-steps:1098.v808b_fd7f8cf4
-workflow-cps:4378.v7a_08f1b_b_f8f4
+workflow-cps:4380.v6eb_8378b_9647
 workflow-durable-task-step:1479.v56e587f413a_7
 workflow-job:1571.1580.v18e46842c125
 workflow-multibranch:841.vec5b_9e1806ec
