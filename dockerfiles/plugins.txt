@@ -3,7 +3,7 @@ antisamy-markup-formatter:173.v680e3a_b_69ff3
 apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
 bootstrap5-api:5.3.8-1048.va_c299057e35c
 bouncycastle-api:2.30.1.85.2-304.v4b_5b_62e59a_a_7
-branch-api:2.1280.v0d4e5b_b_460ef
+branch-api:2.1303.v9f3b_95dc329d
 build-timeout:1.41
 caffeine-api:3.2.4-208.v7e2da_a_7db_82b_
 checks-api:422.vc7e8b_51488c6
@@ -11,7 +11,7 @@ cloudbees-folder:6.1106.v3a_d9a_6d2465e
 commons-lang3-api:3.20.0-109.ve43756e2d2b_4
 commons-text-api:1.15.0-218.va_61573470393
 configuration-as-code:2121.v86fe99d4b_b_a_b_
-coverage:3.3373.v2dc29d8d7a_d0
+coverage:3.3391.v88066155957d
 credentials-binding:728.v902a_273b_8947
 credentials:1511.v2e3cb_0008ef0
 display-url-api:2.217.va_6b_de84cc74b_
@@ -34,7 +34,7 @@ javax-mail-api:1.6.2-11
 jaxb:2.3.9-143.v5979df3304e6
 jjwt-api:0.13.0-141.vd58b_a_9592b_6c
 jquery3-api:3.7.1-687.v68d468e40b_30
-junit:1427.vb_32a_611175b_f
+junit:1428.vef95b_fa_89508
 locale:641.v84f22d75fd8b_
 mailer:534.v1b_36f5864073
 matrix-auth:3.3
@@ -45,7 +45,7 @@ mina-sshd-api-core:2.19.0-192.v2b_a_7b_2c1dc71
 okhttp-api:5.3.2-200.vedb_720a_cf1f8
 pipeline-build-step:601.v6d4c6d1a_9dc7
 pipeline-graph-analysis:254.v0f63a_a_447dca_
-pipeline-graph-view:1013.v9f83fd83c063
+pipeline-graph-view:1038.v5b_b_dfc9553cf
 pipeline-groovy-lib:806.v408277b_33d1d
 pipeline-input-step:560.v56198a_642157
 pipeline-milestone-step:152.v6e22b_8cfc66c
