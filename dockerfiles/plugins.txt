@@ -2,15 +2,15 @@ ant:520.vd082ecfb_16a_9
 antisamy-markup-formatter:173.v680e3a_b_69ff3
 apache-httpcomponents-client-4-api:4.5.14-269.vfa_2321039a_83
 bootstrap5-api:5.3.8-1048.va_c299057e35c
-bouncycastle-api:2.30.1.85.2-304.v4b_5b_62e59a_a_7
+bouncycastle-api:2.30.1.86.1-306.vfc711fa_36d5f
 branch-api:2.1303.v9f3b_95dc329d
 build-timeout:1.41
-caffeine-api:3.2.4-208.v7e2da_a_7db_82b_
+caffeine-api:3.3.0-210.v71b_2985ce530
 checks-api:422.vc7e8b_51488c6
 cloudbees-folder:6.1106.v3a_d9a_6d2465e
 commons-lang3-api:3.21.0-122.v6a_ea_4fd34049
 commons-text-api:1.15.0-218.va_61573470393
-configuration-as-code:2132.v60435f73c18a_
+configuration-as-code:2133.ve570217cdb_cd
 coverage:3.3395.vcc183b_4a_0d7b_
 credentials-binding:728.v902a_273b_8947
 credentials:1511.v2e3cb_0008ef0
@@ -26,7 +26,7 @@ github:1.47.0
 gradle:2.20.1253.vc116f0763a_eb_
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.22.2-445.vdc613f1d8012
+jackson2-api:2.22.3-447.v6a_93ce7d2c82
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
@@ -34,7 +34,7 @@ javax-mail-api:1.6.2-11
 jaxb:2.3.9-143.v5979df3304e6
 jjwt-api:0.13.0-141.vd58b_a_9592b_6c
 jquery3-api:3.7.1-687.v68d468e40b_30
-junit:1432.v3f9a_b_73dd986
+junit:1434.vde2d24df0c4c
 locale:641.v84f22d75fd8b_
 mailer:534.v1b_36f5864073
 matrix-auth:3.3
@@ -60,7 +60,7 @@ plain-credentials:199.v9f8e1f741799
 plugin-util-api:7.1341.v039f146993d9
 resource-disposer:0.25
 scm-api:728.vc30dcf7a_0df5
-script-security:1429.v0810f1b_530f5
+script-security:1433.v17c58a_e45cc1
 snakeyaml-api:2.7-152.vc672728cf536
 ssh-credentials:372.va_250881b_08cd
 ssh-slaves:3.1097.v868116049892
@@ -73,9 +73,9 @@ variant:70.va_d9f17f859e0
 workflow-aggregator:608.v67378e9d3db_1
 workflow-api:1413.v2ff1a_5e720fa_
 workflow-basic-steps:1098.v808b_fd7f8cf4
-workflow-cps:4390.va_61c07eb_2f72
+workflow-cps:4391.v652b_b_b_1b_7c00
 workflow-durable-task-step:1479.v56e587f413a_7
-workflow-job:1602.v2a_70b_80a_2396
+workflow-job:1609.v8926e7962024
 workflow-multibranch:842.v3a_b_59b_57b_e6e
 workflow-scm-step:487.v41313a_96b_65d
 workflow-step-api:724.v538c2362b_dfb_
