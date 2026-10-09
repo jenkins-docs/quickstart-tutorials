@@ -10,7 +10,7 @@ checks-api:422.vc7e8b_51488c6
 cloudbees-folder:6.1106.v3a_d9a_6d2465e
 commons-lang3-api:3.21.0-122.v6a_ea_4fd34049
 commons-text-api:1.15.0-218.va_61573470393
-configuration-as-code:2133.ve570217cdb_cd
+configuration-as-code:2134.ve13a_2fc90835
 coverage:3.3395.vcc183b_4a_0d7b_
 credentials-binding:728.v902a_273b_8947
 credentials:1511.v2e3cb_0008ef0
@@ -34,7 +34,7 @@ javax-mail-api:1.6.2-11
 jaxb:2.3.9-143.v5979df3304e6
 jjwt-api:0.13.0-141.vd58b_a_9592b_6c
 jquery3-api:3.7.1-687.v68d468e40b_30
-junit:1434.vde2d24df0c4c
+junit:1436.v04461a_d56ca_f
 locale:641.v84f22d75fd8b_
 mailer:534.v1b_36f5864073
 matrix-auth:3.3
