@@ -5,7 +5,7 @@ bootstrap5-api:5.3.8-1048.va_c299057e35c
 bouncycastle-api:2.30.1.86.2-310.v4655f6742752
 branch-api:2.1303.v9f3b_95dc329d
 build-timeout:1.41
-caffeine-api:3.3.0-210.v71b_2985ce530
+caffeine-api:3.3.1-214.v18eb_56b_34920
 checks-api:422.vc7e8b_51488c6
 cloudbees-folder:6.1106.v3a_d9a_6d2465e
 commons-lang3-api:3.21.0-122.v6a_ea_4fd34049
@@ -42,7 +42,7 @@ matrix-project:928.v1effc3f3a_236
 metrics:4.2.37-494.v06f9a_939d33a_
 mina-sshd-api-common:2.19.0-192.v2b_a_7b_2c1dc71
 mina-sshd-api-core:2.19.0-192.v2b_a_7b_2c1dc71
-okhttp-api:5.3.2-223.v0f4017f8d05a_
+okhttp-api:5.5.0-242.v1482d48d3ea_3
 pipeline-build-step:601.v6d4c6d1a_9dc7
 pipeline-graph-analysis:254.v0f63a_a_447dca_
 pipeline-graph-view:1053.v9df19e6ceed2
