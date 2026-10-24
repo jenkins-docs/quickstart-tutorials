@@ -23,7 +23,7 @@ git:5.11.0
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1986.v801e40614d00
 github:1.47.0
-gradle:2.20.1253.vc116f0763a_eb_
+gradle:2.20.1259.v6355c2b_e38c7
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
 jackson2-api:2.22.3-447.v6a_93ce7d2c82
@@ -71,7 +71,7 @@ token-macro:477.vd4f0dc3cb_cf1
 trilead-api:2.284.v1974ea_324382
 variant:70.va_d9f17f859e0
 workflow-aggregator:608.v67378e9d3db_1
-workflow-api:1413.v2ff1a_5e720fa_
+workflow-api:1429.v7a_1b_efb_a_f7c5
 workflow-basic-steps:1098.v808b_fd7f8cf4
 workflow-cps:4395.v738456a_5da_6b_
 workflow-durable-task-step:1479.v56e587f413a_7
