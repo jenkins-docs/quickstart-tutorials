@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:9.2.0-jdk21 as ssh-agent
+FROM jenkins/ssh-agent:9.3.3-jdk21 as ssh-agent
 
 # ca-certificates because curl uses certificates from ca-certificates
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && apt-get clean && \
