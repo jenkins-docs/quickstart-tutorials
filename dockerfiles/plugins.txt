@@ -7,7 +7,7 @@ branch-api:2.1303.v9f3b_95dc329d
 build-timeout:1.40
 caffeine-api:3.3.1-214.v18eb_56b_34920
 checks-api:422.vc7e8b_51488c6
-cloudbees-folder:6.1106.v3a_d9a_6d2465e
+cloudbees-folder:6.1107.v31f8955765c8
 commons-lang3-api:3.21.0-122.v6a_ea_4fd34049
 commons-text-api:1.15.0-218.va_61573470393
 configuration-as-code:2036.v0b_c2de701dcb_
@@ -23,10 +23,10 @@ git:5.11.0
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1917.v9ee8a_39b_3d0d
 github:1.47.0
-gradle:2.20.1253.vc116f0763a_eb_
+gradle:2.20.1259.v6355c2b_e38c7
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
-jackson2-api:2.22.3-447.v6a_93ce7d2c82
+jackson2-api:2.22.4-449.v4ee9f4ec4123
 jakarta-activation-api:2.1.4-1
 jakarta-mail-api:2.1.5-1
 javax-activation-api:1.2.0-8
