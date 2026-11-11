@@ -43,7 +43,7 @@ metrics:4.2.37-494.v06f9a_939d33a_
 mina-sshd-api-common:2.20.1-199.v8ce76b_c93542
 mina-sshd-api-core:2.20.1-199.v8ce76b_c93542
 okhttp-api:5.5.0-242.v1482d48d3ea_3
-pipeline-build-step:601.v6d4c6d1a_9dc7
+pipeline-build-step:605.v00486e8f4b_3e
 pipeline-graph-analysis:254.v0f63a_a_447dca_
 pipeline-graph-view:1053.v9df19e6ceed2
 pipeline-groovy-lib:822.vc95f70dea_db_7
