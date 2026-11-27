@@ -23,7 +23,7 @@ git:5.11.0
 github-api:1.330-492.v3941a_032db_2a_
 github-branch-source:1917.v9ee8a_39b_3d0d
 github:1.47.0
-gradle:2.21.1282.v024680ce00a_b_
+gradle:2.22.1283.v53b_41fe4cb_d9
 instance-identity:203.v15e81a_1b_7a_38
 ionicons-api:94.vcc3065403257
 jackson2-api:2.22.4-449.v4ee9f4ec4123
@@ -59,8 +59,8 @@ pipeline-stage-view:2.41
 plain-credentials:199.v9f8e1f741799
 plugin-util-api:6.1192.v30fe6e2837ff
 resource-disposer:0.25
-scm-api:728.vc30dcf7a_0df5
-script-security:1436.v1082791135e4
+scm-api:732.v830c71a_cfed3
+script-security:1436.1438.v3dc5ef7d16f2
 snakeyaml-api:2.7-152.vc672728cf536
 ssh-credentials:372.va_250881b_08cd
 ssh-slaves:3.1097.v868116049892
